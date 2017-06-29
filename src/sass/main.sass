@@ -1,0 +1,33 @@
+/* Default Sass variables and mixins */
+@import 'vars'
+@import 'mixins'
+
+
+/* Third party Css libs */
+@import 'libs'
+
+
+/* Sprites, Fonts and Icons */
+@import 'fonts'
+@import 'sprite'        // Usage +icon('iconTitle')
+@import 'sprite-symbol' // Usage +svg('iconTitle', width, height).someClass#someId(someAtr="value")
+
+
+/* Basic styles (body, a, tables, buttons, forms etc.) */
+@import 'base'
+
+
+/* Main styles */
+@import 'partials/header'
+
+@import 'partials/sample'
+@import 'partials/section-name'
+@import 'partials/section-name'
+@import 'partials/section-name'
+
+@import 'partials/footer'
+
+
+/* Responsive */
+// @import 'media'
+// Now not need bcs media queries set by mixins

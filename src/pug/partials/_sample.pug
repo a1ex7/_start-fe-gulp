@@ -1,0 +1,73 @@
+//- UA WEB 8
+
+.wrapper
+  .challenge.challenge1
+    .challenge1__text ua web #[br] challenge
+  .challenge.challenge2
+    .challenge2__text
+      p.
+        It is an honor for me to contribute a foreword to this unique, informative, and exciting volume. Never before has an attempt been made to gather together, between two covers, comprehensive information about the use and abuse of nonhuman animals by our own human species, along with the complex issues that must be understood by those who are concerned with animal welfare and animal rights, and some of the ways in which different groups are tackling these issues. Because human beings are animals, this book could have been expanded to include the horrible abuse and torture to which we subject other humans--theoretically, there could be a whole section on human rights. But that is not the purpose of the editors. This book is concerned with the essential dignity of the wondrous nonhuman beings with whom we share this planet, and our human responsibilities towards them: the beings known in common parlance as "animals"--which is how I shall refer to them here.
+      p.
+        Of course, we humans are much more like other animals than was once thought, much more so than many people like to, or are prepared to, believe. I have been privileged to spend 35 years learning about and from the chimpanzees, our closest living relatives. A detailed understanding of chimpanzee nature has helped, perhaps more than anything else, to blur the line, once thought to be so clear and sharp, dividing humans from the rest of the animal kingdom. Once we are prepared to accept that it is not only humans who have personalities, not only humans who are capable of rational thought and simple problem solving, and above all, not only humans who can experience emotions such as joy, sorrow, fear, despair, and mental as well as physical suffering, then we are surely compelled to have new respect not only for chimpanzees but also for so many other amazing animal species. (In fact, I received my first lessons about the amazing capabilities of nonhumans from my dog, Rusty, before I was 10 years old.)
+      p.
+        The only thing that we humans do that no other animals do in the same way is to communicate by means of a sophisticated spoken--and written-- language, and this, I believe, lays on us certain responsibilities towards the rest of the animal kingdom. (It might be mentioned that in English translations of the Old Testament--Psalm 8--"dominion" is often used, but this is somewhat misleading. "Dominion" is not the best translation of the original Hebrew word, which is actually a verb meaning "made to rule over," as a wise king rules over his subjects with care and respect. Whatever English word is chosen, it is clear that the original Hebrew phrasing implies a respectful and caring attitude towards creation and suggests a sense of responsibility. This, of course, gives the text a completely different meaning than some of the narrower meanings, such as domination, which are often read into the English translation "dominion.")
+      p.
+        This is why I am so very glad that this encyclopedia has been put together--for it speaks out for animals, for all kinds of animals. It broadcasts a simple message, a plea, that needs desperately to be heard as we head into the 21st century. Give animals the respect that, as sentient beings, is their due. And this simple message is delivered here by a multitude of voices from many different disciplines: from biology, including ethology (the study of behavior) and ecology, anthropology, psychology, philosophy, sociology, education, law, ethnology, history, politics, theology, veterinary science, and public administration. This multidisciplinary collection of contributors means that the essays discuss the central theme from different perspectives: collectively they provide an astonishingly rich overview of the extent of animal suffering in our modern society and the various steps that have been taken by those fighting for animal welfare and animal rights. And, importantly, the material is presented in a straightforward way intended to appeal to the general public as well as the scientists. Once this encyclopedia reaches the shelves of libraries in schools and universities, many young people, as well as their teachers, will have access to this valuable information.
+      p.
+        Voice differing opinions, the reader will also be able to develop his or her own carefully reasoned arguments to use when discussing controversial issues with people who hold different views. This is important. The more passionate one feels about animal abuse, the more important it becomes to try to understand what is behind it. However distasteful it may seem, it really is necessary to become fully informed about a given issue. Dogmatism, a refusal to listen to any point of view differing from one's own, results in moral and intellectual arrogance. This is far from helpful and is most unlikely to lead to any kind of progress. The "us" v. "them" attitude brings useful dialogue to an end. In fact, most issues are quite complex and can seldom be described in simtple terms of black and white. And until we become fully cognizant of all that is involved, we had better not start arguing, let alone throwing bricks at anyone.
+      p.
+        Let me give an example. Recently, during a semi-official visit to South Korea, a press conference was set up by my host organization. The subject of cruelty came up. I said that I would like to discuss their habit of eating dogs. My interpreter blanched. Quite clearly she felt that this was politically insensitive and would embarrass my hosts! I explained that in the country where I grew up ( England), people typically ate cows and pigs and chickens, and that pigs at least are quite as intelligent as dogs and, in fact, make wonderful pets. Yet only too often they are kept in horrendous conditions.
+//- Component sample
+
+h2 Adaptive simple menu (float)
+
+include ../common/_menu
+
+hr
+h2 Tesimonial x 5 (flexbox)
+
+include ../common/_testimonials
+
+hr
+
+
+.wrapper
+  h2 Slider (owl)
+  .slider.slider--testimonials
+    include ../common/_testimonial
+    include ../common/_testimonial
+    include ../common/_testimonial
+    include ../common/_testimonial
+    include ../common/_testimonial
+
+//- HTML sample
+
+.container-fluid
+  .row.grid.grid--1of3.grid--justifyCenter.lg-grid--full
+    .col-sm-8.col-sm-offset-2.grid-cell
+      img.img-responsive(src='img/preview.jpg', alt='Start HTML5 Template')
+      p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Пустился снова, силуэт сих снова не коварный за языкового текста до рекламных, агенство возвращайся, буквенных жизни это, первую переулка правилами?
+      p Наш, приставка
+        a.link.c-button страна единственное большой
+        | , власти, злых, взобравшись семь рот он алфавит осталось вершину курсивных сих всемогущая буквенных предупредила залетают необходимыми эта но вдали имеет ты? Предупреждал повстречался, но которое!
+      p Злых, знаках свою. Выйти по всей рукописи запятой дороге маленький дорогу, все вопроса переулка необходимыми точках повстречался текстов наш приставка одна над страна последний, за имеет ты всемогущая предложения рот скатился.
+
+      button.c-button.login Кнопка где очень много текста
+
+hr
+
+.wrapper
+  h2 Стрелки
+  .arrow1
+  .arrow2
+  .arrow3
+
+//- Mixin Sample
+
+.wrapper
+  +checkbox('Чекбокс без id')
+  +checkbox('Чекбокс без id', true)
+  +checkbox('Чекбокс без id')
+
+hr
+

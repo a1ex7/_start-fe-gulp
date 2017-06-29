@@ -1,0 +1,71 @@
+@import "../common/_menu"
+@import "../common/_testimonials"
+
+.challenge
+  width: 800px
+  height: 1200px
+
+.challenge1
+  border: 30px solid #fff
+  background-image: repeating-linear-gradient( 45deg, #fff 0, #fff 50px, #fff000 50px, #fff000 100px )
+  display: flex
+  justify-content: center
+  align-items: center
+
+  &:hover
+    animation: bgMove 0.4s ease infinite
+
+  &__text
+    color: #ff00ea
+    font-size: 148px
+    font-weight: bold
+    text-transform: uppercase
+    transform: rotate(-90deg)
+    position: relative
+
+    &:after
+      content: 'ua web challenge'
+      display: block
+      color: rgba(#00b4ff, 0.6)
+      mix-blend-mode: multiply
+      position: absolute
+      top: 0
+      left: 10px
+
+@keyframes bgMove
+  0%
+    background-image: repeating-linear-gradient( 45deg, #fff 0, #fff 50px, #fff000 50px, #fff000 100px )
+  25%
+    background-image: repeating-linear-gradient( 45deg, #fff 25px, #fff 75px, #fff000 75px, #fff000 125px )
+  50%
+    background-image: repeating-linear-gradient( 45deg, #fff 50px, #fff 100px, #fff000 100px, #fff000 150px )
+  75%
+    background-image: repeating-linear-gradient( 45deg, #fff 75px, #fff 125px, #fff000 125px, #fff000 175px )
+  100%
+    background-image: repeating-linear-gradient( 45deg, #fff 100px, #fff 150px, #fff000 150px, #fff000 200px )
+
+.challenge2
+  background: #000 url("../img/temp/dog-red.svg") 50% 50% no-repeat
+
+  &__text
+    padding: 50px 60px 170px 60px
+    column-count: 2
+    column-gap: 60px
+    font: 13px/16.5px Georgia, Times
+    background-color: white
+    mix-blend-mode: screen
+    p
+      margin-bottom: 20px
+      text-indent: -25px
+      &:first-child
+        // float: left
+      &:first-child:first-letter
+        font-size: 83px
+        display: inline-block
+        vertical-align: top
+
+.arrow1
+  +arr(50, 50, blue, l)
+.arrow2
+  +arr(20, 40, green, b)
+

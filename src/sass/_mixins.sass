@@ -1,0 +1,196 @@
+/* Mixins */
+
+=size($size)
+  width: $size
+  height: $size
+
+=width($size, $of)
+  width: 100% * $size / $of
+
+=round($radius: 50%)
+  border-radius: $radius
+
+=bg-center($url: '')
+  @if ($url != '')
+    background-image: url($url)
+  background-position: 50% 50%
+  background-repeat: no-repeat
+
+=bg-cover($url: '')
+  @if ($url != '')
+    background-image: url($url)
+  background-position: 50% 50%
+  background-repeat: no-repeat
+  background-size: cover
+
+=hide-text()
+  // font-size: 0
+  text-indent: -1000px
+  overflow: hidden
+
+=crop-text()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+=transition($property: all)
+  transition: $property 0.2s ease-in-out
+
+=placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+=reset-btn()
+  border: none
+  background: none
+  outline: none
+  padding: 0
+
+=button($color, $background, $border)
+  display: inline-block
+  color: $color
+  background-color: $background
+  border: 2px solid $border
+  border-radius: 0
+  padding: 0 1em
+  min-width: 150px
+  // height: 2em
+  line-height: 2em
+  text-align: center
+  user-select: none
+  text-transform: uppercase
+  cursor: pointer
+  +transition()
+  &:hover
+    color: $color
+    background-color: darken($background, 10%)
+    border-color: darken($border, 12%)
+
+=arr($width, $height, $bg, $direction)
+  width: 0px
+  height: 0px
+  border-style: solid
+  @if $direction == t
+    border-width: 0 $width / 2 + px $height + px $width / 2 + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == r
+    border-width: $height / 2 + px 0 $height / 2 + px $width + px
+    border-color: transparent transparent transparent $bg
+  @if $direction == b
+    border-width: $height + px $width / 2 + px 0 $width / 2 + px
+    border-color: $bg transparent transparent transparent
+  @if $direction == l
+    border-width: $height / 2 + px $width + px $height / 2 + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == tl
+    border-width: $height + px $width + px 0 0
+    border-color: $bg transparent transparent transparent
+  @if $direction == tr
+    border-width: 0 $width + px $height + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == br
+    border-width: 0 0 $height + px $width + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == bl
+    border-width: $width + px 0 0 $height + px
+    border-color: transparent transparent transparent $bg
+
+=align($type: 'hv')
+  position: absolute
+  @if ($type == 'hv' or $type == 'vh')
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if ($type == 'h')
+    left: 50%
+    transform: translate(-50%, 0)
+  @else if ($type == 'v')
+    top: 50%
+    transform: translate(0, -50%)
+
+=font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false )
+  @font-face
+    font-family: $font-family
+    font-weight: $weight
+    font-style: $style
+
+    @if $asset-pipeline == true
+      src: font-url('#{$file-path}.eot')
+      src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype')
+    @else
+      src: url('#{$file-path}.eot')
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'), url('#{$file-path}.woff') format('woff'), url('#{$file-path}.ttf') format('truetype')
+
+=position($position: relative, $coordinates: null null null null)
+  @if type-of($position) == list
+    $coordinates: $position
+    $position: relative
+
+  $offsets: (top: nth($coordinates, 1), right: nth($coordinates, 2), bottom: nth($coordinates, 3), left: nth($coordinates, 4))
+
+  position: $position
+
+  @each $offset, $value in $offsets
+    @if is-length($value)
+      #{$offset}: $value
+
+
+// Retina
+=retina()
+  @media (min-resolution: 144dpi), (min-resolution: 1.5dppx)
+    @content
+
+// Custom Breakpoint
+=media($width)
+  @media only screen and (max-width: $width)
+      @content
+
+=breakpoint($width)
+  +media($width)
+
+=r($width)
+  +media($with)
+
+// Custom Breakpoint Mobile First
+=mediamin($width)
+  @media only screen and (min-width: $width)
+      @content
+
+// (new) Extra Large
+=xl()
+  @media only screen and (min-width: $break-lg + 1px)
+    @content
+
+// Large Devices, Wide Screens
+=lg()
+  @media only screen and (max-width: $break-lg)
+    @content
+
+// Medium Devices, Desktops
+=md()
+  @media only screen and (max-width: $break-md)
+    @content
+
+// Small Devices, Tablets
+=sm()
+  @media only screen and (max-width: $break-sm)
+    @content
+
+// Extra Small Devices, Phones
+=xs()
+  @media only screen and (max-width: $break-xs)
+    @content
+
+
+/* Placeholders */
+
+/* Functions */
+
+@function em($size, $context: 16)
+  @return ($size / $context) * 1em

@@ -1,0 +1,26 @@
+//- Mixins
+
+//- Symbol mode sprite
+mixin svg(title, width, height)
+  svg(class=`symbol-${title}`, width=width, height=height)&attributes(attributes)
+    use(xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=`#${title}`)
+
+//- View mode sprite
+mixin icon(title)
+  img(src=`img/sprites/sprite.svg#${title}`, alt=`${title}`)
+
+mixin checkbox(text, checked)
+  label
+    input(type="checkbox", checked=checked)
+    span= text
+
+mixin checkbox-id(text, id, checked)
+  input(type="checkbox", id=id, checked=checked)
+  label(for=id)= text
+
+mixin deals(descr, image)
+  .deals__item
+    a.deals__link(href="#")
+      .deals__image
+        img(src=`img/${image}`, alt="Проекти")
+      p.deals__descr= descr

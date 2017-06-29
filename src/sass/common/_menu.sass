@@ -1,0 +1,29 @@
+// Common styles for Menu
+.menu
+  background: #333
+  overflow: hidden
+
+  &__item
+    float: left
+
+    &--right
+      float: right
+
+    +sm()
+      float: none
+
+  &__link
+    display: block
+    color: #fff
+    padding: 15px 20px
+    text-align: center
+    text-decoration: none
+    text-transform: uppercase
+
+    &:hover:not(&--active)
+      background-color: #111
+
+    &--active
+      background-color: #4caf50
+
+

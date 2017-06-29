@@ -1,0 +1,27 @@
+%svg-common {
+	background: url("../img/sprites/sprite.svg") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.svg-star {
+	@extend %svg-common;
+	background-position: 0 0;
+	width: 37px;
+	height: 35px;
+}
+
+.svg-star-empty {
+	@extend %svg-common;
+	background-position: 35.57692307692308% 35.714285714285715%;
+	width: 67px;
+	height: 63px;
+}
+
+.svg-star-half {
+	@extend %svg-common;
+	background-position: 100% 100%;
+	width: 67px;
+	height: 63px;
+}
+
