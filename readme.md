@@ -1,4 +1,4 @@
-<h1>Project for DevChallenge 11</h1>
+<h1>Starter Project</h1>
 
 <p>Description</p>
 
