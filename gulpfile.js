@@ -1,24 +1,30 @@
-var gulp           = require('gulp'),
-    gutil          = require('gulp-util' ),
-    sass           = require('gulp-sass'),
-    browserSync    = require('browser-sync'),
-    concat         = require('gulp-concat'),
-    uglify         = require('gulp-uglify'),
-    cleanCSS       = require('gulp-clean-css'),
-    rename         = require('gulp-rename'),
-    del            = require('del'),
-    imagemin       = require('gulp-imagemin'),
-    svgSprite      = require('gulp-svg-sprite'),
-    cache          = require('gulp-cache'),
-    autoprefixer   = require('gulp-autoprefixer'),
-    notify         = require('gulp-notify'),
-    sourcemaps     = require('gulp-sourcemaps'),
-    pug            = require('gulp-pug'),
-    fileinclude    = require('gulp-file-include'),
-    combineMq      = require('gulp-combine-mq');
+var gulp           = require('gulp');
 
-var smartgrid      = require('smart-grid');
+var browserSync    = require('browser-sync');
+var del            = require('del');
+var concat         = require('gulp-concat');
+var fileinclude    = require('gulp-file-include');
+var googleWebFonts = require('gulp-google-webfonts');
+var imagemin       = require('gulp-imagemin');
+var mozjpeg        = require('imagemin-mozjpeg');
+var pngquant       = require('imagemin-pngquant');
+var notify         = require('gulp-notify');
+var pug            = require('gulp-pug');
+var rename         = require('gulp-rename');
+var sass           = require('gulp-sass');
+var sourcemaps     = require('gulp-sourcemaps');
+var svgSprite      = require('gulp-svg-sprite');
+var uglify         = require('gulp-uglify');
 
+var postcss        = require('gulp-postcss');
+var autoprefixer   = require('autoprefixer');
+var csso           = require('postcss-csso');
+var mqpacker       = require('css-mqpacker');
+
+
+/* Configuration */
+
+var cfg = require('./gulp/config.js');
 
 
 /* Tasks */
@@ -60,7 +66,7 @@ gulp.task('common-js', function() {
     ])
     .pipe(concat('common.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('src/js'));
+    .pipe(gulp.dest(cfg.dest.js));
 });
 
 
@@ -88,19 +94,28 @@ gulp.task('js', ['common-js'], function() {
 /* Magic with sass files */
 
 gulp.task('sass', function() {
-  return gulp.src('src/sass/**/*.sass')
+  var plugins = [
+    mqpacker(),
+    autoprefixer({browsers: cfg.browserslist}),
+    csso(),
+  ];
+  return gulp
+    .src(cfg.src.sass + '/**/*.{sass,scss}')
     .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'expanded' }).on('error', notify.onError()))
-    .pipe(autoprefixer(['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']))
-    .pipe(gulp.dest('src/css'))
-    // .pipe(combineMq()) // Grouping media queries
-    .pipe(cleanCSS()) // Optional, remove unused style rules !danger
+    .pipe(sass({
+      outputStyle: 'expanded', // nested, expanded, compact, compressed
+    }))
+    .on('error', notify.onError({
+        title: '<%= error.plugin %> in <%= error.relativePath %>',
+        message: '<%= error.messageOriginal %>\nLine: <%= error.line %>, <%= error.column %>',
+        sound: true,
+    }))
+    .pipe(postcss(plugins))
     .pipe(rename({ suffix: '.min', prefix: '' }))
     .pipe(sourcemaps.write('/'))
-    .pipe(gulp.dest('src/css'))
+    .pipe(gulp.dest(cfg.src.css))
     .pipe(browserSync.reload({ stream: true }));
 });
-
 
 
 /* Browser Sync Server */
@@ -108,23 +123,24 @@ gulp.task('sass', function() {
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: 'src'
+      baseDir: cfg.src.root
     },
     notify: true,
     // tunnel: true,
-    // tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
+    // tunnel: 'projectmane', //Demonstration page: http://projectmane.localtunnel.me
   });
 });
+
 
 
 /* Monitoring */
 
 gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
-  //gulp.watch('src/html/**/*.html', ['html']);
-  gulp.watch('src/pug/**/*.pug', ['pug']);
-  gulp.watch('src/sass/**/*.sass', ['sass']);
-  gulp.watch(['src/libs/**/*.js', 'src/js/**/*.js'], ['js']);
-  gulp.watch('src/*.html', browserSync.reload);
+  //gulp.watch(cfg.src.templates + '/**/*.html', ['html']);
+  gulp.watch( cfg.src.pug  + '/**/*.pug', ['pug']);
+  gulp.watch( cfg.src.sass + '/**/*.{sass,scss}', ['sass']);
+  gulp.watch([cfg.src.libs + '/**/*.js', cfg.src.js + '/**/*.js' ], ['js']);
+  gulp.watch( cfg.src.root + '/*.html', browserSync.reload);
 });
 
 
@@ -132,11 +148,13 @@ gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
 /* Image optimization */
 
 gulp.task('imagemin', function() {
-  return gulp.src('src/img/**/*')
+  return gulp.src(cfg.src.img + '/**/*')
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.jpegtran({ progressive: true }),
+      //mozjpeg({progressive: true}),
       imagemin.optipng({ optimizationLevel: 3 }),
+      //pngquant({quality: '85-100'}),
       imagemin.svgo({
         plugins: [{
           removeViewBox: false,
@@ -144,9 +162,8 @@ gulp.task('imagemin', function() {
         }]
       }),
     ]))
-    .pipe(gulp.dest('dist/img'));
+    .pipe(gulp.dest(cfg.dest.img));
 });
-
 
 
 /* Generate SVG Sprites */
@@ -188,7 +205,6 @@ gulp.task('sprites', function() {
           render: {
             scss: {
               dest: '_sprite-symbol.scss',
-              // template: 'src/img/sprites/tmpl/sprite.scss'
             }
           },
           example: {
@@ -202,9 +218,24 @@ gulp.task('sprites', function() {
 
 
 
+/* Download Google Fonts */
+
+var options = {
+  fontsDir: '../fonts/',
+  cssDir: '../sass/',
+  cssFilename: 'webfonts.css'
+};
+
+gulp.task('fonts', function() {
+  return gulp.src('src/fonts/fonts.list')
+    .pipe(googleWebFonts(options))
+    .pipe(gulp.dest('src/fonts'));
+});
+
+
 /* Build project */
 
-gulp.task('build', ['removedist', 'imagemin', 'html', 'sass', 'js'], function() {
+gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
 
   var buildHtml = gulp.src([
     'src/*.html',
@@ -228,56 +259,7 @@ gulp.task('build', ['removedist', 'imagemin', 'html', 'sass', 'js'], function() 
 
 /* Helpers */
 
-gulp.task('removedist', function() { return del.sync('dist'); });
-gulp.task('clearcache', function () { return cache.clearAll(); });
-
-/* Smart Grid Compile */
-gulp.task('sg', function() {
-  /* It's principal settings in smart grid project */
-  var settings = {
-    outputStyle: 'sass',
-    /* less || scss || sass || styl */
-    columns: 12,
-    /* number of grid columns */
-    offset: "30px",
-    /* gutter width px || % */
-    container: {
-      maxWidth: '1200px',
-      /* max-width оn very large screen */
-      fields: '30px' /* side fields */
-    },
-    breakPoints: {
-      lg: {
-        'width': '1100px',
-        /* -> @media (max-width: 1100px) */
-        'fields': '30px' /* side fields */
-      },
-      md: {
-        'width': '960px',
-        'fields': '15px'
-      },
-      sm: {
-        'width': '780px',
-        'fields': '15px'
-      },
-      xs: {
-        'width': '560px',
-        'fields': '15px'
-      }
-      /*
-      We can create any quantity of break points.
-
-      some_name: {
-          some_width: 'Npx',
-          some_offset: 'N(px|%)'
-      }
-      */
-    }
-  };
-
-  smartgrid('src/libs', settings);
-
-})
+gulp.task('removedist', function() { return del.sync(cfg.dest.root); });
 
 
 
