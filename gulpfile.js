@@ -1,30 +1,35 @@
-var gulp           = require('gulp');
+const gulp           = require('gulp');
 
-var browserSync    = require('browser-sync');
-var del            = require('del');
-var concat         = require('gulp-concat');
-var fileinclude    = require('gulp-file-include');
-var googleWebFonts = require('gulp-google-webfonts');
-var imagemin       = require('gulp-imagemin');
-var mozjpeg        = require('imagemin-mozjpeg');
-var pngquant       = require('imagemin-pngquant');
-var notify         = require('gulp-notify');
-var pug            = require('gulp-pug');
-var rename         = require('gulp-rename');
-var sass           = require('gulp-sass');
-var sourcemaps     = require('gulp-sourcemaps');
-var svgSprite      = require('gulp-svg-sprite');
-var uglify         = require('gulp-uglify');
+const browserSync    = require('browser-sync');
+const del            = require('del');
+const concat         = require('gulp-concat');
+const fileinclude    = require('gulp-file-include');
+const googleWebFonts = require('gulp-google-webfonts');
 
-var postcss        = require('gulp-postcss');
-var autoprefixer   = require('autoprefixer');
-var csso           = require('postcss-csso');
-var mqpacker       = require('css-mqpacker');
+const imagemin       = require('gulp-imagemin');
+const mozjpeg        = require('imagemin-mozjpeg');
+const pngquant       = require('imagemin-pngquant');
+
+const notify         = require('gulp-notify');
+const pug            = require('gulp-pug');
+const rename         = require('gulp-rename');
+const sass           = require('gulp-sass');
+const sourcemaps     = require('gulp-sourcemaps');
+const svgSprite      = require('gulp-svg-sprite');
+const uglify         = require('gulp-uglify');
+
+//const babel          = require('gulp-babel');
+//const webpack        = require('webpack-stream');
+
+const postcss        = require('gulp-postcss');
+const autoprefixer   = require('autoprefixer');
+const csso           = require('postcss-csso');
+const mqpacker       = require('css-mqpacker');
 
 
 /* Configuration */
 
-var cfg = require('./gulp/config.js');
+const cfg = require('./gulp/config.js');
 
 
 /* Tasks */
@@ -43,7 +48,6 @@ gulp.task('html', function() {
 });
 
 
-
 /* Pug Views Compile*/
 
 gulp.task('pug', function() {
@@ -56,36 +60,28 @@ gulp.task('pug', function() {
 });
 
 
-
-/* Compress common scripts */
-
-gulp.task('common-js', function() {
-  return gulp.src([
-      'src/js/common.js',
-      // other scripts
-    ])
-    .pipe(concat('common.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(cfg.dest.js));
-});
-
-
-
 /* Concatenate Libs scripts and common scripts */
 
-gulp.task('js', ['common-js'], function() {
+gulp.task('js', function() {
   return gulp.src([
 
-      'src/libs/jquery/dist/jquery.min.js',
-      'src/libs/slick-carousel/slick/slick.min.js',
-      'src/libs/owl.carousel/dist/owl.carousel.min.js',
-      // other lib scripts
+      // libs scripts
+      //cfg.src.libs + '/jquery/dist/jquery.min.js',
+      cfg.src.libs + '/input-masking/js/input-mask.min.js',
+      //cfg.src.libs + '/slick-carousel/slick/slick.min.js',
+      //cfg.src.libs + '/owl.carousel/dist/owl.carousel.min.js',
 
-      'src/js/common.min.js',
+      // app scripts
+      cfg.src.js + '/app.js',
     ])
+    .pipe(sourcemaps.init())
+    //.pipe(babel({
+    //    presets: ['env']
+    //}))
     .pipe(concat('scripts.min.js'))
-    // .pipe(uglify())   // optional, if lib scripts not minimized
-    .pipe(gulp.dest('src/js'))
+    //.pipe(uglify())   // optional, if lib scripts not minimized
+    .pipe(sourcemaps.write('/'))
+    .pipe(gulp.dest(cfg.src.js))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -94,10 +90,10 @@ gulp.task('js', ['common-js'], function() {
 /* Magic with sass files */
 
 gulp.task('sass', function() {
-  var plugins = [
+  const plugins = [
     mqpacker(),
     autoprefixer({browsers: cfg.browserslist}),
-    csso(),
+    csso({restructure: false}),
   ];
   return gulp
     .src(cfg.src.sass + '/**/*.{sass,scss}')
@@ -114,7 +110,7 @@ gulp.task('sass', function() {
     .pipe(rename({ suffix: '.min', prefix: '' }))
     .pipe(sourcemaps.write('/'))
     .pipe(gulp.dest(cfg.src.css))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.stream());
 });
 
 
@@ -137,6 +133,7 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
   //gulp.watch(cfg.src.templates + '/**/*.html', ['html']);
+  gulp.watch( cfg.src.svg  + '/**/*.svg', ['sprites']);
   gulp.watch( cfg.src.pug  + '/**/*.pug', ['pug']);
   gulp.watch( cfg.src.sass + '/**/*.{sass,scss}', ['sass']);
   gulp.watch([cfg.src.libs + '/**/*.js', cfg.src.js + '/**/*.js' ], ['js']);
@@ -148,7 +145,7 @@ gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
 /* Image optimization */
 
 gulp.task('imagemin', function() {
-  return gulp.src(cfg.src.img + '/**/*')
+  return gulp.src([cfg.src.img + '/**/*', '!' + cfg.src.img + '/sprites/**/*'])
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.jpegtran({ progressive: true }),
@@ -169,7 +166,7 @@ gulp.task('imagemin', function() {
 /* Generate SVG Sprites */
 
 gulp.task('sprites', function() {
-  return gulp.src('src/img/svg/**/*.svg')
+  return gulp.src(cfg.src.svg + '/**/*.svg')
     .pipe(svgSprite({
       log: 'info',
       shape: {
@@ -187,7 +184,7 @@ gulp.task('sprites', function() {
           sprite: '../img/sprites/sprite.svg',
           render: {
             scss: {
-              dest: '_sprite.scss',
+              dest: 'generated/_sprite.scss',
               template: 'src/img/sprites/tmpl/sprite.scss'
             }
           },
@@ -204,7 +201,7 @@ gulp.task('sprites', function() {
           inline: true,
           render: {
             scss: {
-              dest: '_sprite-symbol.scss',
+              dest: 'generated/_sprite-symbol.scss',
             }
           },
           example: {
@@ -220,7 +217,7 @@ gulp.task('sprites', function() {
 
 /* Download Google Fonts */
 
-var options = {
+const options = {
   fontsDir: '../fonts/',
   cssDir: '../sass/',
   cssFilename: 'webfonts.css'
@@ -237,19 +234,23 @@ gulp.task('fonts', function() {
 
 gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
 
-  var buildHtml = gulp.src([
+  const buildHtml = gulp.src([
     'src/*.html',
   ]).pipe(gulp.dest('dist'));
 
-  var buildCss = gulp.src([
+  const buildSprites = gulp.src([
+    cfg.src.img + '/sprites/**/*.svg',
+  ]).pipe(gulp.dest(cfg.dest.img + '/sprites'));
+  
+  const buildCss = gulp.src([
     'src/css/main.min.css',
   ]).pipe(gulp.dest('dist/css'));
 
-  var buildJs = gulp.src([
+  const buildJs = gulp.src([
     'src/js/scripts.min.js',
   ]).pipe(gulp.dest('dist/js'));
 
-  var buildFonts = gulp.src([
+  const buildFonts = gulp.src([
     'src/fonts/**/*',
   ]).pipe(gulp.dest('dist/fonts'));
 

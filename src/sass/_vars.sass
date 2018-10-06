@@ -1,7 +1,9 @@
-// Vars
+/* Vars */
 
-$font-default: Raleway, Arial, sans-serif
-$ff: $font-default
+/* Typography */
+$font-family-base: Geometria, Arial, sans-serif
+$heading-font-family: $font-family-base // Replace heading font
+$ff: $font-family-base
 $font-size: 14px
 $fz: $font-size
 $line-height: 1.3
@@ -9,16 +11,27 @@ $lh: $line-height
 $letter-spacing: normal
 $ls: $letter-spacing
 
-$wrapper-size: 960px
+/* Layout */
+$wrapper-size: 1140px
 
-$break-lg: 1200px
+$break-xl: 1440px
+$break-lg: 1280px
 $break-md: 992px
 $break-sm: 768px
-$break-xs: 544px
+$break-xs: 576px
 
-$primary-color: green
-$second-color: #3d176b
-$third-color: #90c004
-$four-color: #dd892d
-$background-color: #fff
-$text-color: #282b30
+/* Colors */
+$primary: #9c5d9a
+$secondary: #3d176b
+$third-color: #939aa3
+$four-color: #c5d5e6
+$five-color: #f3f7fa
+$light: #fff
+$dark: #000
+$menu-color: $secondary
+$menu-bg: $light
+$header-color: #363b5d
+$text-color: #363b5d
+$bg-color: $light
+$link-color: $primary
+$link-hover-color: darken($link-color, 15%)

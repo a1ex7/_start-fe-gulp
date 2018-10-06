@@ -21,11 +21,11 @@ a:active,
 a:focus
   text-decoration: none
   cursor: pointer
-  color: $primary-color
+  color: $link-color
   transition: all 0.2s ease
 
 a:hover
-  color: $second-color
+  color: $link-hover-color
 
 img
   display: block
@@ -71,12 +71,12 @@ video
 
 
 body
-  font-family: $font-default
+  font-family: $font-family-base, Arial, sans-serif
   font-size: $font-size
   letter-spacing: $letter-spacing
   line-height: $line-height
   color: $text-color
-  background: $background-color url("../img/bg-main.jpg") 50% 50% no-repeat
+  background: $bg-color
   background-size: cover
   min-width: 320px
   overflow-x: hidden
@@ -91,12 +91,12 @@ body
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
-  align-items: flex-start
+  align-items: center
 
 /* Components */
 
-.c-button,
-.g-button,
+.c-btn,
+.g-btn,
 .btn
-  // +reset-btn()
-  +button($primary-color, transparent, $primary-color)
+  +reset-btn()
+  +button($primary, transparent, $primary)
