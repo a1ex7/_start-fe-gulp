@@ -66,9 +66,9 @@ gulp.task('js', function() {
   return gulp.src([
 
       // libs scripts
-      //cfg.src.libs + '/jquery/dist/jquery.min.js',
+      cfg.src.libs + '/jquery/dist/jquery.min.js',
       cfg.src.libs + '/input-masking/js/input-mask.min.js',
-      //cfg.src.libs + '/slick-carousel/slick/slick.min.js',
+      cfg.src.libs + '/slick-carousel/slick/slick.min.js',
       //cfg.src.libs + '/owl.carousel/dist/owl.carousel.min.js',
 
       // app scripts

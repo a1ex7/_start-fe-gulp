@@ -1,0 +1,9 @@
+{
+  "name": "Sitename",
+  "short_name": "Sitename",
+  "lang": "en-EN",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#efae7c",
+  "background_color": "#fff"
+}
