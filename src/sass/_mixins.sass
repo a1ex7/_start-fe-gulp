@@ -17,10 +17,7 @@
   background-repeat: no-repeat
 
 =bg-cover($url: '')
-  @if ($url != '')
-    background-image: url($url)
-  background-position: 50% 50%
-  background-repeat: no-repeat
+  +bg-center($url)
   background-size: cover
 
 =hide-text()
@@ -71,27 +68,7 @@
   outline: none
   padding: 0
 
-=button($color, $background, $border)
-  display: inline-block
-  color: $color
-  background-color: $background
-  border: 2px solid $border
-  border-radius: 0
-  padding: 0.5em 2em
-  min-width: 150px
-  min-height: 2em
-  line-height: 2em
-  text-align: center
-  user-select: none
-  text-transform: uppercase
-  cursor: pointer
-  +transition()
-  &:hover
-    color: invert($color)
-    background-color: $color
-    border-color: darken($border, 12%)
-
-=arr($width, $height, $bg, $direction)
+=arr($width: 5, $height: 5, $bg: #000, $direction: b)
   width: 0
   height: 0
   border-style: solid
@@ -119,6 +96,9 @@
   @if $direction == bl
     border-width: $width + px 0 0 $height + px
     border-color: transparent transparent transparent $bg
+
+=arrow($width: 5, $height: 5, $bg: #000, $direction: b)
+  +arr($width, $height, $bg, $direction)
 
 =align($type: 'hv')
   position: absolute
@@ -163,16 +143,18 @@
   @media (min-resolution: 144dpi), (min-resolution: 1.5dppx)
     @content
 
-// Custom Breakpoint
+// Custom Breakpoint, aliases: 'media', 'breakpoint', 'r' (from 'responsive')
 =media($width)
   @media only screen and (max-width: $width)
       @content
 
 =breakpoint($width)
-  +media($width)
+  @media only screen and (max-width: $width)
+    @content
 
 =r($width)
-  +media($with)
+  @media only screen and (max-width: $width)
+    @content
 
 // Custom Breakpoint Mobile First
 =mediamin($width)
