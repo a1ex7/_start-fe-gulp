@@ -7,8 +7,6 @@ const fileinclude    = require('gulp-file-include');
 const googleWebFonts = require('gulp-google-webfonts');
 
 const imagemin       = require('gulp-imagemin');
-const mozjpeg        = require('imagemin-mozjpeg');
-const pngquant       = require('imagemin-pngquant');
 
 const notify         = require('gulp-notify');
 const pug            = require('gulp-pug');
@@ -53,6 +51,7 @@ gulp.task('html', function() {
 gulp.task('pug', function() {
   return gulp.src(['src/pug/**/*.pug', '!src/pug/**/_*.pug'])
     .pipe(pug({
+      basedir: 'src/pug',
       pretty: true
     })).on('error', notify.onError())
     .pipe(gulp.dest('src'))
@@ -96,8 +95,7 @@ gulp.task('sass', function() {
     autoprefixer({browsers: cfg.browserslist}),
     csso({restructure: false}),
   ];
-  return gulp
-    .src(cfg.src.sass + '/**/*.{sass,scss}')
+  return gulp.src(cfg.src.sass + '/**/*.{sass,scss}')
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'expanded', // nested, expanded, compact, compressed
@@ -123,8 +121,9 @@ gulp.task('browser-sync', function() {
       baseDir: cfg.src.root
     },
     notify: true,
+    open: false,
     // tunnel: true,
-    // tunnel: 'projectmane', //Demonstration page: http://projectmane.localtunnel.me
+    // tunnel: 'projectName', //Demonstration page: http://projectName.localtunnel.me
   });
 });
 
@@ -150,12 +149,10 @@ gulp.task('imagemin', function() {
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.jpegtran({ progressive: true }),
-      //mozjpeg({progressive: true}),
-      imagemin.optipng({ optimizationLevel: 3 }),
-      //pngquant({quality: '85-100'}),
+      imagemin.optipng({ optimizationLevel: 5 }),
       imagemin.svgo({
         plugins: [{
-          removeViewBox: false,
+          removeViewBox: true,
           removeUselessStrokeAndFill: true,
         }]
       }),
