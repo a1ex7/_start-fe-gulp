@@ -1,34 +1,28 @@
-<h1>Starter Project</h1>
-
-<p>Description</p>
+# Starter Project
 
 
-<h2>Gettting started</h2>
+Description
 
-<ol>
-	<li>Install Node Modules: <strong>npm i</strong>;</li>
-	<li>Run the template: <strong>gulp</strong>.</li>
-</ol>
+## Gettting started
 
-<h2>Gulp tasks:</h2>
+1. Install Node Modules: `npm install`
+2. Run the template: `gulp`
 
-<ul>
-	<li><strong>gulp</strong>: run default gulp task (sass, js, watch, browserSync) for web development;</li>
-	<li><strong>build</strong>: build project to <strong>dist</strong> folder (cleanup, image optimize, removing unnecessary files);</li>
-	<li><strong>deploy</strong>: project deployment on the server from <strong>dist</strong> folder via FTP;</li>
-	<li><strong>clearcache</strong>: clear all gulp cache.</li>
-</ul>
 
-<h2>Rules for working with the project</h2>
+## Gulp tasks:
 
-<ol>
-	<li>All HTML files should have similar initial content as in <strong>app/index.html</strong>;</li>
-	<li><strong>Template Basic Images Start</strong> comment in app/index.html - all your custom template basic images (og:image for social networking, favicons for a variety of devices);</li>
-	<li><strong>Custom Browsers Color Start</strong> comment in app/index.html: set the color of the browser head on a variety of devices;</li>
-	<li><strong>Custom HTML</strong> comment in app/index.html - all your custom HTML;</li>
-	<li>For installing new jQuery library, just run the command "<strong>bower i plugin-name</strong>" in the terminal. Libraries are automatically placed in the folder <strong>app/libs</strong>. Bower must be installed in the system (npm i -g bower). Then place all jQuery libraries paths in the <strong>'libs'</strong> task (gulpfile.js);</li>
-	<li>All custom JS located in <strong>app/js/common.js</strong>;</li>
-	<li>All Sass vars placed in <strong>app/sass/_vars.sass</strong>;</li>
-	<li>All Bootstrap media queries placed in <strong>app/sass/_media.sass</strong>;</li>
-	<li>All jQuery libraries CSS styles placed in <strong>app/sass/_libs.sass</strong>;</li>
-</ol>
+- **`gulp`**: run default gulp task (sass, js, watch, browserSync) for web development
+- **`build`**: build project to `dist` folder (cleanup, image optimize, removing unnecessary files)
+- **`fonts`**: download google fonts by font list in `fonts/fonts.list`
+
+
+## Rules for working with the project
+
+- Two ways for HTML compile:
+  1. from html partials in `src/templates` folder
+  2. from pug partials in `src/pug` folder (**default**)
+- Custom JS located in **`src/js/app.js`**
+- Sass vars placed in **`src/sass/_vars.sass`**
+- All media queries placed in **`src/sass/_media.sass`**
+- All libraries styles placed in **`src/sass/_libs.sass`**
+- SVG images placed in `src/img/svg` compile into svg sprites, other images in `src/img` just optimized and copy `dist` folder

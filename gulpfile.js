@@ -1,3 +1,5 @@
+/* Modules */
+
 const gulp           = require('gulp');
 
 const browserSync    = require('browser-sync');
@@ -27,34 +29,71 @@ const mqpacker       = require('css-mqpacker');
 
 /* Configuration */
 
-const cfg = require('./gulp/config.js');
+const srcPath = 'src';
+const destPath = 'dist';
+
+const cfg = {
+
+  // Share browsers list between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset. http://browserl.ist/
+  browserslist   : ['last 2 versions'],
+
+  src: {
+    root         : srcPath + '',
+    templates    : srcPath + '/templates',
+    pug          : srcPath + '/pug',
+    sass         : srcPath + '/sass',
+    css          : srcPath + '/css',
+    // path for sass files that will be generated automatically via some of tasks
+    sassGen      : srcPath + '/sass/generated',
+    js           : srcPath + '/js',
+    img          : srcPath + '/img',
+    svg          : srcPath + '/img/svg',
+    fonts        : srcPath + '/fonts',
+    libs         : srcPath + '/libs'
+  },
+
+  dest: {
+    root : destPath,
+    html : destPath,
+    css  : destPath + '/css',
+    js   : destPath + '/js',
+    img  : destPath + '/img',
+    fonts: destPath + '/fonts',
+    libs : destPath + '/libs'
+  },
+};
 
 
-/* Tasks */
-
+/* ====== Tasks ====== */
 
 /* Html with includes */
 
 gulp.task('html', function() {
-  return gulp.src(['src/html/**/*.html', '!src/html/**/_*.html'])
+  return gulp.src([
+      cfg.src.templates + '/**/*.html', 
+      '!' + cfg.src.templates + '/**/_*.html'
+    ])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file',
       indent: true,
     }))
-    .pipe(gulp.dest('src'));
+    .pipe(gulp.dest(cfg.src.root));
 });
 
 
 /* Pug Views Compile*/
 
 gulp.task('pug', function() {
-  return gulp.src(['src/pug/**/*.pug', '!src/pug/**/_*.pug'])
+  return gulp.src([
+      cfg.src.pug + '/**/*.pug', 
+      '!' + cfg.src.pug + '/**/_*.pug'
+    ])
     .pipe(pug({
-      basedir: 'src/pug',
+      basedir: cfg.src.pug,
       pretty: true
     })).on('error', notify.onError())
-    .pipe(gulp.dest('src'))
+    .pipe(gulp.dest(cfg.src.root))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -208,7 +247,7 @@ gulp.task('sprites', function() {
         }
       }
     }))
-    .pipe(gulp.dest('src'));
+    .pipe(gulp.dest(cfg.src.root));
 });
 
 
@@ -224,7 +263,7 @@ const options = {
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/fonts.list')
     .pipe(googleWebFonts(options))
-    .pipe(gulp.dest('src/fonts'));
+    .pipe(gulp.dest(cfg.src.fonts));
 });
 
 
@@ -232,25 +271,25 @@ gulp.task('fonts', function() {
 
 gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
 
-  const buildHtml = gulp.src([
-    'src/*.html',
-  ]).pipe(gulp.dest('dist'));
+  const copyHtml = gulp.src([
+    cfg.src.root + '/*.html',
+  ]).pipe(gulp.dest(cfg.dest.root));
 
-  const buildSprites = gulp.src([
+  const copySprites = gulp.src([
     cfg.src.img + '/sprites/**/*.svg',
   ]).pipe(gulp.dest(cfg.dest.img + '/sprites'));
   
-  const buildCss = gulp.src([
-    'src/css/main.min.css',
-  ]).pipe(gulp.dest('dist/css'));
+  const copyCss = gulp.src([
+    cfg.src.css + '/main.min.css',
+  ]).pipe(gulp.dest(cfg.dest.css));
 
-  const buildJs = gulp.src([
-    'src/js/scripts.min.js',
-  ]).pipe(gulp.dest('dist/js'));
+  const copyJs = gulp.src([
+    cfg.src.js + '/scripts.min.js',
+  ]).pipe(gulp.dest(cfg.dest.js));
 
-  const buildFonts = gulp.src([
-    'src/fonts/**/*',
-  ]).pipe(gulp.dest('dist/fonts'));
+  const copyFonts = gulp.src([
+    cfg.src.fonts + '/**/*',
+  ]).pipe(gulp.dest(cfg.dest.fonts));
 
 });
 
@@ -258,7 +297,9 @@ gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
 
 /* Helpers */
 
-gulp.task('removedist', function() { return del.sync(cfg.dest.root); });
+gulp.task('removedist', function() { 
+  return del.sync(cfg.dest.root); 
+});
 
 
 

@@ -30,5 +30,8 @@
     "postcss-csso": "^3.0.0"
   },
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "stylelint_d": "^1.2.0"
+  }
 }

@@ -7,7 +7,7 @@ mixin svg(title, width, height)
 
 //- View mode sprite
 mixin icon(title)
-  img(src=`img/sprites/sprite.svg#${title}`, alt=`${title}`)
+  img(src=`img/sprites/sprite.svg#${title}`, alt=`${title}`)&attributes(attributes)
 
 mixin checkbox(text, checked)
   label
@@ -18,9 +18,10 @@ mixin checkbox-id(text, id, checked)
   input(type="checkbox", id=id, checked=checked)
   label(for=id)= text
 
-mixin deals(descr, image)
+//- Sample
+mixin deals(description, image)
   .deals__item
     a.deals__link(href="#")
       .deals__image
         img(src=`img/${image}`, alt="Проекти")
-      p.deals__descr= descr
+      p.deals__descr= description
