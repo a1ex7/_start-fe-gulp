@@ -205,7 +205,6 @@ gulp.task('imagemin', function() {
 gulp.task('sprites', function() {
   return gulp.src(cfg.src.svg + '/**/*.svg')
     .pipe(svgSprite({
-      log: 'info',
       shape: {
         spacing: {
           padding: 0

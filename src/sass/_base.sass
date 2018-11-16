@@ -82,7 +82,9 @@ body
   overflow-x: hidden
 
 .wrapper
-  max-width: $wrapper-size
+  max-width: $wrapper-size + 2 * $wrapper-padding
+  padding-left: $wrapper-padding
+  padding-right: $wrapper-padding
   margin-left: auto
   margin-right: auto
   position: relative
@@ -93,34 +95,76 @@ body
   justify-content: flex-start
   align-items: center
 
-/* Components */
-
-/* Button */
-=button($color, $background, $border)
-  display: flex
-  justify-content: center
-  align-items: center
+/* Buttons */
+=button($background, $color, $border: $background)
+  display: inline-block
   color: $color
   background-color: $background
   border: 2px solid $border
-  border-radius: 4px
-  padding: 1em 2em
-  min-width: 150px
+  padding: 16px 2em
+  min-width: 165px
   min-height: 50px
+  font: bold 14px/1 $heading-font-family
+  text-transform: uppercase
   text-align: center
   user-select: none
-  // text-transform: uppercase
   cursor: pointer
-  +transition()
-  &:hover,
-  &--active,
-  &.active
-    color: invert($color)
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out
+  &:hover
+    color: $primary
     background-color: $color
-    border-color: darken($border, 12%)
+  &:active
+    color: darken($primary, 20%)
+    border-color: darken($primary, 20%)
+  &:focus
+    outline: 2px solid darken($primary, 20%)
 
-.btn, a.btn, .button,
-.c-btn, .c-button,
-.g-btn, .g-button
-  +reset-btn()
-  +button($primary, transparent, $primary)
+.btn, a.btn, .button
+  +reset-btn
+  +button($primary, $light)
+.btn--small
+  min-width: 135px
+.btn--inverse
+  +button($light, $primary, $primary)
+  &:hover
+    color: $light
+    border-color: darken($primary, 20%)
+  &:active
+    background-color: darken($primary, 20%)
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"]
+  font: bold 14px $heading-font-family
+  text-transform: uppercase
+  min-height: 50px
+  padding: 14px 1em
+  border: solid 1px rgba(0, 0, 0, 0.1)
+  background-color: $light
+
+/* Dropdown */
+.dropdown
+  &::after
+    display: inline-block
+    content: ''
+    +arrow(bottom, 0.6em, 0.3em, currentColor)
+    margin-left: 0.3em
+    vertical-align: 0.2em
+  &__menu
+    display: none
+    position: absolute;
+    top: 40px
+    left: 0
+    z-index: $zindex-dropdown
+    background-color: $light
+    padding: 0.5em 0
+    border: 1px solid rgba(0,0,0,.15)
+    &.show
+      display: block
+  &__item
+    display: block;
+    width: 100%;
+    padding: 0.25em 1em
+    white-space: nowrap

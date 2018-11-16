@@ -1,14 +1,21 @@
 //- Common templates for Menu Horizontal
-ul.menu
+ul.menu__list
   li.menu__item
-    a.menu__link.menu__link--active(href="#") Item1
+    a.menu__link(href="#home") Home
   li.menu__item
-    a.menu__link(href="#") Item2
+    a.menu__link(href="#about") about us
   li.menu__item
-    a.menu__link(href="#") Item3
+    a.menu__link(href="#features") services
   li.menu__item
-    a.menu__link(href="#") Item4
+    a.menu__link(href="#portfolio") portfolio
   li.menu__item
-    a.menu__link(href="#") Item5
-  li.menu__item.menu__item--right
-    a.menu__link(href="#") Item6
+    a.menu__link(href="#blog") blog
+  li.menu__item
+    a.menu__link(href="#contact-form") contact us
+  //- Item with dropdown
+  li.menu__item.menu__item--with-dropdown
+    a.menu__link(href="#ru").dropdown ru
+    .dropdown__menu
+      a(href="#").dropdown__item Action
+      a(href="#").dropdown__item Another action
+      a(href="#").dropdown__item Something else

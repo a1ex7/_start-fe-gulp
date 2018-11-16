@@ -49,8 +49,8 @@
   width: 100%
   height: 100%
 
-=transition($property: all, $duration: 0.3s)
-  transition: $property $duration ease-in-out
+=transition($property: all, $duration: 0.3s, $func: ease-in-out)
+  transition: $property $duration $func
 
 =placeholder
   &::-webkit-input-placeholder
@@ -65,40 +65,40 @@
 =reset-btn()
   border: none
   background: none
-  outline: none
   padding: 0
+  // outline: none
 
-=arr($width: 5, $height: 5, $bg: #000, $direction: b)
+=arrow($direction: bottom, $width: 10px, $height: 5px, $bg: #000)
   width: 0
   height: 0
   border-style: solid
-  @if $direction == t
-    border-width: 0 $width / 2 + px $height + px $width / 2 + px
+  @if $direction == top
+    border-width: 0 $width / 2 $height $width / 2
     border-color: transparent transparent $bg transparent
-  @if $direction == r
-    border-width: $height / 2 + px 0 $height / 2 + px $width + px
+  @if $direction == right
+    border-width: $height / 2 0 $height / 2 $width
     border-color: transparent transparent transparent $bg
-  @if $direction == b
-    border-width: $height + px $width / 2 + px 0 $width / 2 + px
+  @if $direction == bottom
+    border-width: $height $width / 2 0 $width / 2
     border-color: $bg transparent transparent transparent
-  @if $direction == l
-    border-width: $height / 2 + px $width + px $height / 2 + px 0
+  @if $direction == left
+    border-width: $height / 2 $width $height / 2 0
     border-color: transparent $bg transparent transparent
-  @if $direction == tl
-    border-width: $height + px $width + px 0 0
+  @if $direction == top-left
+    border-width: $height $width 0 0
     border-color: $bg transparent transparent transparent
-  @if $direction == tr
-    border-width: 0 $width + px $height + px 0
+  @if $direction == top-roght
+    border-width: 0 $width $height 0
     border-color: transparent $bg transparent transparent
-  @if $direction == br
-    border-width: 0 0 $height + px $width + px
+  @if $direction == bottom-right
+    border-width: 0 0 $height $width
     border-color: transparent transparent $bg transparent
-  @if $direction == bl
-    border-width: $width + px 0 0 $height + px
+  @if $direction == bottom-left
+    border-width: $width 0 0 $height
     border-color: transparent transparent transparent $bg
 
-=arrow($width: 5, $height: 5, $bg: #000, $direction: b)
-  +arr($width, $height, $bg, $direction)
+=arr($direction: bottom, $width: 10, $height: 5, $bg: #000)
+  +arrow($direction, $width, $height, $bg)
 
 =align($type: 'hv')
   position: absolute
@@ -137,6 +137,11 @@
     @if is-length($value)
       #{$offset}: $value
 
+=flex
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  align-items: center
 
 // Retina
 =retina()
@@ -187,9 +192,10 @@
     @content
 
 
-/* Placeholders */
-
 /* Functions */
 
-@function em($size, $context: 16)
+@function em($size, $context: $font-size)
   @return ($size / $context) * 1em
+
+@function rem($size)
+  @return ($size / $font-size) * 1rem
