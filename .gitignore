@@ -7,5 +7,5 @@ dist/
 src/img/temp
 src/css/main.min.css
 src/css/main.min.css.map
-js/scripts.min.js
-js/scripts.min.js.map
+src/js/scripts.min.js
+src/js/scripts.min.js.map
