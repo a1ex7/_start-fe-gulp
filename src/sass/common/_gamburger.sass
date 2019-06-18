@@ -1,4 +1,4 @@
-/* Gamburger Menu */
+/* Hamburger Menu */
 
 // Variables Menu Icon
 $menu-icon-line-height: 2px
@@ -19,6 +19,7 @@ $padding: 0
   cursor: pointer
   z-index: 50
   &:focus
+    outline: none
 
   .line-1,
   .line-2,
@@ -58,7 +59,8 @@ $padding: 0
   +md
     display: block
 
-#menu-toggle:checked + .menu-icon
+#menu-toggle:checked + .menu-icon,
+.menu-icon.open
   .line-1,
   .line-2,
   .line-3

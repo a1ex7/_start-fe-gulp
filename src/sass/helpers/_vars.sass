@@ -2,13 +2,16 @@
 
 /* Typography */
 $font-family-base: Roboto, Arial, sans-serif
-$heading-font-family: $font-family-base // Replace heading font
-$ff: $font-family-base
+$font-family-heading: $font-family-base // Replace heading font
 $font-size: 14px
-$fz: $font-size
 $line-height: normal
-$lh: $line-height
 $letter-spacing: normal
+
+/* Aliases */
+$ff: $font-family-base
+$fh: $font-family-heading
+$fz: $font-size
+$lh: $line-height
 $ls: $letter-spacing
 
 /* Layout */
@@ -21,10 +24,16 @@ $break-md: 992px
 $break-sm: 768px
 $break-xs: 576px
 
-$zindex-dropdown: 100
-$zindex-fixed: 200
-$zindex-cover: 300
-$zindex-modal: 400
+$wrapper-xl: 1380px
+$wrapper-lg: 1140px
+$wrapper-md: 960px
+$wrapper-sm: 720px
+$wrapper-xs: 540px
+
+$z-index-dropdown: 100
+$z-index-fixed: 200
+$z-index-cover: 300
+$z-index-modal: 400
 
 /* Colors */
 $light: #fff
@@ -32,9 +41,6 @@ $dark: #000
 
 $primary: #9c5d9a
 $secondary: #3d176b
-$third-color: #939aa3
-$four-color: #c5d5e6
-$five-color: #f3f7fa
 
 $header-color: #363b5d
 $text-color: #363b5d
@@ -42,10 +48,12 @@ $bg-color: $light
 $border-color: rgba(#979797, 0.3)
 
 $menu-color: $secondary
-$menu-bg: $light
+$menu-bg-color: $light
 
 $link-color: $primary
 $link-hover-color: darken($link-color, 15%)
+
+$placeholder-color:  #cdcdcd
 
 $icon-color: #939393
 $icon-bg-color: #303030

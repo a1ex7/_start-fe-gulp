@@ -7,6 +7,9 @@
 =width($size, $of)
   width: 100% * $size / $of
 
+=height($size, $of)
+  height: 100% * $size / $of
+
 =round($radius: 50%)
   border-radius: $radius
 
@@ -66,7 +69,6 @@
   border: none
   background: none
   padding: 0
-  // outline: none
 
 =arrow($direction: bottom, $width: 10px, $height: 5px, $bg: #000)
   width: 0
@@ -137,10 +139,36 @@
     @if is-length($value)
       #{$offset}: $value
 
+// usage: +aspect-ratio(16,9) or +ar(16,9)
+=aspect-ratio($width, $height)
+  position: relative
+  &:before
+    display: block
+    content: ""
+    width: 100%
+    padding-top: ($height / $width) * 100%
+  > .content,
+  > :first-child
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+=ar($width, $height)
+  +aspect-ratio($width, $height)
+
+
 =flex
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
+  align-items: center
+
+=flex-center
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
   align-items: center
 
 // Retina
@@ -191,6 +219,16 @@
   @media only screen and (max-width: $break-xs)
     @content
 
+// Dynamic property depends of viewport size, eg. font-size
+=css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px)
+  #{$property}: #{$max-size}#{$unit}
+  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})))
+  @media (max-width: #{$min-width}#{$unit})
+    #{$property}: #{$min-size}#{$unit}
+  @media (min-width: #{$max-width}#{$unit})
+    #{$property}: #{$max-size}#{$unit}
+
+/* Placeholders */
 
 /* Functions */
 
