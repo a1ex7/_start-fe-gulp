@@ -2,9 +2,8 @@
 
 const gulp           = require('gulp');
 
-const browserSync    = require('browser-sync');
+const browserSync    = require('browser-sync').create();
 const del            = require('del');
-const concat         = require('gulp-concat');
 const fileinclude    = require('gulp-file-include');
 const googleWebFonts = require('gulp-google-webfonts');
 
@@ -16,10 +15,8 @@ const rename         = require('gulp-rename');
 const sass           = require('gulp-sass');
 const sourcemaps     = require('gulp-sourcemaps');
 const svgSprite      = require('gulp-svg-sprite');
-const uglify         = require('gulp-uglify');
 
-//const babel          = require('gulp-babel');
-//const webpack        = require('webpack-stream');
+const webpack        = require('webpack-stream');
 
 const postcss        = require('gulp-postcss');
 const autoprefixer   = require('autoprefixer');
@@ -33,6 +30,8 @@ const srcPath = 'src';
 const destPath = 'dist';
 
 const cfg = {
+
+  env: 'development',
 
   // Share browsers list between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset. http://browserl.ist/
   browserslist   : ['last 2 versions'],
@@ -61,6 +60,12 @@ const cfg = {
     fonts: destPath + '/fonts',
     libs : destPath + '/libs'
   },
+
+  setEnv: function(env) {
+    if (typeof env !== 'string') return;
+    this.env = env;
+  },
+
 };
 
 
@@ -94,34 +99,40 @@ gulp.task('pug', function() {
       pretty: true
     })).on('error', notify.onError())
     .pipe(gulp.dest(cfg.src.root))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.stream());
 });
 
 
 /* Concatenate Libs scripts and common scripts */
 
 gulp.task('js', function() {
-  return gulp.src([
-
-      // libs scripts
-      //cfg.src.libs + '/jquery/dist/jquery.min.js',
-      cfg.src.libs + '/jquery/dist/jquery.slim.min.js',
-      cfg.src.libs + '/input-masking/js/input-mask.min.js',
-      cfg.src.libs + '/slick-carousel/slick/slick.min.js',
-      //cfg.src.libs + '/owl.carousel/dist/owl.carousel.min.js',
-
-      // app scripts
-      cfg.src.js + '/app.js',
-    ])
-    .pipe(sourcemaps.init())
-    //.pipe(babel({
-    //    presets: ['env']
-    //}))
-    .pipe(concat('scripts.min.js'))
-    //.pipe(uglify())   // optional, if lib scripts not minimized
-    .pipe(sourcemaps.write('/'))
+  return gulp.src(cfg.src.js + '/index.js')
+    .pipe(webpack({
+      module: {
+        rules: [
+          {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  ['@babel/preset-env', {"targets": cfg.browserslist}]
+                ],
+                // plugins: ['@babel/plugin-transform-arrow-functions'] // see https://babeljs.io/docs/en/plugins
+              }
+            }
+          }
+        ]
+      },
+      mode: cfg.env,
+      devtool: cfg.env === 'development' ? 'source-map' : 'none',
+      output: {
+        filename: 'app.min.js',
+      }
+    }))
     .pipe(gulp.dest(cfg.src.js))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.stream());
 });
 
 
@@ -154,28 +165,30 @@ gulp.task('sass', function() {
 
 /* Browser Sync Server */
 
-gulp.task('browser-sync', function() {
-  browserSync({
+gulp.task('serve', function() {
+  browserSync.init({
     server: {
       baseDir: cfg.src.root
     },
     notify: true,
     open: false,
+    // proxy: 'yourlocal.dev',
     // tunnel: true,
     // tunnel: 'projectName', //Demonstration page: http://projectName.localtunnel.me
   });
+  return true;
 });
 
 
 
 /* Monitoring */
 
-gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
-  //gulp.watch(cfg.src.templates + '/**/*.html', ['html']);
-  gulp.watch( cfg.src.svg  + '/**/*.svg', ['sprites']);
-  gulp.watch( cfg.src.pug  + '/**/*.pug', ['pug']);
-  gulp.watch( cfg.src.sass + '/**/*.{sass,scss}', ['sass']);
-  gulp.watch([cfg.src.libs + '/**/*.js', cfg.src.js + '/**/*.js' ], ['js']);
+gulp.task('watch', function() {
+  //gulp.watch(cfg.src.templates + '/**/*.html', gulp.series('html'));
+  gulp.watch( cfg.src.svg  + '/**/*.svg', gulp.series('sprites'));
+  gulp.watch( cfg.src.pug  + '/**/*.pug', gulp.series('pug'));
+  gulp.watch( cfg.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
+  gulp.watch([cfg.src.libs + '/**/*.js', cfg.src.js + '/index.js' ], gulp.series('js'));
   gulp.watch( cfg.src.root + '/*.html', browserSync.reload);
 });
 
@@ -265,10 +278,26 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest(cfg.src.fonts));
 });
 
+/* Helpers */
+
+gulp.task('clean', function(done) {
+  del.sync(cfg.dest.root);
+  done();
+});
+
 
 /* Build project */
 
-gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
+gulp.task('build', gulp.series(
+
+  function setEnvProduction(done) {
+    cfg.setEnv('production');
+    done();
+  },
+
+  'clean', 'sprites', 'imagemin', 'pug', 'sass', 'js',
+
+  function copyAssets(done) {
 
   const copyHtml = gulp.src([
     cfg.src.root + '/*.html',
@@ -283,25 +312,26 @@ gulp.task('build', ['removedist', 'imagemin', 'pug', 'sass', 'js'], function() {
   ]).pipe(gulp.dest(cfg.dest.css));
 
   const copyJs = gulp.src([
-    cfg.src.js + '/scripts.min.js',
+      cfg.src.js + '/app.min.js',
   ]).pipe(gulp.dest(cfg.dest.js));
 
   const copyFonts = gulp.src([
     cfg.src.fonts + '/**/*',
   ]).pipe(gulp.dest(cfg.dest.fonts));
 
-});
-
-
-
-/* Helpers */
-
-gulp.task('removedist', function() { 
-  return del.sync(cfg.dest.root); 
-});
-
+    done();
+}));
 
 
 /* Go! */
 
-gulp.task('default', ['watch']);
+gulp.task('default',
+  gulp.series(
+    function setEnvDevelopment(done) {
+      cfg.setEnv('development');
+      done();
+    },
+    gulp.parallel('pug', 'sass', 'js'),
+    gulp.parallel('serve', 'watch')
+  )
+);
