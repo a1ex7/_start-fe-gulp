@@ -6,8 +6,8 @@ Description
 ## Getting started
 
 1. Install Node Modules: `npm install`
-2. Run the template: `npm start` or
-3. Build template: `npm build`
+2. Run the template: `npm run start` or
+3. Build template: `npm run build`
 
 
 ## Gulp tasks:
