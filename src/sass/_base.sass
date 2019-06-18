@@ -15,8 +15,6 @@ html, body
   height: 100%
 
 a,
-a:hover,
-a:visited,
 a:active,
 a:focus
   text-decoration: none
@@ -55,7 +53,6 @@ video
 .hidden
   display: none !important
 
-
 .visually-hidden
   border: 0
   clip: rect(0 0 0 0)
@@ -89,13 +86,16 @@ body
   margin-right: auto
   position: relative
 
-.flex-container
-  display: flex
-  flex-wrap: wrap
-  justify-content: flex-start
-  align-items: center
+.flex
+  +flex
 
-/* Buttons */
+.flex-center
+  +flex-center
+
+.text-shadow
+  text-shadow: 0 1px 2px rgba(100,100,100,.35)
+
+/* Button */
 =button($background, $color, $border: $background)
   display: inline-block
   color: $color
@@ -104,7 +104,7 @@ body
   padding: 16px 2em
   min-width: 165px
   min-height: 50px
-  font: bold 14px/1 $heading-font-family
+  font: bold 14px/1 $font-family-heading
   text-transform: uppercase
   text-align: center
   user-select: none
@@ -132,17 +132,18 @@ body
   &:active
     background-color: darken($primary, 20%)
 
-/* Inputs */
+/* Input */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"]
-  font: bold 14px $heading-font-family
+  font: bold 14px $font-family-heading
   text-transform: uppercase
   min-height: 50px
   padding: 14px 1em
   border: solid 1px rgba(0, 0, 0, 0.1)
   background-color: $light
+
 
 /* Dropdown */
 .dropdown
@@ -157,7 +158,7 @@ input[type="tel"]
     position: absolute;
     top: 40px
     left: 0
-    z-index: $zindex-dropdown
+    z-index: $z-index-dropdown
     background-color: $light
     padding: 0.5em 0
     border: 1px solid rgba(0,0,0,.15)

@@ -1,13 +1,13 @@
 /* Reset or BS reboot*/
-@import '../libs/reset-scss/reset'
+@import '../libs/reset-css/sass/reset'
 // @import '../libs/bootstrap/scss/bootstrap-reboot.scss'
 
 /* Select just One Grid */
-@import '../libs/bootstrap/scss/bootstrap-grid.scss'
+// @import '../libs/bootstrap/scss/bootstrap-grid.scss'
 // @import '../helpers/grid'
 
 /* Input masking */
-@import '../libs/input-masking/sass/masking-input'
+// @import '../libs/input-masking/sass/masking-input'
 
 /* Owl Carousel */
 // @import '../libs/owl.carousel/dist/assets/owl.carousel.min'
@@ -16,6 +16,12 @@
 /* Slick slider */
 // https://github.com/kenwheeler/slick
 // http://kenwheeler.github.io/slick/
-@import '../libs/slick-carousel/slick/slick.scss'
-@import '../libs/slick-carousel/slick/slick-theme.scss'
+// @import '../libs/slick-carousel/slick/slick.scss'
+// @import '../libs/slick-carousel/slick/slick-theme.scss'
+
+// copy assets from node_modules to src before and then set path to them
+$slick-font-path: '../fonts/'
+$slick-loader-path: '../'
+@import "../../node_modules/slick-carousel/slick/slick.scss"
+@import "../../node_modules/slick-carousel/slick/slick-theme.scss"
 
