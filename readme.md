@@ -3,10 +3,11 @@
 
 Description
 
-## Gettting started
+## Getting started
 
 1. Install Node Modules: `npm install`
-2. Run the template: `gulp`
+2. Run the template: `npm start` or
+3. Build template: `npm build`
 
 
 ## Gulp tasks:
@@ -19,10 +20,10 @@ Description
 ## Rules for working with the project
 
 - Two ways for HTML compile:
-  1. from html partials in `src/templates` folder
-  2. from pug partials in `src/pug` folder (**default**)
-- Custom JS located in **`src/js/app.js`**
+  - from pug partials in `src/pug` folder (**default**)
+  - from html partials in `src/templates` folder
+- Custom JS located in **`src/js/index.js`**
 - Sass vars placed in **`src/sass/_vars.sass`**
 - All media queries placed in **`src/sass/_media.sass`**
 - All libraries styles placed in **`src/sass/_libs.sass`**
-- SVG images placed in `src/img/svg` compile into svg sprites, other images in `src/img` just optimized and copy `dist` folder
+- SVG images placed in `src/img/svg` compile into svg sprites, other images in `src/img` optimizing and copy `dist` folder

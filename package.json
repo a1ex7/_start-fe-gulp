@@ -10,12 +10,14 @@
   "license": "MIT",
   "repository": {},
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.6.0",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "css-mqpacker": "^7.0.0",
     "del": "^4.1.1",
     "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.0.1",
     "gulp-google-webfonts": "2.1.0",
     "gulp-imagemin": "^6.0.0",
@@ -26,9 +28,15 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-svg-sprite": "^1.5.0",
-    "gulp-uglify": "^3.0.2",
-    "postcss-csso": "^3.0.0"
+    "postcss-csso": "^3.0.0",
+    "webpack-stream": "^5.2.1"
   },
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {
+    "inputmask": "^4.0.8",
+    "jquery": "^3.4.1",
+    "masonry-layout": "^4.2.2",
+    "slick-carousel": "^1.8.1"
+  }
 }
