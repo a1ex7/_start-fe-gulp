@@ -142,7 +142,7 @@ gulp.task('js', function() {
 gulp.task('sass', function() {
   const plugins = [
     mqpacker(),
-    autoprefixer({browsers: cfg.browserslist}),
+    autoprefixer(),
     csso({restructure: false}),
   ];
   return gulp.src(cfg.src.sass + '/**/*.{sass,scss}')
