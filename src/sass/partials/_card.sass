@@ -1,0 +1,99 @@
+/* card */
+
+.card
+  width: 260px
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12)
+  border-radius: 4px
+  overflow: hidden
+  background-color: $light
+
+  &__body
+    background-color: gray
+    position: relative
+
+  &__tags
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    padding: 12px 20px
+    color: $light
+    font: 12px $font-family-heading
+    font-variant: small-caps
+    letter-spacing: 0.8px 
+    +cover
+    border-radius: 4px 4px 0 0
+    background-color: rgba(#212121, 0.45)
+  &__tag
+    text-transform: uppercase
+    margin-right: auto
+  
+  &__icon
+    +flex
+    margin-left: 20px
+    span
+      margin-left: 4px
+
+  &__content
+    padding: 15px 20px
+  &__title
+    margin-bottom: 10px
+    opacity: 0.87
+    color: $dark
+    font: 700 14px/24px $font-family-heading
+    letter-spacing: 0.7px
+
+  &__text
+    opacity: 0.87
+    color: $dark
+    font: 14px/21px $font-family-base
+    letter-spacing: 0.56px
+    p
+      margin-bottom: 5px
+
+  &__meta
+    position: relative
+    padding: 15px 20px
+    +flex
+    &::before
+      position: absolute
+      display: block
+      content: ''
+      height: 1px
+      left: -20px
+      right: -20px
+      top: 0px
+      background-color: $dark
+      opacity: 0.12
+  &__menu
+    margin-left: auto
+    padding: 8px
+    margin-right: -12px
+    +round
+    +transition(background-color)
+    &:hover
+      cursor: pointer
+      background-color: rgba(0,0,0,0.2)
+
+.user
+  +flex
+  &__avatar
+    +size(50px)
+    +round()
+    background-color: gray
+    overflow: hidden
+  &__info
+    margin-left: 10px
+  &__name
+    opacity: 0.87
+    color: $dark
+    font-family: $font-family-heading
+    font-size: 14px
+    line-height: 27px
+    letter-spacing: 0.7px
+  &__date
+    opacity: 0.54
+    color: #212121
+    font-family: $font-family-heading
+    font-size: 12px
+    line-height: 27px
+    letter-spacing: 0.6px

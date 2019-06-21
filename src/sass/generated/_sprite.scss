@@ -4,24 +4,115 @@
   vertical-align: middle;
 }
 
-.svg-star {
+.svg-behance {
 	@extend %svg-common;
 	background-position: 0 0;
+	width: 511.96px;
+	height: 511.96px;
+}
+
+.svg-comments {
+	@extend %svg-common;
+	background-position: 9.115186042371372% 8.638434283786063%;
+	width: 576px;
+	height: 512px;
+}
+
+.svg-dribble {
+	@extend %svg-common;
+	background-position: 19.1515578243267% 17.276868567572127%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-facebook {
+	@extend %svg-common;
+	background-position: 26.24294802780965% 24.21614040442531%;
+	width: 96.124px;
+	height: 96.123px;
+}
+
+.svg-google-plus {
+	@extend %svg-common;
+	background-position: 29.871501496215455% 27.551881221528596%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-heart {
+	@extend %svg-common;
+	background-position: 38.88399929589861% 36.190315505314665%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-instagram {
+	@extend %svg-common;
+	background-position: 47.896497095581765% 44.828749789100726%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-linkedin {
+	@extend %svg-common;
+	background-position: 56.90899489526492% 53.46718407288679%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-menu-cebab {
+	@extend %svg-common;
+	background-position: 62.40626562239627% 62.105618356672856%;
+	width: 192px;
+	height: 512px;
+}
+
+.svg-pinterest {
+	@extend %svg-common;
+	background-position: 69.30117936982926% 70.74405264045892%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-star {
+	@extend %svg-common;
+	background-position: 72.270955165692% 73.46970643347908%;
 	width: 37px;
 	height: 35px;
 }
 
 .svg-star-empty {
 	@extend %svg-common;
-	background-position: 35.57692307692308% 35.714285714285715%;
+	background-position: 73.2288605941887% 74.34127979924718%;
 	width: 67px;
 	height: 63px;
 }
 
 .svg-star-half {
 	@extend %svg-common;
-	background-position: 100% 100%;
+	background-position: 74.32255958210904% 75.3293601003764%;
 	width: 67px;
 	height: 63px;
+}
+
+.svg-twitter {
+	@extend %svg-common;
+	background-position: 81.32371061432846% 82.09886957988864%;
+	width: 512px;
+	height: 512px;
+}
+
+.svg-vk {
+	@extend %svg-common;
+	background-position: 90.91807770979985% 91.29734925327324%;
+	width: 548.358px;
+	height: 548.358px;
+}
+
+.svg-youtube {
+	@extend %svg-common;
+	background-position: 100% 100%;
+	width: 512px;
+	height: 512px;
 }
 

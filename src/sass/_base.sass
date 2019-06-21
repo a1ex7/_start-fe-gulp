@@ -133,17 +133,26 @@ body
     background-color: darken($primary, 20%)
 
 /* Input */
+$input-line-height: 20px // only in px
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="tel"]
-  font: bold 14px $font-family-heading
-  text-transform: uppercase
+input[type="tel"],
+textarea,
+select
+  font-size: 16px
+  font-family: $font-family-heading
+  line-height: $input-line-height
   min-height: 50px
   padding: 14px 1em
-  border: solid 1px rgba(0, 0, 0, 0.1)
+  border: 2px solid $input-border-color
   background-color: $light
+  &:focus
+    outline-color: $primary
 
+textarea
+  min-height: (3 * $input-line-height + 32px)
+  max-height: (10 * $input-line-height + 32px)
 
 /* Dropdown */
 .dropdown

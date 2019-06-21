@@ -1,0 +1,29 @@
+// Begin 'card'
+section
+  .wrapper
+    .card
+      .card__body
+        img.card__img(src='/img/card-img-2.jpg')
+        .card__tags
+          .card__tag inspiration
+          .card__icon.card__icon--comment
+            +svg('comments', 16, 16) 
+            span 7
+          .card__icon.card__icon--like
+            +svg('heart', 16, 16)  
+            span 15
+      .card__content
+        h3.card__title Why It’s Amazing To Date People Who Love Traveling
+        .card__text
+          p Lorem ipsum dolor sit amet, to consectetur  adipi scing elit. Nulla vel vehicula lorem and lacus. Vestibulum vitae mauris. 
+      .card__meta
+        .card__user.user
+          .user__avatar
+            img.user__img(src='/img/user-avatar.jpg', alt='')
+          .user__info
+            .user__name Benjamin Miller
+            .user__date April 28, 2016
+        .card__menu.menu-card
+            +svg('menu-cebab', 16, 16)  
+
+// End 'card'
