@@ -27,6 +27,15 @@ section
             input(name='account[email_consent]', type='hidden', value='0')
             input#email_consent.form__checkbox(type='checkbox', value='1', name='account[email_consent]')
             label.form__label(for='email_consent') I want to hear from Treehouse about products and services.
+        .form__group
+            input#gender__male.form__radio(type='radio', value='male', name='account[gender]')
+            label.form__label(for='gender__male') Male
+            input#gender__female.form__radio(type='radio', value='female', name='account[gender]')
+            label.form__label(for='gender__female') Female
 
       button.btn(type="submit")
-        span Claim Your Free Trial
+        span Submit button
+      button.btn.btn--inverse(type="submit")
+        span Inverse button
+      button.btn.btn--small(type="submit")
+        span Small

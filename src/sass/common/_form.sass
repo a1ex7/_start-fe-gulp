@@ -29,7 +29,8 @@
       background-repeat: no-repeat
       background-position: calc(100% - 1rem) center
 
-  // a11ly hide original checkbox
+  // a11ly hide original checkbox and radio
+
   &__radio,
   &__checkbox
     width: 0.1px
@@ -39,32 +40,37 @@
     position: absolute
     z-index: -1
 
-  &__checkbox + &__label
+  &__checkbox + &__label,
+  &__radio + &__label
     display: block
     padding: .25rem 0
     margin-left: 25px
-
     &::before
       content: ''
       cursor: pointer
       display: inline-block
       width: 1rem
       height: 1rem
-      // border-radius: 4px
       border: 2px solid $input-border-color
+      // border-radius: 4px
       margin-left: -25px
       position: relative
       bottom: -2px
       margin-right: .5rem
 
-  &__checkbox:focus + &__label
-    &::before
-      outline: 1px solid $primary
+  &__checkbox:focus + &__label::before,
+  &__radio:focus + &__label::before
+    outline: 1px solid $primary
 
-  &__checkbox:checked + &__label
-    &::before
-      border: none
-      background-color: $primary
-      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%0D%0A%09%3Cpath%20fill%3D%27%23FFFFFF%27%20d%3D%27M7%2C11c-0.3%2C0-0.5-0.1-0.7-0.3l-3-3c-0.4-0.4-0.4-1%2C0-1.4s1-0.4%2C1.4%2C0l2.2%2C2.2l4.3-5.2%0D%0A%09%09c0.4-0.4%2C1-0.5%2C1.4-0.1c0.4%2C0.4%2C0.5%2C1%2C0.1%2C1.4l-5%2C6C7.6%2C10.9%2C7.3%2C11%2C7%2C11C7%2C11%2C7%2C11%2C7%2C11z%27%2F%3E%0D%0A%3C%2Fsvg%3E")
-      background-repeat: none
-      background-position: center 1px
+  &__checkbox:checked + &__label::before
+    border: none
+    background-color: $primary
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2016%2016%27%3E%0D%0A%09%3Cpath%20fill%3D%27%23FFFFFF%27%20d%3D%27M7%2C11c-0.3%2C0-0.5-0.1-0.7-0.3l-3-3c-0.4-0.4-0.4-1%2C0-1.4s1-0.4%2C1.4%2C0l2.2%2C2.2l4.3-5.2%0D%0A%09%09c0.4-0.4%2C1-0.5%2C1.4-0.1c0.4%2C0.4%2C0.5%2C1%2C0.1%2C1.4l-5%2C6C7.6%2C10.9%2C7.3%2C11%2C7%2C11C7%2C11%2C7%2C11%2C7%2C11z%27%2F%3E%0D%0A%3C%2Fsvg%3E")
+    background-repeat: none
+    background-position: center 1px
+
+  &__radio + &__label:before
+    border-radius: 50%
+  &__radio:checked + &__label:before
+    border: 5px solid $primary
+    background-color: #fff

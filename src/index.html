@@ -21,7 +21,19 @@
     <!-- ============================================================-->
     <!-- HEADER-->
     <header class="main-header">
-      <div class="wrapper">=== HEADER ===</div>
+      <div class="wrapper">=== HEADER ===
+        <ul class="menu__list">
+          <li class="menu__item"><a class="menu__link" href="#home">Home</a></li>
+          <li class="menu__item"><a class="menu__link" href="#about">about us</a></li>
+          <li class="menu__item"><a class="menu__link" href="#features">services</a></li>
+          <li class="menu__item"><a class="menu__link" href="#portfolio">portfolio</a></li>
+          <li class="menu__item"><a class="menu__link" href="#blog">blog</a></li>
+          <li class="menu__item"><a class="menu__link" href="#contact-form">contact us</a></li>
+          <li class="menu__item menu__item--with-dropdown"><a class="menu__link dropdown" href="#ru">ru</a>
+            <div class="dropdown__menu show"><a class="dropdown__item" href="#">Action</a><a class="dropdown__item" href="#">Another action</a><a class="dropdown__item" href="#">Something else</a></div>
+          </li>
+        </ul>
+      </div>
     </header>
     <!-- End HEADER-->
     <!-- MAIN-->
@@ -106,8 +118,16 @@
                 <input class="form__checkbox" id="email_consent" type="checkbox" value="1" name="account[email_consent]">
                 <label class="form__label" for="email_consent">I want to hear from Treehouse about products and services.</label>
               </div>
+              <div class="form__group">
+                <input class="form__radio" id="gender__male" type="radio" value="male" name="account[gender]">
+                <label class="form__label" for="gender__male">Male</label>
+                <input class="form__radio" id="gender__female" type="radio" value="female" name="account[gender]">
+                <label class="form__label" for="gender__female">Female</label>
+              </div>
             </fieldset>
-            <button class="btn" type="submit"><span>Claim Your Free Trial</span></button>
+            <button class="btn" type="submit"><span>Submit button</span></button>
+            <button class="btn btn--inverse" type="submit"><span>Inverse button</span></button>
+            <button class="btn btn--small" type="submit"><span>Small</span></button>
           </form>
         </div>
       </section>
