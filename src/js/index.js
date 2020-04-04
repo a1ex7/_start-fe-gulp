@@ -1,7 +1,9 @@
 import $ from 'jquery';
-// import './slider';
-// import './masonry';
-// import './inputmask';
+// import './libs/masonry';
+// import './libs/inputmask';
+// import './libs/select2';
+// import './libs/simplebar';
+// import './libs/slider';
 
 $(function() {
   

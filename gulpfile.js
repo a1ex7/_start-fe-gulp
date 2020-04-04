@@ -188,7 +188,7 @@ gulp.task('watch', function() {
   gulp.watch( cfg.src.svg  + '/**/*.svg', gulp.series('sprites'));
   gulp.watch( cfg.src.pug  + '/**/*.pug', gulp.series('pug'));
   gulp.watch( cfg.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
-  gulp.watch([cfg.src.libs + '/**/*.js', cfg.src.js + '/index.js' ], gulp.series('js'));
+  gulp.watch([cfg.src.js + '/**/*.js', '!' + cfg.src.js + '/app.min.js' ], gulp.series('js'));
   gulp.watch( cfg.src.root + '/*.html', browserSync.reload);
 });
 
