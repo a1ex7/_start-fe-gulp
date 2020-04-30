@@ -35,7 +35,7 @@
   "author": "",
   "dependencies": {
     "inputmask": "^4.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "masonry-layout": "^4.2.2",
     "select2": "^4.0.7",
     "simplebar": "^4.0.0",
