@@ -119,7 +119,8 @@ gulp.task('js', function() {
                 presets: [
                   ['@babel/preset-env', {"targets": cfg.browserslist}]
                 ],
-                // plugins: ['@babel/plugin-transform-arrow-functions'] // see https://babeljs.io/docs/en/plugins
+                // see https://babeljs.io/docs/en/plugins
+                // plugins: ['@babel/plugin-transform-arrow-functions']
               }
             }
           }
@@ -200,7 +201,7 @@ gulp.task('imagemin', function() {
   return gulp.src([cfg.src.img + '/**/*', '!' + cfg.src.img + '/sprites/**/*'])
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
-      imagemin.jpegtran({ progressive: true }),
+      imagemin.mozjpeg({quality: 75, progressive: true}),
       imagemin.optipng({ optimizationLevel: 5 }),
       imagemin.svgo({
         plugins: [{
