@@ -1,31 +1,28 @@
 
 //- Component sample
 .wrapper
-  hr
-  h2 Adaptive simple menu (float)
-  include ../common/_menu
-  hr
-  h2 Tesimonial x 5 (flexbox)
-  include ../common/_testimonials
+  h2 Отзывы Tesimonial x 5 (flexbox)
+  include ../components/_testimonials
   hr
 
 .wrapper
-  h2 Slider (owl)
+  h2 Слайдер Slider (owl-carousel)
   .slider.slider--testimonials
-    include ../common/_testimonial
-    include ../common/_testimonial
-    include ../common/_testimonial
-    include ../common/_testimonial
+    include ../components/_testimonial
+    include ../components/_testimonial
+    include ../components/_testimonial
+    include ../components/_testimonial
 
 //- HTML sample
 
 .container.wrapper
   .row.end-md
     .col-md-8
-      img.img-responsive(src='img/preview.jpg', alt='Start HTML5 Template')
+      img.img-responsive(src='img/card-img-1.jpg', alt='Start HTML5 Template')
       p Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Пустился снова, силуэт сих снова не коварный за языкового текста до рекламных, агенство возвращайся, буквенных жизни это, первую переулка правилами?
       p Наш, приставка
-        a.link.btn страна единственное большой
+        | 
+        a.link страна единственное большой
         | , власти, злых, взобравшись семь рот он алфавит осталось вершину курсивных сих всемогущая буквенных предупредила залетают необходимыми эта но вдали имеет ты? Предупреждал повстречался, но которое!
       p Злых, знаках свою. Выйти по всей рукописи запятой дороге маленький дорогу, все вопроса переулка необходимыми точках повстречался текстов наш приставка одна над страна последний, за имеет ты всемогущая предложения рот скатился.
 
@@ -43,5 +40,4 @@ hr
 
 .wrapper
   +checkbox('Чекбокс без id')
-  +checkbox('Чекбокс без id', true)
-  +checkbox('Чекбокс без id')
+  +checkbox('Чекбокс с id', true)

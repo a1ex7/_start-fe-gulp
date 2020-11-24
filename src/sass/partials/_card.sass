@@ -1,5 +1,8 @@
 /* card */
-
+.card-list
+  display: inline-grid
+  grid-gap: 15px
+  grid-template-columns: 1fr 1fr
 .card
   width: 260px
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12)
@@ -66,8 +69,8 @@
       opacity: 0.12
   &__menu
     margin-left: auto
-    padding: 8px
-    margin-right: -12px
+    +flex-center
+    +size(32px)
     +round
     +transition(background-color)
     &:hover

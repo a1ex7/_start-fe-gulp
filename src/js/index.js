@@ -5,15 +5,14 @@ import $ from 'jquery';
 // import './libs/simplebar';
 // import './libs/slider';
 
-$(function() {
-  
+$(function () {
   /* Menu open */
-  $('.js-menu-toggle').on('click', function() {
+  $('.js-menu-toggle').on('click', function () {
     $('.menu--mobile, .menu-icon').toggleClass('open');
-  })
+  });
 
   /* Smooth scroll */
-  $( '.menu__link, .category__link' ).on('click', function() {
+  $('.menu__link, .category__link').on('click', function () {
     /* close meu */
     $('.menu--mobile, .menu-icon').removeClass('open');
     /* go to section */
@@ -22,10 +21,12 @@ $(function() {
     if ($targetSection.length) {
       var targetPosition = $targetSection.offset().top;
       var headerHeight = $('.main-header').height();
-      $('html, body').animate({
-        scrollTop: targetPosition - headerHeight
-      }, 400);
+      $('html, body').animate(
+        {
+          scrollTop: targetPosition - headerHeight,
+        },
+        400
+      );
     }
   });
-
 });

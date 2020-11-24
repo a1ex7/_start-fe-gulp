@@ -70,6 +70,7 @@ video
 body
   font-family: $font-family-base, Arial, sans-serif
   font-size: $font-size
+  font-weight: $font-weight
   letter-spacing: $letter-spacing
   line-height: $line-height
   color: $text-color
@@ -79,12 +80,21 @@ body
   overflow-x: hidden
 
 .wrapper
-  max-width: $wrapper-size + 2 * $wrapper-padding
+  max-width: $wrapper-size
   padding-left: $wrapper-padding
   padding-right: $wrapper-padding
   margin-left: auto
   margin-right: auto
-  position: relative
+  +xl
+    max-width: $wrapper-xl
+  +lg
+    max-width: $wrapper-lg  
+  +md
+    max-width: $wrapper-md  
+  +sm
+    max-width: $wrapper-sm  
+  +xs
+    max-width: $wrapper-xs
 
 .flex
   +flex

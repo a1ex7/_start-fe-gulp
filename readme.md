@@ -23,7 +23,8 @@ Description
   - from pug partials in `src/pug` folder (**default**)
   - from html partials in `src/templates` folder
 - Custom JS located in **`src/js/index.js`**
-- Sass vars placed in **`src/sass/_vars.sass`**
+- Sass vars placed in **`src/sass/_variables.sass`**
 - All media queries placed in **`src/sass/_media.sass`**
 - All libraries styles placed in **`src/sass/_libs.sass`**
-- SVG images placed in `src/img/svg` compile into svg sprites, other images in `src/img` optimizing and copy `dist` folder
+- SVG images placed in `src/img/svg` compile into svg sprites, 
+- other images in `src/img` optimizing and copy `dist` folder

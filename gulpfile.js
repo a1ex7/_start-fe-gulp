@@ -171,21 +171,22 @@ exports.styles = styles;
 
 /* Browser Sync Server */
 
-const serve = () => {
+const server = () => {
   browserSync.init({
     server: {
       baseDir: cfg.src.root,
     },
     notify: true,
     open: false,
+    cors: true,
     // proxy: 'yourlocal.dev',
     // tunnel: true,
-    // tunnel: 'projectName', //Demonstration page: http://projectName.localtunnel.me
+    // tunnel: 'projectName', // http://projectName.localtunnel.me
   });
   return true;
 };
 
-exports.serve = serve;
+exports.server = server;
 
 /* Monitoring */
 
@@ -356,5 +357,5 @@ exports.default = gulp.series(
     done();
   }),
   gulp.parallel(pugToHtml, styles, js),
-  gulp.parallel(serve, watch)
+  gulp.parallel(server, watch)
 );
