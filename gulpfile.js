@@ -8,6 +8,7 @@ const fileinclude = require('gulp-file-include');
 const googleWebFonts = require('gulp-google-webfonts');
 
 const imagemin = require('gulp-imagemin');
+const webp = require('imagemin-webp');
 
 const notify = require('gulp-notify');
 const pug = require('gulp-pug');
@@ -33,11 +34,9 @@ const cfg = {
 
   src: {
     root: srcPath,
-    templates: `${srcPath}/templates`,
     pug: `${srcPath}/pug`,
     sass: `${srcPath}/sass`,
     css: `${srcPath}/css`,
-    components: `${srcPath}/components`,
     // path for sass files that will be generated automatically
     sassGen: `${srcPath}/sass/generated`,
     js: `${srcPath}/js`,
@@ -65,27 +64,9 @@ const cfg = {
 
 /* ====== Tasks ====== */
 
-/* Html with includes */
+/* Pug Views to Html Compile*/
 
 const html = () => {
-  return gulp
-    .src([`${cfg.src.templates}/**/*.html`, `!${cfg.src.templates}/**/_*.html`])
-    .pipe(
-      fileinclude({
-        prefix: '@@',
-        basepath: '@file',
-        indent: true,
-      })
-    )
-    .pipe(gulp.dest(cfg.src.root))
-    .pipe(browserSync.stream());
-};
-
-exports.html = html;
-
-/* Pug Views Compile*/
-
-const pugToHtml = () => {
   return gulp
     .src([`${cfg.src.pug}/**/*.pug`, `!${cfg.src.pug}/**/_*.pug`])
     .pipe(
@@ -99,7 +80,7 @@ const pugToHtml = () => {
     .pipe(browserSync.stream());
 };
 
-exports.pugToHtml = pugToHtml;
+exports.html = html;
 
 /* Concatenate Libs scripts and common scripts */
 
@@ -171,19 +152,17 @@ exports.styles = styles;
 
 /* Browser Sync Server */
 
-const server = () => {
+const server = (done) => {
   browserSync.init({
     server: {
       baseDir: cfg.src.root,
     },
-    notify: true,
+    notify: false,
     open: false,
     cors: true,
     // proxy: 'yourlocal.dev',
-    // tunnel: true,
-    // tunnel: 'projectName', // http://projectName.localtunnel.me
   });
-  return true;
+  done();
 };
 
 exports.server = server;
@@ -193,7 +172,8 @@ exports.server = server;
 const watch = () => {
   // gulp.watch(`${cfg.src.templates}/**/*.html`, gulp.series(html));
   gulp.watch(`${cfg.src.svg}/**/*.svg`, gulp.series(sprites));
-  gulp.watch(`${cfg.src.pug}/**/*.pug`, gulp.series(pugToHtml));
+  gulp.watch(`${cfg.src.img}/**/*.{png,jpg}`, gulp.series(createWebp));
+  gulp.watch(`${cfg.src.pug}/**/*.pug`, gulp.series(html));
   gulp.watch(`${cfg.src.sass}/**/*.{sass,scss}`, gulp.series(styles));
   gulp.watch(
     [`${cfg.src.js}/**/*.js`, `!${cfg.src.js}/app.min.js`],
@@ -208,16 +188,16 @@ exports.watch = watch;
 
 const imageopt = () => {
   return gulp
-    .src([`${cfg.src.img}/**/*`, `!${cfg.src.img}/sprites/**/*`])
+    .src([`${cfg.src.img}/**/*.{jpg,png,svg}`, `!${cfg.src.img}/sprites/**/*`])
     .pipe(
       imagemin([
-        imagemin.gifsicle({ interlaced: true }),
         imagemin.mozjpeg({ quality: 75, progressive: true }),
         imagemin.optipng({ optimizationLevel: 5 }),
         imagemin.svgo({
           plugins: [
             {
               removeViewBox: true,
+              cleanupIDs: false,
               removeUselessStrokeAndFill: true,
             },
           ],
@@ -228,6 +208,22 @@ const imageopt = () => {
 };
 
 exports.imageopt = imageopt;
+
+const createWebp = () => {
+  return gulp
+    .src(`${cfg.src.img}/**/*.{png,jpg}`, { nodir: true })
+    .pipe(
+      imagemin([
+        webp({
+          quality: 75,
+        }),
+      ])
+    )
+    .pipe(rename({ extname: '.webp' }))
+    .pipe(gulp.dest(cfg.src.img));
+};
+
+exports.createWebp = createWebp;
 
 /* Generate SVG Sprites */
 
@@ -287,12 +283,12 @@ exports.sprites = sprites;
 const options = {
   fontsDir: '../fonts/',
   cssDir: '../sass/',
-  cssFilename: 'webfonts.css',
+  cssFilename: 'generated/webfonts.css',
 };
 
 const fonts = () => {
   return gulp
-    .src('src/fonts/fonts.list')
+    .src(`${cfg.src.fonts}/fonts.list`)
     .pipe(googleWebFonts(options))
     .pipe(gulp.dest(cfg.src.fonts));
 };
@@ -316,11 +312,9 @@ const build = gulp.series(
     done();
   }),
   clean,
-  sprites,
+  gulp.parallel(sprites, createWebp),
   imageopt,
-  pugToHtml,
-  styles,
-  js,
+  gulp.parallel(html, styles, js),
 
   (copyAssets = (done) => {
     const copyHtml = gulp
@@ -356,6 +350,6 @@ exports.default = gulp.series(
     cfg.setEnv('development');
     done();
   }),
-  gulp.parallel(pugToHtml, styles, js),
+  gulp.parallel(html, styles, js, createWebp),
   gulp.parallel(server, watch)
 );

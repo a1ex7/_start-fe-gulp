@@ -1,0 +1,57 @@
+.grid
+
+  display: grid
+  grid: repeat(4, 300px) / repeat(4, 1fr)
+  grid-gap: 25px
+
+  &__item
+    display: flex
+    align-items: flex-end
+    position: relative
+    cursor: pointer
+    overflow: hidden
+
+    &:hover .grid__image
+      transform: scale(1.1)
+
+    &:nth-child(1)
+      grid-area: span (2 / span) 2
+
+    &:nth-child(2),
+    &:nth-child(3)
+      grid-area: span (1 / span) 2
+
+    &:nth-child(4)
+      grid-area: span (2 / span) 1
+
+    &:nth-child(5)
+      grid-area: span (2 / span) 2
+
+    &:nth-child(6),
+    &:nth-child(7)
+      grid-area: span (1 / span) 1
+
+  &__image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    +transition(transform)
+
+  &__info
+    position: relative
+    padding: 30px
+    width: 100%
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)
+
+  &__branch
+    display: block
+    color: $light
+
+  &__creator
+    display: block
+    margin-top: 5px
+    color: $light
+    font-size: 24px

@@ -77,6 +77,7 @@ body
   background: $bg-color
   background-size: cover
   min-width: 320px
+  scroll-behavior: smooth;
   overflow-x: hidden
 
 .wrapper
@@ -115,7 +116,7 @@ body
   min-width: 165px
   height: 50px
   line-height: 50px
-  font: 14px/1 $font-family-heading
+  font: 14px/1 $font-family-base
   text-transform: uppercase
   text-align: center
   user-select: none
@@ -130,11 +131,15 @@ body
   &:focus
     outline: 2px solid darken($primary, 20%)
 
+/* Regular button */  
 .btn, a.btn, .button
-  +reset-btn
   +button($primary, $light)
+
+/* Small button */
 .btn--small
   min-width: 135px
+
+/* Inverse button */  
 .btn--inverse
   +button($light, $primary, $primary)
   &:hover
@@ -164,6 +169,12 @@ select
 textarea
   min-height: (3 * $input-line-height + 32px)
   max-height: (10 * $input-line-height + 32px)
+
+/* Section base styles */
+.section__title
+  color: red
+.section__text
+  color: red  
 
 /* Dropdown */
 .dropdown

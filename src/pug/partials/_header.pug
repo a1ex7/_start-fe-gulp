@@ -1,7 +1,11 @@
 // HEADER
-header.main-header === HEADER ===
+header.header === HEADER ===
   .wrapper
-  
-    include /components/_menu
+    .header__top
+      .header__logo.logo
+        a.logo__link(href="/")
+          img.logo__image(src="img/logo.svg", width="38", height="24", alt="Company logo")
+      .header__menu  
+        include /components/_menu
 
 // End HEADER

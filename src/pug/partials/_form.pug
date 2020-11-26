@@ -1,0 +1,44 @@
+// Begin 'form'
+section ==== FORM ====
+  hr
+  .wrapper
+
+    form(action='').sample-form.form
+      fieldset.form__fields
+        .form__inline
+          .form__group.form__group--50
+              label.form__label(for='first_name') First name
+              input#first_name.form__text-input(type='text', name='account[first_name]')
+          .form__group.form__group--50
+              label.form__label(for='last_name') Last name
+              input#last_name.form__text-input(type='text', name='account[last_name]')
+        .form__group
+            label.form__label.form__label--required(for='email') Email address
+            input#email.form__text-input(type='email', name='account[email]')
+        .form__group
+            label.form__label(for='message') Your message
+            textarea#message.form__text-input(name='account[message]')
+        .form__group
+            label.form__label(for='options') Your options
+            select#options.form__select(name='account[options]')
+              option(value='1') One
+              option(value='2') Two
+              option(value='3') Some
+        .form__group
+            input(name='account[email_consent]', type='hidden', value='0')
+            input#email_consent.form__checkbox(type='checkbox', value='1', name='account[email_consent]')
+            label.form__label(for='email_consent') I want to hear from Treehouse about products and services.
+        .form__group
+            input#gender__male.form__radio(type='radio', value='male', name='account[gender]')
+            label.form__label(for='gender__male') Male
+            input#gender__female.form__radio(type='radio', value='female', name='account[gender]')
+            label.form__label(for='gender__female') Female
+
+      button.btn(type="submit")
+        span Submit button
+      button.btn.btn--inverse(type="submit")
+        span Inverse button
+      button.btn.btn--small(type="submit")
+        span Small
+
+// End 'form'

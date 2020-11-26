@@ -9,6 +9,15 @@ mixin svg(title, width, height)
 mixin icon(title)
   img(src=`img/sprites/sprite.svg#${title}`, alt=`${title}`)&attributes(attributes)
 
+//- WebP Picture
+mixin picture(src)
+  picture
+    source(srcset=`img/${src}.webp`, type="image/webp")
+    img(src=`img/${src}.${ext || 'jpg'}`, alt= alt)&attributes(attributes)
+//- Usage:  +picture("filename", alt="Picture", ext="png").block__picture
+
+
+//- Form controls
 mixin checkbox(text, checked)
   label
     input(type="checkbox", checked=checked)
