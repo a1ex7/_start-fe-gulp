@@ -1,32 +1,15 @@
-import $ from 'jquery';
-// import './libs/masonry';
-// import './libs/inputmask';
-// import './libs/select2';
-// import './libs/simplebar';
-// import './libs/slider';
+/* Working with Plugins */
 
-$(function () {
-  /* Menu open */
-  $('.js-menu-toggle').on('click', function () {
-    $('.menu--mobile, .menu-icon').toggleClass('open');
-  });
+// import './app/inputmask';
+// import './app/masonry';
+// import './app/select2';
+// import './app/simplebar';
+// import './app/slick-slider';
+// import './app/slider-glide';
 
-  /* Smooth scroll */
-  $('.menu__link, .category__link').on('click', function () {
-    /* close meu */
-    $('.menu--mobile, .menu-icon').removeClass('open');
-    /* go to section */
-    var targetId = $(this).attr('href');
-    var $targetSection = $(targetId);
-    if ($targetSection.length) {
-      var targetPosition = $targetSection.offset().top;
-      var headerHeight = $('.main-header').height();
-      $('html, body').animate(
-        {
-          scrollTop: targetPosition - headerHeight,
-        },
-        400
-      );
-    }
-  });
-});
+
+/* Custom scripts */
+
+import './app/menu';
+// import './app/theme';
+// import './app/video';

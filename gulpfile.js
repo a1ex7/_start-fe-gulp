@@ -4,7 +4,6 @@ const gulp = require('gulp');
 
 const browserSync = require('browser-sync').create();
 const del = require('del');
-const fileinclude = require('gulp-file-include');
 const googleWebFonts = require('gulp-google-webfonts');
 
 const imagemin = require('gulp-imagemin');
@@ -43,7 +42,6 @@ const cfg = {
     img: `${srcPath}/img`,
     svg: `${srcPath}/img/svg`,
     fonts: `${srcPath}/fonts`,
-    libs: `${srcPath}/libs`,
   },
 
   dist: {
@@ -53,7 +51,6 @@ const cfg = {
     js: `${distPath}/js`,
     img: `${distPath}/img`,
     fonts: `${distPath}/fonts`,
-    libs: `${distPath}/libs`,
   },
 
   setEnv: function (env) {
@@ -82,7 +79,7 @@ const html = () => {
 
 exports.html = html;
 
-/* Concatenate Libs scripts and common scripts */
+/* Import and build scripts */
 
 const js = () => {
   return gulp
