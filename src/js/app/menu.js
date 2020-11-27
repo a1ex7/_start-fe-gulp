@@ -31,3 +31,15 @@ const scrollTo = (element) => {
     });
   }
 };
+
+/* Dropdown */
+const menuItemDropdown = document.querySelectorAll(
+  '.menu__item--with-dropdown'
+);
+
+menuItemDropdown.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.currentTarget.querySelector('.dropdown__menu').classList.toggle('show');
+  });
+});

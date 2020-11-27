@@ -116,7 +116,8 @@ body
   min-width: 165px
   height: 50px
   line-height: 50px
-  font: 14px/1 $font-family-base
+  font-family: $font-family-base
+  font-size: 14px
   text-transform: uppercase
   text-align: center
   user-select: none
@@ -132,12 +133,17 @@ body
     outline: 2px solid darken($primary, 20%)
 
 /* Regular button */  
-.btn, a.btn, .button
+.btn, .button
   +button($primary, $light)
 
 /* Small button */
 .btn--small
-  min-width: 135px
+  min-width: 100px
+
+/* Block button */
+.btn--block
+  display: block
+  width: 100%  
 
 /* Inverse button */  
 .btn--inverse
@@ -187,7 +193,7 @@ textarea
   &__menu
     display: none
     position: absolute;
-    top: 40px
+    top: 35px
     left: 0
     z-index: $z-index-dropdown
     background-color: $light
@@ -200,3 +206,6 @@ textarea
     width: 100%;
     padding: 0.25em 1em
     white-space: nowrap
+    &:hover
+      color: $light
+      background-color: $primary

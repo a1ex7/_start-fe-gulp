@@ -13,7 +13,7 @@ mixin icon(title)
 mixin picture(src)
   picture
     source(srcset=`img/${src}.webp`, type="image/webp")
-    img(src=`img/${src}.${ext || 'jpg'}`, alt= alt)&attributes(attributes)
+    img(src=`img/${src}.${ext || 'jpg'}`, alt= alt, loading="lazy")&attributes(attributes)
 //- Usage:  +picture("filename", alt="Picture", ext="png").block__picture
 
 

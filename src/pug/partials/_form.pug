@@ -34,11 +34,17 @@ section ==== FORM ====
             input#gender__female.form__radio(type='radio', value='female', name='account[gender]')
             label.form__label(for='gender__female') Female
 
-      button.btn(type="submit")
-        span Submit button
-      button.btn.btn--inverse(type="submit")
-        span Inverse button
-      button.btn.btn--small(type="submit")
-        span Small
+      .btn-example
+        button.btn(type="submit")
+          span Submit button
+        button.btn.btn--inverse(type="submit")
+          span Inverse button
+        button.btn.btn--small(type="submit")
+          span Small
+        a.btn.btn--inverse(href="#") 
+          span Link 
+        button.btn.btn--block(type="submit")
+          span Button Block   
+        
 
 // End 'form'

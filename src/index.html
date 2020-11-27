@@ -14,6 +14,7 @@
     <meta name="theme-color" content="#ffd200">
     <!-- Bundle styles-->
     <link rel="stylesheet" href="css/main.min.css">
+    <!-- Preload-->
   </head>
   <body>
     <!-- =========== Inline <symbol> SVG sprite generated ===========-->
@@ -106,7 +107,7 @@
             <div class="card">
               <div class="card__body">
                 <picture>
-                  <source srcset="img/card-img-1.webp" type="image/webp"/><img class="card__img" src="img/card-img-1.jpg" alt="Girl"/>
+                  <source srcset="img/card-img-1.webp" type="image/webp"/><img class="card__img" src="img/card-img-1.jpg" alt="Girl" loading="lazy"/>
                 </picture>
                 <div class="card__tags">
                   <div class="card__tag">inspiration</div>
@@ -146,7 +147,7 @@
             <div class="card">
               <div class="card__body">
                 <picture>
-                  <source srcset="img/card-img-1.webp" type="image/webp"/><img class="card__img" src="img/card-img-1.jpg" alt="Girl"/>
+                  <source srcset="img/card-img-1.webp" type="image/webp"/><img class="card__img" src="img/card-img-1.jpg" alt="Girl" loading="lazy"/>
                 </picture>
                 <div class="card__tags">
                   <div class="card__tag">inspiration</div>
@@ -195,43 +196,43 @@
           <div class="grid">
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Canon Microless Pack</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">North Oxford Logo Design</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Applications</span><span class="grid__creator">North Oxford Gymnastic</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Web Design</span><span class="grid__creator">Cesis Fashion</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">Kinfolk Brochure</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Creative Design</span></div>
             </div>
             <div class="grid__item">
               <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl"/>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
               </picture>
               <div class="grid__info"><span class="grid__branch">Interaction</span><span class="grid__creator">Cesis Fashion </span></div>
             </div>
@@ -283,9 +284,12 @@
                 <label class="form__label" for="gender__female">Female</label>
               </div>
             </fieldset>
-            <button class="btn" type="submit"><span>Submit button</span></button>
-            <button class="btn btn--inverse" type="submit"><span>Inverse button</span></button>
-            <button class="btn btn--small" type="submit"><span>Small</span></button>
+            <div class="btn-example">
+              <button class="btn" type="submit"><span>Submit button</span></button>
+              <button class="btn btn--inverse" type="submit"><span>Inverse button</span></button>
+              <button class="btn btn--small" type="submit"><span>Small</span></button><a class="btn btn--inverse" href="#"> <span>Link </span></a>
+              <button class="btn btn--block" type="submit"><span>Button Block   </span></button>
+            </div>
           </form>
         </div>
       </section>
