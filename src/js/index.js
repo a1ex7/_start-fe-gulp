@@ -5,7 +5,7 @@
 // import './app/select2';
 // import './app/simplebar';
 // import './app/slick-slider';
-// import './app/slider-glide';
+import './app/slider-glide';
 
 
 /* Custom scripts */
