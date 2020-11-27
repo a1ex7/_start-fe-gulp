@@ -24,7 +24,7 @@
       <div class="wrapper">
         <div class="header__top">
           <div class="header__logo logo"><a class="logo__link" href="/"><img class="logo__image" src="img/logo.svg" width="38" height="24" alt="Company logo"></a></div>
-          <div class="header__menu"> 
+          <nav class="header__menu menu menu--mobile">
             <ul class="menu__list">
               <li class="menu__item menu__item--active"><a class="menu__link" href="#home">Home</a></li>
               <li class="menu__item"><a class="menu__link" href="#about">About us</a></li>
@@ -36,10 +36,11 @@
                 <div class="dropdown__menu"><a class="dropdown__item" href="#">Action</a><a class="dropdown__item" href="#">Another action</a><a class="dropdown__item" href="#">Js trigered</a></div>
               </li>
               <li class="menu__item menu__item--with-dropdown"><a class="menu__link dropdown" href="#ru">Login</a>
-                <div class="dropdown__menu show"><a class="dropdown__item" href="#">This action</a><a class="dropdown__item" href="#">Run by css</a><a class="dropdown__item" href="#">Something else    </a></div>
+                <div class="dropdown__menu"><a class="dropdown__item" href="#">This action</a><a class="dropdown__item" href="#">Run by css</a><a class="dropdown__item" href="#">Something else</a></div>
               </li>
             </ul>
-          </div>
+            <button class="menu__btn js-menu-toggle menu-icon" type="button">Menu<span class="line-1"></span><span class="line-2"></span><span class="line-3"></span></button>
+          </nav>
         </div>
       </div>
     </header>

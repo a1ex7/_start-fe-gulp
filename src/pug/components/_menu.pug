@@ -25,7 +25,13 @@ ul.menu__list
   //- Item with dropdown (JS trigger)
   li.menu__item.menu__item--with-dropdown
     a.menu__link(href="#ru").dropdown Login
-    .dropdown__menu.show
+    //- Add class .show to .dropdown__menu
+    .dropdown__menu
       a(href="#").dropdown__item This action
       a(href="#").dropdown__item Run by css
-      a(href="#").dropdown__item Something else    
+      a(href="#").dropdown__item Something else
+
+button(type="button").menu__btn.js-menu-toggle.menu-icon Menu
+  span.line-1
+  span.line-2
+  span.line-3

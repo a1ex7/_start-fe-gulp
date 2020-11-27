@@ -7,7 +7,7 @@
     position: relative
   &__link
     position: relative
-    padding: 0 20px
+    padding: 5px 15px
     color: $menu-color
     text-transform: uppercase
     font-size: 14px
@@ -26,35 +26,33 @@
       transform: scale(1)
     &:focus
       outline: 2px solid darken($primary, 20%)    
-      
-.menu--mobile
-  .menu__list
-    flex-direction: column
-    text-align: center
-    position: fixed
-    top: 0
-    left: 0
-    right: 0
-    padding: 20px
-    background-color: $light
-    box-shadow: 0 2px 4px 0 rgba(#554d56, 0.2)
-  .menu__item::after
-    content: normal
-  .menu__link
-    font-size: 18px
-    font-weight: bold
-    font-family: $font-family-heading
-    letter-spacing: -.3px
-    line-height: 2.5
 
-.menu--mobile .menu__list
-  visibility: hidden
-  opacity: 0
-  transform: translateY(-150%)
-  +transition
-
-#menu-toggle:checked ~ .menu--mobile .menu__list,
-.menu--mobile.open .menu__list
-  visibility: visible
-  opacity: 1
-  transform: translateY(0)
++md      
+  .menu--mobile
+    .menu__list
+      flex-direction: column
+      text-align: center
+      position: absolute
+      z-index: $z-index-modal
+      top: 0
+      left: 0
+      right: 0
+      padding: 20px
+      background-color: $light
+      box-shadow: 0 2px 4px 0 rgba(#554d56, 0.2)
+      visibility: hidden
+      opacity: 0
+      transform: translateY(-150%)
+      +transition
+    .menu__item::after
+      content: normal
+    .menu__link
+      font-size: 18px
+      font-weight: bold
+      font-family: $font-family-heading
++md
+  #menu-toggle:checked ~ .menu--mobile .menu__list,
+  .menu--mobile.open .menu__list
+    visibility: visible
+    opacity: 1
+    transform: translateY(0)
