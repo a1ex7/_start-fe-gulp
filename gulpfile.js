@@ -25,37 +25,33 @@ const mqpacker = require('css-mqpacker');
 
 /* Configuration */
 
-const srcPath = 'src';
-const distPath = 'dist';
+const SRC_PATH = 'src';
+const DIST_PATH = 'dist';
 
-const cfg = {
-  env: 'development',
+const app = {
+  env: process.env.NODE_ENV || 'development',
 
   src: {
-    root: srcPath,
-    pug: `${srcPath}/pug`,
-    sass: `${srcPath}/sass`,
-    css: `${srcPath}/css`,
+    root: SRC_PATH,
+    html: SRC_PATH,
+    pug: `${SRC_PATH}/pug`,
+    sass: `${SRC_PATH}/sass`,
+    css: `${SRC_PATH}/css`,
     // path for sass files that will be generated automatically
-    sassGen: `${srcPath}/sass/generated`,
-    js: `${srcPath}/js`,
-    img: `${srcPath}/img`,
-    svg: `${srcPath}/img/svg`,
-    fonts: `${srcPath}/fonts`,
+    sassGen: `${SRC_PATH}/sass/generated`,
+    js: `${SRC_PATH}/js`,
+    img: `${SRC_PATH}/img`,
+    svg: `${SRC_PATH}/img/svg`,
+    fonts: `${SRC_PATH}/fonts`,
   },
 
   dist: {
-    root: distPath,
-    html: distPath,
-    css: `${distPath}/css`,
-    js: `${distPath}/js`,
-    img: `${distPath}/img`,
-    fonts: `${distPath}/fonts`,
-  },
-
-  setEnv: function (env) {
-    if (typeof env !== 'string') return;
-    this.env = env;
+    root: DIST_PATH,
+    html: DIST_PATH,
+    css: `${DIST_PATH}/css`,
+    js: `${DIST_PATH}/js`,
+    img: `${DIST_PATH}/img`,
+    fonts: `${DIST_PATH}/fonts`,
   },
 };
 
@@ -65,15 +61,15 @@ const cfg = {
 
 const html = () => {
   return gulp
-    .src([`${cfg.src.pug}/**/*.pug`, `!${cfg.src.pug}/**/_*.pug`])
+    .src([`${app.src.pug}/**/*.pug`, `!${app.src.pug}/**/_*.pug`])
     .pipe(
       pug({
-        basedir: cfg.src.pug,
+        basedir: app.src.pug,
         pretty: true,
       })
     )
     .on('error', notify.onError())
-    .pipe(gulp.dest(cfg.src.root))
+    .pipe(gulp.dest(app.src.root))
     .pipe(browserSync.stream());
 };
 
@@ -83,7 +79,7 @@ exports.html = html;
 
 const js = () => {
   return gulp
-    .src(`${cfg.src.js}/index.js`)
+    .src(`${app.src.js}/index.js`)
     .pipe(
       webpack({
         module: {
@@ -95,7 +91,7 @@ const js = () => {
                 loader: 'babel-loader',
                 options: {
                   presets: [
-                    ['@babel/preset-env', { targets: cfg.browserslist }],
+                    ['@babel/preset-env', { targets: app.browserslist }],
                   ],
                   // see https://babeljs.io/docs/en/plugins
                   // plugins: ['@babel/plugin-transform-arrow-functions']
@@ -104,14 +100,14 @@ const js = () => {
             },
           ],
         },
-        mode: cfg.env,
-        devtool: cfg.env === 'development' ? 'source-map' : 'none',
+        mode: app.env,
+        devtool: app.env === 'development' ? 'source-map' : 'none',
         output: {
           filename: 'app.min.js',
         },
       })
     )
-    .pipe(gulp.dest(cfg.src.js))
+    .pipe(gulp.dest(app.src.js))
     .pipe(browserSync.stream());
 };
 
@@ -122,7 +118,7 @@ exports.js = js;
 const styles = () => {
   const plugins = [mqpacker(), autoprefixer(), csso({ restructure: false })];
   return gulp
-    .src(`${cfg.src.sass}/**/*.{sass,scss}`)
+    .src(`${app.src.sass}/**/*.{sass,scss}`)
     .pipe(sourcemaps.init())
     .pipe(
       sass({
@@ -141,42 +137,50 @@ const styles = () => {
     .pipe(postcss(plugins))
     .pipe(rename({ suffix: '.min', prefix: '' }))
     .pipe(sourcemaps.write('/'))
-    .pipe(gulp.dest(cfg.src.css))
+    .pipe(gulp.dest(app.src.css))
     .pipe(browserSync.stream());
 };
 
 exports.styles = styles;
 
-/* Browser Sync Server */
+/* Browser Sync Serveer */
 
-const server = (done) => {
+const serve = (cb) => {
   browserSync.init({
     server: {
-      baseDir: cfg.src.root,
+      baseDir: app.src.root,
     },
     notify: false,
     open: false,
-    cors: true,
-    // proxy: 'yourlocal.dev',
   });
-  done();
+  cb();
 };
 
-exports.server = server;
+const serveDist = (cb) => {
+  browserSync.init({
+    server: {
+      baseDir: app.dist.root,
+    },
+    open: false,
+  });
+  cb();
+};
+
+exports.serveDist = serveDist;
 
 /* Monitoring */
 
 const watch = () => {
-  // gulp.watch(`${cfg.src.templates}/**/*.html`, gulp.series(html));
-  gulp.watch(`${cfg.src.svg}/**/*.svg`, gulp.series(sprites));
-  gulp.watch(`${cfg.src.img}/**/*.{png,jpg}`, gulp.series(createWebp));
-  gulp.watch(`${cfg.src.pug}/**/*.pug`, gulp.series(html));
-  gulp.watch(`${cfg.src.sass}/**/*.{sass,scss}`, gulp.series(styles));
+  // gulp.watch(`${app.src.templates}/**/*.html`, gulp.series(html));
+  gulp.watch(`${app.src.svg}/**/*.svg`, gulp.series(sprites));
+  gulp.watch(`${app.src.img}/**/*.{png,jpg}`, gulp.series(createWebp));
+  gulp.watch(`${app.src.pug}/**/*.pug`, gulp.series(html));
+  gulp.watch(`${app.src.sass}/**/*.{sass,scss}`, gulp.series(styles));
   gulp.watch(
-    [`${cfg.src.js}/**/*.js`, `!${cfg.src.js}/app.min.js`],
+    [`${app.src.js}/**/*.js`, `!${app.src.js}/app.min.js`],
     gulp.series('js')
   );
-  gulp.watch(`${cfg.src.root}/*.html`, browserSync.reload);
+  gulp.watch(`${app.src.root}/*.html`, browserSync.reload);
 };
 
 exports.watch = watch;
@@ -185,7 +189,7 @@ exports.watch = watch;
 
 const imageopt = () => {
   return gulp
-    .src([`${cfg.src.img}/**/*.{jpg,png,svg}`, `!${cfg.src.img}/sprites/**/*`])
+    .src([`${app.src.img}/**/*.{jpg,png,svg,webp,ico}`, `!${app.src.img}/sprites/**/*`])
     .pipe(
       imagemin([
         imagemin.mozjpeg({ quality: 75, progressive: true }),
@@ -201,14 +205,14 @@ const imageopt = () => {
         }),
       ])
     )
-    .pipe(gulp.dest(cfg.dist.img));
+    .pipe(gulp.dest(app.dist.img));
 };
 
 exports.imageopt = imageopt;
 
 const createWebp = () => {
   return gulp
-    .src(`${cfg.src.img}/**/*.{png,jpg}`, { nodir: true })
+    .src(`${app.src.img}/**/*.{png,jpg}`, { nodir: true })
     .pipe(
       imagemin([
         webp({
@@ -217,7 +221,7 @@ const createWebp = () => {
       ])
     )
     .pipe(rename({ extname: '.webp' }))
-    .pipe(gulp.dest(cfg.src.img));
+    .pipe(gulp.dest(app.src.img));
 };
 
 exports.createWebp = createWebp;
@@ -226,7 +230,7 @@ exports.createWebp = createWebp;
 
 const sprites = () => {
   return gulp
-    .src(`${cfg.src.svg}/**/*.svg`)
+    .src(`${app.src.svg}/**/*.svg`)
     .pipe(
       svgSprite({
         shape: {
@@ -270,7 +274,7 @@ const sprites = () => {
         },
       })
     )
-    .pipe(gulp.dest(cfg.src.root));
+    .pipe(gulp.dest(app.src.root));
 };
 
 exports.sprites = sprites;
@@ -285,18 +289,18 @@ const options = {
 
 const fonts = () => {
   return gulp
-    .src(`${cfg.src.fonts}/fonts.list`)
+    .src(`${app.src.fonts}/fonts.list`)
     .pipe(googleWebFonts(options))
-    .pipe(gulp.dest(cfg.src.fonts));
+    .pipe(gulp.dest(app.src.fonts));
 };
 
 exports.fonts = fonts;
 
 /* Helpers */
 
-const clean = (done) => {
-  del.sync(cfg.dist.root);
-  done();
+const clean = (cb) => {
+  del.sync(app.dist.root);
+  cb();
 };
 
 exports.clean = clean;
@@ -304,38 +308,34 @@ exports.clean = clean;
 /* Build project */
 
 const build = gulp.series(
-  (setEnvProduction = (done) => {
-    cfg.setEnv('production');
-    done();
-  }),
   clean,
   gulp.parallel(sprites, createWebp),
   imageopt,
   gulp.parallel(html, styles, js),
 
-  (copyAssets = (done) => {
+  (copyAssets = (cb) => {
     const copyHtml = gulp
-      .src([`${cfg.src.root}/*.html`])
-      .pipe(gulp.dest(cfg.dist.root));
+      .src([`${app.src.root}/*.html`])
+      .pipe(gulp.dest(app.dist.root));
 
     const copySprites = gulp
-      .src([`${cfg.src.img}/sprites/**/*.svg`])
-      .pipe(gulp.dest(`${cfg.dist.img}/sprites`));
+      .src([`${app.src.img}/sprites/**/*.svg`])
+      .pipe(gulp.dest(`${app.dist.img}/sprites`));
 
     const copyCss = gulp
-      .src([`${cfg.src.css}/main.min.css`])
-      .pipe(gulp.dest(cfg.dist.css));
+      .src([`${app.src.css}/main.min.css`])
+      .pipe(gulp.dest(app.dist.css));
 
     const copyJs = gulp
-      .src([`${cfg.src.js}/app.min.js`])
-      .pipe(gulp.dest(cfg.dist.js));
+      .src([`${app.src.js}/app.min.js`])
+      .pipe(gulp.dest(app.dist.js));
 
     const copyFonts = gulp
-      .src([`${cfg.src.fonts}/**/*`])
-      .pipe(gulp.dest(cfg.dist.fonts));
+      .src([`${app.src.fonts}/**/*`])
+      .pipe(gulp.dest(app.dist.fonts));
 
-    done();
-  })
+    cb();
+  }),
 );
 
 exports.build = build;
@@ -343,10 +343,6 @@ exports.build = build;
 /* Go! */
 
 exports.default = gulp.series(
-  (setEnvDevelopment = (done) => {
-    cfg.setEnv('development');
-    done();
-  }),
   gulp.parallel(html, styles, js, createWebp),
-  gulp.parallel(server, watch)
+  gulp.parallel(serve, watch)
 );

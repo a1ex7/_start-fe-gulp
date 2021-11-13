@@ -1,11 +1,12 @@
 {
   "name": "start-fe-gulp",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "description": "Gulp Starter (sass, pub, webpack)",
   "private": true,
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
+    "start": "gulp serveDist",
+    "dev": "NODE_ENV='development' gulp",
+    "build": "NODE_ENV='production' gulp build"
   },
   "browserslist": [
     "last 2 versions",
