@@ -8,11 +8,12 @@ const googleWebFonts = require('gulp-google-webfonts');
 
 const imagemin = require('gulp-imagemin');
 const webp = require('imagemin-webp');
+const zip = require('gulp-zip');
 
 const notify = require('gulp-notify');
 const pug = require('gulp-pug');
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const svgSprite = require('gulp-svg-sprite');
 
@@ -101,7 +102,7 @@ const js = () => {
           ],
         },
         mode: app.env,
-        devtool: app.env === 'development' ? 'source-map' : 'none',
+        devtool: app.env === 'development' ? 'source-map' : false,
         output: {
           filename: 'app.min.js',
         },
@@ -161,7 +162,7 @@ const serveDist = (cb) => {
     server: {
       baseDir: app.dist.root,
     },
-    open: false,
+    open: true,
   });
   cb();
 };
@@ -171,8 +172,7 @@ exports.serveDist = serveDist;
 /* Monitoring */
 
 const watch = () => {
-  // gulp.watch(`${app.src.templates}/**/*.html`, gulp.series(html));
-  gulp.watch(`${app.src.svg}/**/*.svg`, gulp.series(sprites));
+  gulp.watch(`${app.src.svg}/**/*.svg`, gulp.series(sprites, html));
   gulp.watch(`${app.src.img}/**/*.{png,jpg}`, gulp.series(createWebp));
   gulp.watch(`${app.src.pug}/**/*.pug`, gulp.series(html));
   gulp.watch(`${app.src.sass}/**/*.{sass,scss}`, gulp.series(styles));
@@ -189,18 +189,19 @@ exports.watch = watch;
 
 const imageopt = () => {
   return gulp
-    .src([`${app.src.img}/**/*.{jpg,png,svg,webp,ico}`, `!${app.src.img}/sprites/**/*`])
+    .src([
+      `${app.src.img}/**/*.{jpg,png,svg,webp,ico}`,
+      `!${app.src.img}/sprites/**/*`,
+    ])
     .pipe(
       imagemin([
         imagemin.mozjpeg({ quality: 75, progressive: true }),
         imagemin.optipng({ optimizationLevel: 5 }),
         imagemin.svgo({
           plugins: [
-            {
-              removeViewBox: true,
-              cleanupIDs: false,
-              removeUselessStrokeAndFill: true,
-            },
+            { removeViewBox: true },
+            { cleanupIDs: false },
+            { removeUselessStrokeAndFill: true },
           ],
         }),
       ])
@@ -287,14 +288,12 @@ const options = {
   cssFilename: 'generated/webfonts.css',
 };
 
-const fonts = () => {
+exports.fonts = () => {
   return gulp
     .src(`${app.src.fonts}/fonts.list`)
     .pipe(googleWebFonts(options))
     .pipe(gulp.dest(app.src.fonts));
 };
-
-exports.fonts = fonts;
 
 /* Helpers */
 
@@ -303,7 +302,21 @@ const clean = (cb) => {
   cb();
 };
 
-exports.clean = clean;
+const zipProject = () =>
+  gulp
+    .src([
+      'src/**/*',
+      'dist/**/*',
+      'gulpfile.js',
+      'package.json',
+      'package-lock.json',
+      '.eslintrc.json',
+      'readme.md',
+    ], {base: '.'})
+    .pipe(zip('project.zip'))
+    .pipe(gulp.dest('.'));
+
+exports.zipProject = zipProject;
 
 /* Build project */
 
@@ -335,7 +348,7 @@ const build = gulp.series(
       .pipe(gulp.dest(app.dist.fonts));
 
     cb();
-  }),
+  })
 );
 
 exports.build = build;
