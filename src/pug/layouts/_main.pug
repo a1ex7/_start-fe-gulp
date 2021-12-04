@@ -1,14 +1,16 @@
-include components/_mixins
+block variables
+
+include ../components/_mixins
 
 doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    title DevChallenge
-    meta(name='description', content='Site description')
+    title #{title || 'Default title'}
+    meta(name='description', content=description || 'Site description')
 
     meta(property='og:image', content='path/to/image.jpg')
     link(rel='icon', href='img/favicon/favicon.ico', type='image/x-icon')
@@ -31,17 +33,17 @@ html(lang='en')
 
     // =========== Inline <symbol> SVG sprite generated ===========
     .visually-hidden
-      include ../img/sprites/sprite-symbol.svg
+      include ../../img/sprites/sprite-symbol.svg
     // ============================================================
 
-    include partials/_header
+    include /partials/_header
 
     // MAIN
-    main.main-content
+    main.content
       block content
     // End MAIN
 
-    include partials/_footer
+    include /partials/_footer
 
     // Scripts Bundle
     script(src='js/app.min.js')

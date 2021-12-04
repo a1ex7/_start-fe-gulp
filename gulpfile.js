@@ -62,7 +62,7 @@ const app = {
 
 const html = () => {
   return gulp
-    .src([`${app.src.pug}/**/*.pug`, `!${app.src.pug}/**/_*.pug`])
+    .src([`${app.src.pug}/pages/**/*.pug`, `!${app.src.pug}/**/_*.pug`])
     .pipe(
       pug({
         basedir: app.src.pug,

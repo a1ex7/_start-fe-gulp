@@ -42,7 +42,8 @@ svg,
 video
   vertical-align: middle
 
-.hidden
+.hidden,
+[hidden]
   display: none !important
 
 .visually-hidden
@@ -53,6 +54,7 @@ video
   overflow: hidden
   padding: 0
   position: absolute
+  white-space: nowrap
   width: 1px
 
 .invisible
@@ -155,7 +157,7 @@ input[type="tel"],
 textarea,
 select
   font-size: 16px
-  font-family: $font-family-heading
+  font-family: $font-family-base
   line-height: $input-line-height
   min-height: 50px
   padding: 14px 1em
@@ -170,9 +172,9 @@ textarea
 
 /* Section base styles */
 .section__title
-  color: red
+  color: $header-color
 .section__text
-  color: red  
+  color: $text-color  
 
 /* Dropdown */
 .dropdown
