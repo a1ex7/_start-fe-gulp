@@ -92,7 +92,7 @@ const js = () => {
                 loader: 'babel-loader',
                 options: {
                   presets: [
-                    ['@babel/preset-env', { targets: app.browserslist }],
+                    ['@babel/preset-env', {targets: app.browserslist}],
                   ],
                   // see https://babeljs.io/docs/en/plugins
                   // plugins: ['@babel/plugin-transform-arrow-functions']
@@ -117,7 +117,7 @@ exports.js = js;
 /* Magic with sass files */
 
 const styles = () => {
-  const plugins = [mqpacker(), autoprefixer(), csso({ restructure: false })];
+  const plugins = [mqpacker(), autoprefixer(), csso({restructure: false})];
   return gulp
     .src(`${app.src.sass}/**/*.{sass,scss}`)
     .pipe(sourcemaps.init())
@@ -136,7 +136,7 @@ const styles = () => {
       })
     )
     .pipe(postcss(plugins))
-    .pipe(rename({ suffix: '.min', prefix: '' }))
+    .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(sourcemaps.write('/'))
     .pipe(gulp.dest(app.src.css))
     .pipe(browserSync.stream());
@@ -196,13 +196,13 @@ const imageopt = () => {
     ])
     .pipe(
       imagemin([
-        imagemin.mozjpeg({ quality: 75, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.mozjpeg({quality: 75, progressive: true}),
+        imagemin.optipng({optimizationLevel: 3}),
         imagemin.svgo({
           plugins: [
-            { removeViewBox: true },
-            { cleanupIDs: false },
-            { removeUselessStrokeAndFill: true },
+            {removeViewBox: true},
+            {cleanupIDs: false},
+            {removeUselessStrokeAndFill: true},
           ],
         }),
       ])
@@ -214,15 +214,15 @@ exports.imageopt = imageopt;
 
 const createWebp = () => {
   return gulp
-    .src(`${app.src.img}/**/*.{png,jpg}`, { nodir: true })
+    .src(`${app.src.img}/**/*.{png,jpg}`, {nodir: true})
     .pipe(
       imagemin([
         webp({
-          quality: 75,
+          quality: 90,
         }),
       ])
     )
-    .pipe(rename({ extname: '.webp' }))
+    .pipe(rename({extname: '.webp'}))
     .pipe(gulp.dest(app.src.img));
 };
 
