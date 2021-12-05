@@ -60,9 +60,16 @@ video
 .invisible
   visibility: hidden
 
+.clearfix:before,
+.clearfix:after
+  content: ''
+  display: table
 
+.clearfix:after
+  clear: both
+  
 body
-  font-family: $font-family-base, Arial, sans-serif
+  font-family: $font-family-base
   font-size: $font-size
   font-weight: $font-weight
   letter-spacing: $letter-spacing

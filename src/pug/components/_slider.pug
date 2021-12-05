@@ -14,16 +14,16 @@
   .glide__arrows(data-glide-el='controls')
     button.glide__arrow(data-glide-dir='<<')
       +svg('double-arrow-left', 26, 26)
-      span Start
+      span.visually-hidden Start
     button.glide__arrow.glide__arrow--left.js-prev(data-glide-dir='<')
       +svg('arrow-left', 35, 26)
-      span Prev
+      spa.visually-hidden Prev
     button.glide__arrow.glide__arrow--right.js-next(data-glide-dir='>')
       +svg('arrow-right', 35, 26)
-      span Next
+      span.visually-hidden Next
     button.glide__arrow(data-glide-dir='>>')
       +svg('double-arrow-right', 26, 26)
-      span End
+      span.visually-hidden End
 
   .glide__bullets(data-glide-el='controls[nav]')
     button.glide__bullet(data-glide-dir='=0')

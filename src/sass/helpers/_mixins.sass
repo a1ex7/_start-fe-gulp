@@ -25,16 +25,14 @@
   background-size: cover
 
 =hide-text()
-  font-size: 0
   overflow: hidden
-
-=move-text()
-  text-indent: -1000px
-  overflow: hidden
+  text-indent: 101%
+  white-space: nowrap
 
 =crop-text()
   overflow: hidden
   white-space: nowrap
+  word-wrap: normal
   text-overflow: ellipsis
 
 =line-clamp($nth-of-line: 3)
@@ -56,6 +54,12 @@
 =transition($property: all, $duration: $time, $func: $func)
   transition: $property $duration $func
 
+=fade-in($time: $time)
+  animation: fade-in $time ease-out backwards
+  
+=slide-in-down($time: $time)
+  animation: slide-in-down $time ease-out backwards
+  
 =placeholder
   &::-webkit-input-placeholder
     @content
@@ -71,37 +75,40 @@
   background: none
   padding: 0
 
-=arrow($direction: bottom, $width: 10px, $height: 5px, $bg: #000)
+=arrow($direction: bottom, $width: 10px, $height: 5px, $color: #000)
+  border-style: solid
   width: 0
   height: 0
-  border-style: solid
   @if $direction == top
     border-width: 0 math.div($width, 2) $height math.div($width, 2)
-    border-color: transparent transparent $bg transparent
-  @if $direction == right
+    border-color: transparent transparent $color transparent
+  @else if $direction == right
     border-width: math.div($height, 2) 0 math.div($height, 2) $width
-    border-color: transparent transparent transparent $bg
-  @if $direction == bottom
+    border-color: transparent transparent transparent $color
+  @else if $direction == bottom
     border-width: $height math.div($width, 2) 0 math.div($width, 2)
-    border-color: $bg transparent transparent transparent
-  @if $direction == left
+    border-color: $color transparent transparent transparent
+  @else if $direction == left
     border-width: math.div($height, 2) $width math.div($height, 2) 0
-    border-color: transparent $bg transparent transparent
-  @if $direction == top-left
+    border-color: transparent $color transparent transparent
+  @else if $direction == top-left
     border-width: $height $width 0 0
-    border-color: $bg transparent transparent transparent
-  @if $direction == top-roght
+    border-color: $color transparent transparent transparent
+  @else if $direction == top-right
     border-width: 0 $width $height 0
-    border-color: transparent $bg transparent transparent
-  @if $direction == bottom-right
+    border-color: transparent $color transparent transparent
+  @else if $direction == bottom-right
     border-width: 0 0 $height $width
-    border-color: transparent transparent $bg transparent
-  @if $direction == bottom-left
+    border-color: transparent transparent $color transparent
+  @else if $direction == bottom-left
     border-width: $width 0 0 $height
-    border-color: transparent transparent transparent $bg
+    border-color: transparent transparent transparent $color
 
-=arr($direction: bottom, $width: 10, $height: 5, $bg: #000)
+=arr($direction: bottom, $width: 10px, $height: 5px, $bg: #000)
   +arrow($direction, $width, $height, $bg)
+  
+=triangle($direction: bottom, $width: 10px, $height: 5px, $bg: #000)
+  +arrow($direction, $width, $height, $bg)  
 
 =align($type: 'hv')
   position: absolute
