@@ -1,22 +1,30 @@
-/* Default variables and mixins */
+// Default variables and mixins
 @import 'helpers/variables'
 @import 'helpers/mixins'
 
+// Reset Css
+@import 'helpers/reset'
 
-/* Third party Css libs */
+// Css libs
 @import 'helpers/libs'
 
+// Fonts
+// For manual downloaded fonts
+@import 'helpers/fonts'
+// For auto downloaded fonts by gulp-google-webfonts
+//@import 'generated/webfonts'
 
-/* Sprites, Fonts and Icons */
-@import 'helpers/fonts'           // For manual downloaded fonts
-// @import 'helpers/webfonts'        // For auto downloaded fonts by gulp-google-webfonts
-@import 'generated/sprite'        // Usage [pug]: +icon('iconTitle') or [sass]: backgroud-image: url('../img/sprites/sprite.svg#iconName') 50% 50% no-repeat
-@import 'generated/sprite-symbol' // Usage [pug]: +svg('iconTitle', width, height).someClass#someId(someAtr="value")
-
+// SVG Sprite 
+// https://github.com/svg-sprite/svg-sprite/blob/main/docs/configuration.md#common-mode-properties
+// "View" mode sprite
+// Usage [pug]: +icon('iconTitle') or [sass]: background-image: url('../img/sprites/sprite.svg#iconName') 50% 50% no-repeat
+@import 'generated/sprite'
+// "Symbol" mode sprite
+// Usage [pug]: +svg('iconTitle', width, height).someClass#someId(someAtr="value")
+@import 'generated/sprite-symbol'
 
 /* Basic styles (body, a, tables, buttons, forms etc.) */
 @import 'base'
-
 
 /* Components */
 @import 'components/menu'

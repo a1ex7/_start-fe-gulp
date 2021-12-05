@@ -1,4 +1,4 @@
-/* Mixins */
+// Mixins
 @use "sass:math"
 
 =size($width, $height: $width)
@@ -6,10 +6,10 @@
   height: $height
 
 =width($size, $of)
-  width: 100% * $size / $of
+  width: math.div(100% * $size, $of)
 
 =height($size, $of)
-  height: 100% * $size / $of
+  height: math.div(100% * $size, $of)
 
 =round($radius: 50%)
   border-radius: $radius
@@ -128,6 +128,7 @@
     font-family: $font-family
     font-weight: $weight
     font-style: $style
+    font-display: auto
 
     @if $modern-browsers == true
       src: url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.woff') format('woff')
@@ -236,9 +237,9 @@
   @media (min-width: #{$max-width}#{$unit})
     #{$property}: #{$max-size}#{$unit}
 
-/* Placeholders */
+// Placeholders
 
-/* Functions */
+// Functions
 
 @function em($size, $context: $font-size)
   @return ($size / $context) * 1em

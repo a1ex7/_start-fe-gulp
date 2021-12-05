@@ -22,7 +22,7 @@ const webpack = require('webpack-stream');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const csso = require('postcss-csso');
-const mqpacker = require('css-mqpacker');
+const mqpacker = require('postcss-combine-media-query');
 
 /* Configuration */
 
@@ -117,7 +117,7 @@ exports.js = js;
 /* Magic with sass files */
 
 const styles = () => {
-  const plugins = [mqpacker(), autoprefixer(), csso({restructure: false})];
+  const plugins = [mqpacker, autoprefixer, csso({ restructure: false })];
   return gulp
     .src(`${app.src.sass}/**/*.{sass,scss}`)
     .pipe(sourcemaps.init())
@@ -135,6 +135,7 @@ const styles = () => {
         sound: true,
       })
     )
+    .pipe(gulp.dest(app.src.css))
     .pipe(postcss(plugins))
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(sourcemaps.write('/'))
@@ -174,14 +175,11 @@ exports.serveDist = serveDist;
 
 const watch = () => {
   gulp.watch(`${app.src.svg}/**/*.svg`, gulp.series(sprites, html));
-  gulp.watch(`${app.src.img}/**/*.{png,jpg}`, gulp.series(createWebp));
-  gulp.watch(`${app.src.pug}/**/*.pug`, gulp.series(html));
-  gulp.watch(`${app.src.sass}/**/*.{sass,scss}`, gulp.series(styles));
-  gulp.watch(
-    [`${app.src.js}/**/*.js`, `!${app.src.js}/app.min.js`],
-    gulp.series('js')
-  );
-  gulp.watch(`${app.src.root}/*.html`, browserSync.reload);
+  gulp.watch(`${app.src.img}/**/*.{png,jpg}`, createWebp);
+  gulp.watch(`${app.src.pug}/**/*.pug`, html);
+  gulp.watch(`${app.src.sass}/**/*.{sass,scss}`, styles);
+  gulp.watch([`${app.src.js}/**/*.js`, `!${app.src.js}/app.min.js`], js);
+  gulp.watch(`${app.src.root}/*.html`).on('change', browserSync.reload);
 };
 
 exports.watch = watch;
@@ -191,7 +189,7 @@ exports.watch = watch;
 const imageopt = () => {
   return gulp
     .src([
-      `${app.src.img}/**/*.{jpg,png,svg,webp,ico}`,
+      `${app.src.img}/**/*.{jpg,png,svg,webp,ico,mp4}`,
       `!${app.src.img}/sprites/**/*`,
     ])
     .pipe(
@@ -286,7 +284,7 @@ exports.sprites = sprites;
 const options = {
   fontsDir: '../fonts/',
   cssDir: '../sass/',
-  cssFilename: 'generated/webfonts.css',
+  cssFilename: 'generated/_webfonts.css',
 };
 
 exports.fonts = () => {
@@ -312,6 +310,7 @@ const zipProject = () =>
       'package.json',
       'package-lock.json',
       '.eslintrc.json',
+      '.editorconfig',
       'readme.md',
     ], {base: '.'})
     .pipe(zip('project.zip'))
