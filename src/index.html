@@ -55,6 +55,11 @@
     <!-- End HEADER-->
     <!-- MAIN-->
     <main class="content">
+      <!--include /partials/__section_name-->
+      <!--include /partials/__section_name-->
+      <!--include /partials/__section_name-->
+      <!--include /partials/__section_name-->
+      <!-- Samples-->
       <hr>=== MAIN CONTENT ===
       <hr>
       <!-- Begin 'slider'-->
@@ -248,7 +253,7 @@
       </section>
       <hr>
       <!-- Begin 'form'-->
-      <section>==== FORM ====
+      <section>***FORMS***
         <hr>
         <div class="wrapper">
           <form class="sample-form form" action="">
@@ -266,6 +271,10 @@
               <div class="form__group">
                 <label class="form__label form__label--required" for="email">Email address</label>
                 <input class="form__text-input" id="email" type="email" name="account[email]">
+              </div>
+              <div class="form__group">
+                <label class="form__label form__label--required" for="phone">Phone</label>
+                <input class="form__text-input" id="phone" type="text" name="account[phone]">
               </div>
               <div class="form__group">
                 <label class="form__label" for="message">Your message</label>
@@ -292,8 +301,8 @@
               </div>
             </fieldset>
             <div class="btn-example">
-              <button class="btn" type="submit"><span>Submit button</span></button>
-              <button class="btn btn--inverse" type="submit"><span>Inverse button</span></button>
+              <button class="btn" type="submit"><span>Submit</span></button>
+              <button class="btn btn--inverse" type="submit"><span>Inverse</span></button>
               <button class="btn btn--small" type="submit"><span>Small</span></button><a class="btn btn--inverse" href="#"> <span>Link </span></a>
               <button class="btn btn--block" type="submit"><span>Button Block   </span></button>
             </div>
@@ -302,23 +311,21 @@
       </section>
       <!-- End 'form'-->
       <hr>
-      <!-- Begin 'sectionName'-->
-      <section class="sectionName" id="sectionName">==== SECTIONNAME ====
-        <div class="wrapper"></div>
-      </section>
-      <!-- End 'sectionName'-->
-      <hr>
       <div class="wrapper">
-        <h2>Отзывы Tesimonial x 5 (flexbox)</h2>
+        <h2>Testimonials x 5 (flexbox)</h2>
         <!-- Testimonials-->
         <section class="testimonials">
-          <h2 class="testimonials__title">[Testimonials Title]</h2>
+          <h2 class="testimonials__title">Our Clients says </h2>
           <div class="testimonials__list">
                     <!-- Testimonial item-->
                     <article class="testimonials__item testimonial">
-                      <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-                      <h4 class="testimonial__name">Salam Halem</h4>
-                      <div class="testimonial__job">Marketing SEO</div>
+                      <div class="testimonial__img">
+                        <picture>
+                          <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                        </picture>
+                      </div>
+                      <h4 class="testimonial__name">Brad Pit</h4>
+                      <div class="testimonial__job">SEO</div>
                       <div class="testimonial__raiting">
                         <div class="raiting">
                           <svg class="symbol-star symbol-star" width="18" height="18">
@@ -339,15 +346,19 @@
                         </div>
                       </div>
                       <div class="testimonial__descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
+                        <p>Cool thing</p>
                       </div>
                     </article>
                     <!-- End Testimonial item-->
                     <!-- Testimonial item-->
                     <article class="testimonials__item testimonial">
-                      <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-                      <h4 class="testimonial__name">Salam Halem</h4>
-                      <div class="testimonial__job">Marketing SEO</div>
+                      <div class="testimonial__img">
+                        <picture>
+                          <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                        </picture>
+                      </div>
+                      <h4 class="testimonial__name">Default Name</h4>
+                      <div class="testimonial__job">Default Job</div>
                       <div class="testimonial__raiting">
                         <div class="raiting">
                           <svg class="symbol-star symbol-star" width="18" height="18">
@@ -368,15 +379,19 @@
                         </div>
                       </div>
                       <div class="testimonial__descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
                       </div>
                     </article>
                     <!-- End Testimonial item-->
                     <!-- Testimonial item-->
                     <article class="testimonials__item testimonial">
-                      <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-                      <h4 class="testimonial__name">Salam Halem</h4>
-                      <div class="testimonial__job">Marketing SEO</div>
+                      <div class="testimonial__img">
+                        <picture>
+                          <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                        </picture>
+                      </div>
+                      <h4 class="testimonial__name">Elon Musk</h4>
+                      <div class="testimonial__job">Iron man</div>
                       <div class="testimonial__raiting">
                         <div class="raiting">
                           <svg class="symbol-star symbol-star" width="18" height="18">
@@ -397,15 +412,19 @@
                         </div>
                       </div>
                       <div class="testimonial__descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
+                        <p>My biggest mistake is probably weighing too much on someone’s talent and not someone’s personality. I think it matters whether someone has a good heart.</p>
                       </div>
                     </article>
                     <!-- End Testimonial item-->
                     <!-- Testimonial item-->
                     <article class="testimonials__item testimonial">
-                      <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-                      <h4 class="testimonial__name">Salam Halem</h4>
-                      <div class="testimonial__job">Marketing SEO</div>
+                      <div class="testimonial__img">
+                        <picture>
+                          <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                        </picture>
+                      </div>
+                      <h4 class="testimonial__name">Default Name</h4>
+                      <div class="testimonial__job">Default Job</div>
                       <div class="testimonial__raiting">
                         <div class="raiting">
                           <svg class="symbol-star symbol-star" width="18" height="18">
@@ -426,163 +445,150 @@
                         </div>
                       </div>
                       <div class="testimonial__descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
-                      </div>
-                    </article>
-                    <!-- End Testimonial item-->
-                    <!-- Testimonial item-->
-                    <article class="testimonials__item testimonial">
-                      <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-                      <h4 class="testimonial__name">Salam Halem</h4>
-                      <div class="testimonial__job">Marketing SEO</div>
-                      <div class="testimonial__raiting">
-                        <div class="raiting">
-                          <svg class="symbol-star symbol-star" width="18" height="18">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                          </svg>
-                          <svg class="symbol-star symbol-star" width="18" height="18">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                          </svg>
-                          <svg class="symbol-star symbol-star" width="18" height="18">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                          </svg>
-                          <svg class="symbol-star-half symbol-star" width="18" height="18">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
-                          </svg>
-                          <svg class="symbol-star-empty symbol-star" width="18" height="18">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="testimonial__descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
                       </div>
                     </article>
                     <!-- End Testimonial item-->
           </div>
         </section>
         <!-- End Testimonials-->
-        <hr>
       </div>
+      <hr>
       <div class="wrapper">
-        <h2>Слайдер Slider (owl-carousel)</h2>
+        <h2>Slider (<a href="https://github.com/kenwheeler/slick">slick slider</a>)</h2>
         <div class="slider slider--testimonials">
-          <!-- Testimonial item-->
-          <article class="testimonial">
-            <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-            <h4 class="testimonial__name">Salam Halem</h4>
-            <div class="testimonial__job">Marketing SEO</div>
-            <div class="testimonial__raiting">
-              <div class="raiting">
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star-half symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
-                </svg>
-                <svg class="symbol-star-empty symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
-                </svg>
-              </div>
-            </div>
-            <div class="testimonial__descr">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
-            </div>
-          </article>
-          <!-- End Testimonial item-->
-          <!-- Testimonial item-->
-          <article class="testimonial">
-            <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-            <h4 class="testimonial__name">Salam Halem</h4>
-            <div class="testimonial__job">Marketing SEO</div>
-            <div class="testimonial__raiting">
-              <div class="raiting">
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star-half symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
-                </svg>
-                <svg class="symbol-star-empty symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
-                </svg>
-              </div>
-            </div>
-            <div class="testimonial__descr">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
-            </div>
-          </article>
-          <!-- End Testimonial item-->
-          <!-- Testimonial item-->
-          <article class="testimonial">
-            <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-            <h4 class="testimonial__name">Salam Halem</h4>
-            <div class="testimonial__job">Marketing SEO</div>
-            <div class="testimonial__raiting">
-              <div class="raiting">
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star-half symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
-                </svg>
-                <svg class="symbol-star-empty symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
-                </svg>
-              </div>
-            </div>
-            <div class="testimonial__descr">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
-            </div>
-          </article>
-          <!-- End Testimonial item-->
-          <!-- Testimonial item-->
-          <article class="testimonial">
-            <div class="testimonial__img"><img src="http://lorempixel.com/80/80/cats/" alt="Avatar"></div>
-            <h4 class="testimonial__name">Salam Halem</h4>
-            <div class="testimonial__job">Marketing SEO</div>
-            <div class="testimonial__raiting">
-              <div class="raiting">
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
-                </svg>
-                <svg class="symbol-star-half symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
-                </svg>
-                <svg class="symbol-star-empty symbol-star" width="18" height="18">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
-                </svg>
-              </div>
-            </div>
-            <div class="testimonial__descr">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit. Atque, et.</p>
-            </div>
-          </article>
-          <!-- End Testimonial item-->
+                  <!-- Testimonial item-->
+                  <article class="testimonials__item testimonial">
+                    <div class="testimonial__img">
+                      <picture>
+                        <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                      </picture>
+                    </div>
+                    <h4 class="testimonial__name">Default Name</h4>
+                    <div class="testimonial__job">Default Job</div>
+                    <div class="testimonial__raiting">
+                      <div class="raiting">
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star-half symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
+                        </svg>
+                        <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="testimonial__descr">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
+                    </div>
+                  </article>
+                  <!-- End Testimonial item-->
+                  <!-- Testimonial item-->
+                  <article class="testimonials__item testimonial">
+                    <div class="testimonial__img">
+                      <picture>
+                        <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                      </picture>
+                    </div>
+                    <h4 class="testimonial__name">Default Name</h4>
+                    <div class="testimonial__job">Default Job</div>
+                    <div class="testimonial__raiting">
+                      <div class="raiting">
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star-half symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
+                        </svg>
+                        <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="testimonial__descr">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
+                    </div>
+                  </article>
+                  <!-- End Testimonial item-->
+                  <!-- Testimonial item-->
+                  <article class="testimonials__item testimonial">
+                    <div class="testimonial__img">
+                      <picture>
+                        <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                      </picture>
+                    </div>
+                    <h4 class="testimonial__name">Default Name</h4>
+                    <div class="testimonial__job">Default Job</div>
+                    <div class="testimonial__raiting">
+                      <div class="raiting">
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star-half symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
+                        </svg>
+                        <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="testimonial__descr">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
+                    </div>
+                  </article>
+                  <!-- End Testimonial item-->
+                  <!-- Testimonial item-->
+                  <article class="testimonials__item testimonial">
+                    <div class="testimonial__img">
+                      <picture>
+                        <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
+                      </picture>
+                    </div>
+                    <h4 class="testimonial__name">Default Name</h4>
+                    <div class="testimonial__job">Default Job</div>
+                    <div class="testimonial__raiting">
+                      <div class="raiting">
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star"></use>
+                        </svg>
+                        <svg class="symbol-star-half symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-half"></use>
+                        </svg>
+                        <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#star-empty"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="testimonial__descr">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.</p>
+                    </div>
+                  </article>
+                  <!-- End Testimonial item-->
         </div>
       </div>
       <div class="container wrapper">
@@ -598,17 +604,19 @@
       </div>
       <hr>
       <div class="wrapper">
-        <h2>Стрелки</h2>
+        <h2>Arrows</h2>
         <div class="arrow1"></div>
         <div class="arrow2"></div>
         <div class="arrow3"></div>
       </div>
+      <hr>
       <div class="wrapper">
+        <h2>Checkboxes</h2>
         <label>
-          <input type="checkbox"/><span>Чекбокс без id</span>
+          <input class="form__checkbox" type="checkbox"/><span class="form__label">Чекбокс без id</span>
         </label>
-        <input type="checkbox" id="someId" checked="checked"/>
-        <label for="someId">Чекбокс с id</label>
+        <input class="form__checkbox" type="checkbox" id="someId" checked="checked"/>
+        <label class="form__label" for="someId">Чекбокс с id</label>
       </div>
       <hr>
     </main>

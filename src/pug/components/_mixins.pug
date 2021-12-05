@@ -10,22 +10,22 @@ mixin icon(title)
   img(src=`img/sprites/sprite.svg#${title}`, alt=`${title}`)&attributes(attributes)
 
 //- WebP Picture
-mixin picture(src)
+mixin picture(image)
   picture
-    source(srcset=`img/${src}.webp`, type="image/webp")
-    img(src=`img/${src}.${ext || 'jpg'}`, alt= alt, loading="lazy")&attributes(attributes)
+    source(srcset=`img/${image}.webp`, type="image/webp")
+    img(src=`img/${image}.${ext || 'jpg'}`, alt= alt, loading="lazy")&attributes(attributes)
 //- Usage:  +picture("filename", alt="Picture", ext="png").block__picture
 
 
 //- Form controls
 mixin checkbox(text, checked)
   label
-    input(type="checkbox", checked=checked)
-    span= text
+    input.form__checkbox(type="checkbox", checked=checked)
+    span.form__label= text
 
 mixin checkbox-id(text, id, checked)
-  input(type="checkbox", id=id, checked=checked)
-  label(for=id)= text
+  input.form__checkbox(type="checkbox", id=id, checked=checked)
+  label.form__label(for=id)= text
 
 //- Sample
 mixin deals(description, image)

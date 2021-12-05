@@ -1,10 +1,10 @@
-/* Working with Plugins */
+/* Plugins */
 
-// import './app/inputmask';
+import './app/inputmask';
 // import './app/masonry';
 // import './app/select2';
 // import './app/simplebar';
-// import './app/slick-slider';
+import './app/slick-slider';
 import './app/slider-glide';
 
 

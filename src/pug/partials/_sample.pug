@@ -1,17 +1,19 @@
-
 //- Component sample
 .wrapper
-  h2 Отзывы Tesimonial x 5 (flexbox)
-  include ../components/_testimonials
-  hr
+  h2 Testimonials x 5 (flexbox)
+  include /components/_testimonials
+
+hr
 
 .wrapper
-  h2 Слайдер Slider (owl-carousel)
+  h2 Slider (
+    a(href="https://github.com/kenwheeler/slick") slick slider
+    | )
   .slider.slider--testimonials
-    include ../components/_testimonial
-    include ../components/_testimonial
-    include ../components/_testimonial
-    include ../components/_testimonial
+    +testimonial
+    +testimonial
+    +testimonial
+    +testimonial
 
 //- HTML sample
 
@@ -31,13 +33,16 @@
 hr
 
 .wrapper
-  h2 Стрелки
+  h2 Arrows
   .arrow1
   .arrow2
   .arrow3
 
 //- Mixin Sample
 
+hr  
+  
 .wrapper
+  h2 Checkboxes
   +checkbox('Чекбокс без id')
   +checkbox-id('Чекбокс с id', 'someId', true)

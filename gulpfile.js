@@ -144,7 +144,7 @@ const styles = () => {
 
 exports.styles = styles;
 
-/* Browser Sync Serveer */
+/* Browser Sync Server */
 
 const serve = (cb) => {
   browserSync.init({
@@ -152,7 +152,7 @@ const serve = (cb) => {
       baseDir: app.src.root,
     },
     notify: false,
-    open: false,
+    open: true,
   });
   cb();
 };
@@ -162,6 +162,7 @@ const serveDist = (cb) => {
     server: {
       baseDir: app.dist.root,
     },
+    notify: false,
     open: true,
   });
   cb();

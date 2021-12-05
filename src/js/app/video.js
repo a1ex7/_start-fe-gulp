@@ -8,6 +8,6 @@ playBtn.addEventListener('click', (e) => {
 });
 
 const playVideo = (video) => {
-  var src = video.dataset.src;
+  const src = video.dataset.src;
   video.setAttribute('src', src);
 };
