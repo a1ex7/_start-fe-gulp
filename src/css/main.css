@@ -122,28 +122,28 @@ table {
   font-family: "Roboto";
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: auto;
   src: url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-regular.woff") format("woff");
 }
 @font-face {
   font-family: "Roboto";
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: auto;
   src: url("../fonts/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/roboto-v20-latin-700.woff") format("woff");
 }
 @font-face {
   font-family: "Roboto Slab";
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: auto;
   src: url("../fonts/roboto-slab-v12-latin-regular.woff2") format("woff2"), url("../fonts/roboto-slab-v12-latin-regular.woff") format("woff");
 }
 @font-face {
   font-family: "Roboto Slab";
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: auto;
   src: url("../fonts/roboto-slab-v12-latin-700.woff2") format("woff2"), url("../fonts/roboto-slab-v12-latin-700.woff") format("woff");
 }
 .svg-youtube, .svg-vk, .svg-twitter, .svg-star-half, .svg-star-empty, .svg-star, .svg-pinterest, .svg-menu-cebab, .svg-logo, .svg-linkedin, .svg-instagram, .svg-heart, .svg-google-plus, .svg-facebook, .svg-dribble, .svg-double-arrow-right, .svg-double-arrow-left, .svg-comments, .svg-behance, .svg-arrow-right, .svg-arrow-left {
@@ -395,8 +395,7 @@ html, body {
 }
 
 a,
-a:active,
-a:focus {
+a:active {
   text-decoration: none;
   cursor: pointer;
   color: #387bab;
@@ -424,17 +423,11 @@ textarea {
  * * images, videos and the bottom of their containers:
  * * https://github.com/h5bp/html5-boilerplate/issues/440
  * */
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
+:is(audio, canvas, iframe, img, svg, video) {
   vertical-align: middle;
 }
 
-.hidden,
-[hidden] {
+.hidden {
   display: none !important;
 }
 
@@ -454,14 +447,10 @@ video {
   visibility: hidden;
 }
 
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
+:focus-visible {
+  outline: #387bab 1px auto;
+  outline-offset: -1px;
+  box-shadow: 0 0 3px 1px #387bab;
 }
 
 body {
@@ -533,31 +522,25 @@ body {
 /* Regular button */  
 .btn, .button {
   display: inline-block;
+  min-width: 165px;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
   color: #fff;
   background-color: #387bab;
   border: 2px solid #387bab;
-  padding: 0 2em;
-  min-width: 165px;
-  height: 50px;
-  line-height: 50px;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
   user-select: none;
   cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.btn:hover, .button:hover {
+.btn:hover, .btn:active, .button:hover, .button:active {
   color: #387bab;
   background-color: #fff;
-}
-.btn:active, .button:active {
-  color: #1f445e;
-  border-color: #1f445e;
-}
-.btn:focus, .button:focus {
-  outline: 2px solid #1f445e;
 }
 
 /* Small button */
@@ -574,38 +557,29 @@ body {
 /* Inverse button */  
 .btn--inverse {
   display: inline-block;
+  min-width: 165px;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
   color: #387bab;
   background-color: #fff;
   border: 2px solid #387bab;
-  padding: 0 2em;
-  min-width: 165px;
-  height: 50px;
-  line-height: 50px;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
   user-select: none;
   cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.btn--inverse:hover {
+.btn--inverse:hover, .btn--inverse:active {
   color: #387bab;
   background-color: #387bab;
 }
-.btn--inverse:active {
-  color: #1f445e;
-  border-color: #1f445e;
-}
-.btn--inverse:focus {
-  outline: 2px solid #1f445e;
-}
-.btn--inverse:hover {
+.btn--inverse:hover, .btn--inverse:active {
   color: #fff;
-  border-color: #1f445e;
-}
-.btn--inverse:active {
-  background-color: #1f445e;
+  border-color: #387bab;
 }
 
 /* Input */
@@ -615,11 +589,10 @@ input[type=password],
 input[type=tel],
 textarea,
 select {
-  font-size: 16px;
+  font-size: 15px;
   font-family: Roboto, Arial, sans-serif;
   line-height: 20px;
-  min-height: 50px;
-  padding: 14px 1em;
+  padding: 0.5em 1em;
   border: 2px solid #d4d9dd;
   background-color: #fff;
 }

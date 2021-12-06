@@ -7,8 +7,7 @@ html, body
   height: 100%
 
 a,
-a:active,
-a:focus
+a:active
   text-decoration: none
   cursor: pointer
   color: $link-color
@@ -33,16 +32,10 @@ textarea
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
 
-audio,
-canvas,
-iframe,
-img,
-svg,
-video
+:is(audio, canvas, iframe, img, svg, video)
   vertical-align: middle
 
-.hidden,
-[hidden]
+.hidden
   display: none !important
 
 .visually-hidden
@@ -59,13 +52,10 @@ video
 .invisible
   visibility: hidden
 
-.clearfix:before,
-.clearfix:after
-  content: ''
-  display: table
-
-.clearfix:after
-  clear: both
+:focus-visible
+  outline: $primary 1px auto
+  outline-offset: -1px
+  box-shadow: 0 0 3px 1px $primary
   
 body
   font-family: $font-family-base
@@ -109,28 +99,29 @@ body
 /* Button */
 =button($background, $color, $border: $background)
   display: inline-block
+  min-width: 165px
+  padding: 0.5em 1em
+  
+  font-family: inherit
+  font-size: 15px
+  line-height: 20px
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  vertical-align: middle
+
   color: $color
   background-color: $background
   border: 2px solid $border
-  padding: 0 2em
-  min-width: 165px
-  height: 50px
-  line-height: 50px
-  font-family: $font-family-base
-  font-size: 14px
-  text-transform: uppercase
-  text-align: center
+  
   user-select: none
   cursor: pointer
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out
-  &:hover
+  +transition
+  
+  &:hover,
+  &:active
     color: $primary
     background-color: $color
-  &:active
-    color: darken($primary, 20%)
-    border-color: darken($primary, 20%)
-  &:focus
-    outline: 2px solid darken($primary, 20%)
 
 /* Regular button */  
 .btn, .button
@@ -148,11 +139,10 @@ body
 /* Inverse button */  
 .btn--inverse
   +button($light, $primary, $primary)
-  &:hover
+  &:hover,
+  &:active  
     color: $light
-    border-color: darken($primary, 20%)
-  &:active
-    background-color: darken($primary, 20%)
+    border-color: $primary
 
 /* Input */
 $input-line-height: 20px // only in px
@@ -162,11 +152,10 @@ input[type="password"],
 input[type="tel"],
 textarea,
 select
-  font-size: 16px
+  font-size: 15px
   font-family: $font-family-base
   line-height: $input-line-height
-  min-height: 50px
-  padding: 14px 1em
+  padding: 0.5em 1em
   border: 2px solid $input-border-color
   background-color: $light
   &:focus
