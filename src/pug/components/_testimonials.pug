@@ -1,6 +1,6 @@
 mixin testimonial(name, job, description)
   // Testimonial item
-  article.testimonials__item.testimonial
+  article.testimonial
     .testimonial__img
       +picture("girl", alt="Girl Picture")
     h4.testimonial__name= name || 'Default Name'
@@ -17,16 +17,13 @@ mixin testimonial(name, job, description)
   // End Testimonial item
 
 // Testimonials
-section.testimonials
-  h2.testimonials__title Our Clients says 
-  .testimonials__list
-    +testimonial('Brad Pit', 'SEO', 'Cool thing')
-    +testimonial
-    +testimonial(
-      'Elon Musk', 
-      'Iron man', 
-      'My biggest mistake is probably weighing too much on someone’s talent and not someone’s personality. ' +
-      'I think it matters whether someone has a good heart.'
-    )
-    +testimonial
++testimonial('Brad Pit', 'SEO', 'Cool thing')
++testimonial
++testimonial(
+  'Elon Musk', 
+  'Iron man', 
+  'My biggest mistake is probably weighing too much on someone’s talent and not someone’s personality. ' +
+  'I think it matters whether someone has a good heart.'
+)
++testimonial
 // End Testimonials

@@ -146,7 +146,7 @@ table {
   font-display: auto;
   src: url("../fonts/roboto-slab-v12-latin-700.woff2") format("woff2"), url("../fonts/roboto-slab-v12-latin-700.woff") format("woff");
 }
-.svg-youtube, .svg-vk, .svg-twitter, .svg-star-half, .svg-star-empty, .svg-star, .svg-pinterest, .svg-menu-cebab, .svg-logo, .svg-linkedin, .svg-instagram, .svg-heart, .svg-google-plus, .svg-facebook, .svg-dribble, .svg-double-arrow-right, .svg-double-arrow-left, .svg-comments, .svg-behance, .svg-arrow-right, .svg-arrow-left {
+.svg-youtube, .svg-vk, .svg-twitter, .svg-star-half, .svg-star-empty, .svg-star, .svg-pinterest, .svg-menu-cebab, .svg-logo, .svg-linkedin, .svg-instagram, .svg-heart, .svg-google-plus, .svg-facebook, .svg-dribble, .svg-double-arrow-right, .svg-double-arrow-left, .svg-comments, .svg-chevron-small-right, .svg-behance, .svg-arrow-right, .svg-arrow-left {
   background: url("../img/sprites/sprite.svg") no-repeat;
   display: inline-block;
   vertical-align: middle;
@@ -159,115 +159,121 @@ table {
 }
 
 .svg-arrow-right {
-  background-position: 0.6817148917% 0.5083732057%;
+  background-position: 0.6796556411% 0.5068574836%;
   width: 45px;
   height: 34px;
 }
 
 .svg-behance {
-  background-position: 1.4672222548% 1.0950009984%;
+  background-position: 1.4624539327% 1.091485769%;
   width: 511.96px;
   height: 511.96px;
 }
 
+.svg-chevron-small-right {
+  background-position: 9.0580800481% 8.6283844094%;
+  width: 20px;
+  height: 20px;
+}
+
 .svg-comments {
-  background-position: 9.9176276771% 9.3397745572%;
+  background-position: 10.2134646962% 9.6308186196%;
   width: 576px;
   height: 512px;
 }
 
 .svg-double-arrow-left {
-  background-position: 17.7945619335% 16.3082437276%;
+  background-position: 18.0421686747% 16.5574746873%;
   width: 26px;
   height: 26px;
 }
 
 .svg-double-arrow-right {
-  background-position: 18.1873111782% 16.6965352449%;
+  background-position: 18.4337349398% 16.9446098868%;
   width: 26px;
   height: 26px;
 }
 
 .svg-dribble {
-  background-position: 20.0521682426% 18.421900161%;
+  background-position: 20.3119922002% 18.683788122%;
   width: 512px;
   height: 512px;
 }
 
 .svg-facebook {
-  background-position: 26.2903712647% 24.709042077%;
+  background-position: 26.5121877821% 24.9330556382%;
   width: 20px;
   height: 20px;
 }
 
 .svg-google-plus {
-  background-position: 28.7251385719% 26.9887278583%;
+  background-position: 28.9567760806% 27.2231139647%;
   width: 512px;
   height: 512px;
 }
 
 .svg-heart {
-  background-position: 37.0720573851% 35.2334943639%;
+  background-position: 37.2765680858% 35.4414125201%;
   width: 512px;
   height: 512px;
 }
 
 .svg-instagram {
-  background-position: 45.4189761982% 43.4782608696%;
+  background-position: 45.596360091% 43.6597110754%;
   width: 512px;
   height: 512px;
 }
 
 .svg-linkedin {
-  background-position: 53.7658950114% 51.7230273752%;
+  background-position: 53.9161520962% 51.8780096308%;
   width: 512px;
   height: 512px;
 }
 
 .svg-logo {
-  background-position: 60.8820709492% 57.4514038877%;
+  background-position: 61.0066900287% 57.5822823747%;
   width: 388px;
   height: 240px;
 }
 
 .svg-menu-cebab {
-  background-position: 65.0449333747% 63.8325281804%;
+  background-position: 65.1529193698% 63.948635634%;
   width: 192px;
   height: 512px;
 }
 
 .svg-pinterest {
-  background-position: 71.5683077926% 72.077294686%;
+  background-position: 71.6607084823% 72.1669341894%;
   width: 512px;
   height: 512px;
 }
 
 .svg-star {
-  background-position: 74.1715842034% 74.5924928967%;
+  background-position: 74.24950973% 74.6682570449%;
   width: 37px;
   height: 35px;
 }
 
 .svg-star-empty {
-  background-position: 75.0721994224% 75.4317465085%;
+  background-position: 75.147749659% 75.5053151669%;
   width: 67px;
   height: 63px;
 }
 
 .svg-star-half {
-  background-position: 76.0905912753% 76.3778345097%;
+  background-position: 76.1630550083% 76.4485701452%;
   width: 67px;
   height: 63px;
 }
 
 .svg-twitter {
-  background-position: 82.7029670688% 82.9146537842%;
+  background-position: 82.7591810205% 82.9695024077%;
   width: 512px;
   height: 512px;
 }
 
 .svg-vk {
-  background-position: 91.5927829151% 91.6962791169%;
+  background-position: 91.6202680706% 91.7230928103%;
   width: 548.358px;
   height: 548.358px;
 }
@@ -291,6 +297,11 @@ table {
 .symbol-behance-dims {
   width: 511.96px;
   height: 511.96px;
+}
+
+.symbol-chevron-small-right-dims {
+  width: 20px;
+  height: 20px;
 }
 
 .symbol-comments-dims {
@@ -406,7 +417,7 @@ a:hover {
   color: #255271;
 }
 
-img, picture, video, canvas, svg {
+img {
   display: block;
   max-width: 100%;
 }
@@ -656,6 +667,65 @@ textarea {
 }
 
 /* Components */
+/* Accordion */
+summary::marker {
+  display: none;
+  content: "";
+}
+
+summary {
+  position: relative;
+}
+
+summary:before {
+  right: 25px;
+  top: 15px;
+  color: transparent;
+  background-image: url("../img/sprites/sprite.svg#chevron-small-right");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  content: "";
+  position: absolute;
+  transition: transform 0.5s;
+}
+
+details[open] > summary:before {
+  transform: rotateZ(90deg);
+}
+
+.accordion {
+  margin-bottom: 20px;
+}
+.accordion__item {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: none;
+  background: #FFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 50px;
+  transition: all 1s ease;
+}
+.accordion__item[open] {
+  max-height: 400px;
+}
+.accordion__title {
+  color: var(--header-color);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  transition: all 150ms ease-in-out;
+  padding: 15px 25px;
+  cursor: pointer;
+}
+.accordion__body {
+  padding: 0 25px 20px;
+}
+
 .menu__list {
   display: flex;
   flex-wrap: wrap;
@@ -1088,18 +1158,6 @@ textarea {
   outline: none;
 }
 
-/* Main styles */
-/* Header */
-.header__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
-.header__logo {
-  color: #387bab;
-}
-
 .testimonials__title {
   text-align: center;
   text-transform: uppercase;
@@ -1107,18 +1165,13 @@ textarea {
 }
 .testimonials__list {
   display: flex;
+  gap: 20px;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.testimonials__item {
-  margin: 10px;
-  width: calc(20% - 20px);
-  flex: auto;
-  max-width: 60%;
-}
 
 .testimonial {
-  min-width: 250px;
+  flex: 250px;
   padding: 20px;
   border-radius: 4px;
   background-color: #ff9800;
@@ -1170,23 +1223,23 @@ textarea {
   transform: scale(1.2);
 }
 
-.arrow1 {
-  border-style: solid;
-  width: 0;
-  height: 0;
+/* Main styles */
+/* Header */
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
-
-.arrow2 {
-  border-style: solid;
-  width: 0;
-  height: 0;
+.header__logo {
+  color: #387bab;
 }
 
 /* card */
-.card-list {
-  display: inline-grid;
+.cards-list {
+  display: grid;
   grid-gap: 15px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .card {

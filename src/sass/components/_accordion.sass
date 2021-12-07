@@ -14,9 +14,39 @@ summary:before
   background-size: 20px 20px
   width: 20px
   height: 20px
-  content: ""
+  content: ''
   position: absolute
   transition: transform .5s
 
 details[open] > summary:before
   transform: rotateZ(90deg)
+  
+
+.accordion
+  margin-bottom: 20px
+
+  &__item
+    margin-top: 5px
+    margin-bottom: 15px
+    border-radius: 4px
+    border: none
+    background: #FFF
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%)
+    overflow: hidden
+    max-height: 50px
+    transition: all 1s ease
+    &[open]
+      max-height: 400px
+
+
+  &__title
+    color: var(--header-color)
+    font-size: 15px
+    font-weight: 500
+    line-height: 20px
+    transition: all 150ms ease-in-out
+    padding: 15px 25px
+    cursor: pointer
+
+  &__body
+    padding: 0 25px 20px  
