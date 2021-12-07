@@ -1,24 +1,79 @@
 /* Global variables */
 
-/* Typography */
-$font-family-base: Roboto, Arial, sans-serif
-$font-family-heading: 'Roboto Slab', Georgia, serif
-$font-size: 14px
-$font-weight: normal
-$line-height: normal
-$letter-spacing: normal
+:root
+  
+  /* Typography */
+  --font-family-base: Roboto, Arial, sans-serif
+  --font-family-heading: 'Roboto Slab', Georgia, serif
+  --font-size: 14px
+  --font-weight: normal
+  --line-height: normal
+  --letter-spacing: normal
 
-/* Aliases */
-$ff: $font-family-base
-$fh: $font-family-heading
-$fz: $font-size
-$fw: $font-weight
-$lh: $line-height
-$ls: $letter-spacing
+  /* Aliases */
+  --ff: var(--font-family-base)
+  --fh: var(--font-family-heading)
+  --fz: var(--font-size)
+  --fw: var(--font-weight)
+  --lh: var(--line-height)
+  --ls: var(--letter-spacing)
+
+  /* Colors */
+  --light: #fff
+  --dark: #000
+
+  --primary: #387bab
+  --primary-darken: hsl(from var(--primary) h s calc(l - 20%))
+  --secondary: #3d176b
+
+  --header-color: var(--text-color)
+  --text-color: #363b5d
+  --bg-color: #f7f7f7
+  --border-color: rgba(#979797, 0.3)
+  --input-border-color: #d4d9dd
+  --button-color: var(--primary)
+
+  --menu-color: var(--secondary)
+  --menu-bg-color: var(--light)
+
+  --link-color: var(--primary)
+  --link-hover-color: hsl(from var(--link-color) h s calc(l - 20%))
+
+  --placeholder-color: #cdcdcd
+
+  --icon-color: #939393
+  --icon-bg-color: #303030
+
+  /* Animation */
+  --time: 0.3s
+  --func: ease-in-out
+
+  /* Layout */
+  --wrapper-size: 1440px
+  --wrapper-padding: 30px
+
+  --wrapper-xl: 1140px
+  --wrapper-lg: 960px
+  --wrapper-md: 720px
+  --wrapper-sm: 540px
+  --wrapper-xs: 100%
+
+  --z-index-dropdown: 100
+  --z-index-fixed: 200
+  --z-index-cover: 300
+  --z-index-modal: 400
+
+/* Typography */
+$font-family-base: var(--font-family-base)
+$font-family-heading: var(--font-family-heading)
+$font-size: var(--font-size)
+$font-weight: var(--font-weight)
+$line-height: var(--line-height)
+$letter-spacing: var(--letter-spacing)
 
 /* Layout */
-$wrapper-size: 1440px
-$wrapper-padding: 30px
+$wrapper-size: var(--wrapper-size)
+$wrapper-padding: var(--wrapper-padding)
 
 $break-xl: 1440px
 $break-lg: 1200px
@@ -26,42 +81,43 @@ $break-md: 992px
 $break-sm: 768px
 $break-xs: 576px
 
-$wrapper-xl: 1140px
-$wrapper-lg: 960px
-$wrapper-md: 720px
-$wrapper-sm: 540px
-$wrapper-xs: 100%
+$wrapper-xl: var(--wrapper-xl)
+$wrapper-lg: var(--wrapper-lg)
+$wrapper-md: var(--wrapper-md)
+$wrapper-sm: var(--wrapper-sm)
+$wrapper-xs: var(--wrapper-xs)
 
-$z-index-dropdown: 100
-$z-index-fixed: 200
-$z-index-cover: 300
-$z-index-modal: 400
+$z-index-dropdown: var(--z-index-dropdown)
+$z-index-fixed: var(--z-index-fixed)
+$z-index-cover: var(--z-index-cover)
+$z-index-modal: var(--z-index-modal)
 
 /* Colors */
-$light: #fff
-$dark: #000
+$light: var(--light)
+$dark: var(--dark)
 
-$primary: #387bab
-$secondary: #3d176b
+$primary: var(--primary)
+$primary-darken: var(--primary-darken)
+$secondary: var(--secondary)
 
-$header-color: #363b5d
-$text-color: #363b5d
-$bg-color: #f7f7f7
-$border-color: rgba(#979797, 0.3)
-$input-border-color: #d4d9dd
-$button-color: $primary
+$header-color: var(--header-color)
+$text-color: var(--text-color)
+$bg-color: var(--bg-color)
+$border-color: var(--border-color)
+$input-border-color: var(--input-border-color)
+$button-color: var(--button-color)
 
-$menu-color: $secondary
-$menu-bg-color: $light
+$menu-color: var(--menu-color)
+$menu-bg-color: var(--menu-bg-color)
 
-$link-color: $primary
-$link-hover-color: darken($link-color, 15%)
+$link-color: var(--link-color)
+$link-hover-color: var(--link-hover-color)
 
-$placeholder-color:  #cdcdcd
+$placeholder-color: var(--placeholder-color)
 
-$icon-color: #939393
-$icon-bg-color: #303030
+$icon-color: var(--icon-color)
+$icon-bg-color: var(--icon-bg-color)
 
 /* Animation */
-$time: 0.3s
-$func: ease-in-out    
+$time: var(--time)
+$func: var(--func)    
