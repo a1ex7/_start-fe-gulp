@@ -24,8 +24,10 @@
     &:hover
       color: $light
     &:hover:before
-      transform: scale(1)
       opacity: 1
+      transform: scale(1)
+      +md
+        transform: scaleX(0.3)
     &:focus
       outline: 2px solid darken($primary, 20%)    
 
@@ -39,7 +41,6 @@
       top: 0
       left: 0
       right: 0
-      padding: 20px
       background-color: $light
       box-shadow: 0 2px 4px 0 rgba(#554d56, 0.2)
       visibility: hidden

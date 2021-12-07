@@ -759,8 +759,13 @@ details[open] > summary:before {
   color: #fff;
 }
 .menu__link:hover:before {
-  transform: scale(1);
   opacity: 1;
+  transform: scale(1);
+}
+@media only screen and (max-width: 992px) {
+  .menu__link:hover:before {
+    transform: scaleX(0.3);
+  }
 }
 .menu__link:focus {
   outline: 2px solid #1f445e;
@@ -775,7 +780,6 @@ details[open] > summary:before {
     top: 0;
     left: 0;
     right: 0;
-    padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px 0 rgba(85, 77, 86, 0.2);
     visibility: hidden;
