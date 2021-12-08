@@ -18,6 +18,7 @@ a:hover
 img
   display: block
   max-width: 100%
+  object-fit: cover
 
 table
   border-collapse: collapse
@@ -96,7 +97,11 @@ body
   text-shadow: 0 1px 2px rgba(100,100,100,.35)
 
 /* Button */
-=button($background, $color, $border: $background)
+=button($color, $background, $border)
+  --color: #{$color}
+  --background: #{$background}
+  --border: #{$border}
+  
   display: inline-block
   min-width: 165px
   padding: 0.5em 1em
@@ -109,9 +114,9 @@ body
   text-transform: uppercase
   vertical-align: middle
 
-  color: $color
-  background-color: $background
-  border: 2px solid $border
+  color: var(--color)
+  background-color: var(--background)
+  border: 2px solid var(--border)
   
   user-select: none
   cursor: pointer
@@ -119,12 +124,18 @@ body
   
   &:hover,
   &:active
-    color: $primary
-    background-color: $color
+    --color: #{$background}
+    --background: #{$color}
+    
+  &:disabled
+    --color: #{$color}
+    --background: #{$button-disabled}
+    --border: #{$button-disabled}
+    
 
 /* Regular button */  
-.btn, .button
-  +button($primary, $light)
+.btn, .button, a.btn
+  +button($light, $button-color, $button-color)
 
 /* Small button */
 .btn--small
@@ -136,12 +147,16 @@ body
   width: 100%  
 
 /* Inverse button */  
-.btn--inverse
-  +button($light, $primary, $primary)
+.btn--inverse,
+a.btn--inverse
+  --color: #{$button-color}
+  --background: #{$light}
+  --border: #{$button-color}
   &:hover,
   &:active  
-    color: $light
-    border-color: $primary
+    --color: #{$light}
+    --background: #{$button-color}
+    --border: #{$button-color}
 
 /* Input */
 $input-line-height: 20px // only in px

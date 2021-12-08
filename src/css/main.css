@@ -18,18 +18,19 @@
   --light: #fff;
   --dark: #000;
   --primary: #387bab;
-  --primary-darken: hsl(from var(--primary) h s calc(l - 20%));
+  --primary-darken: #1f445e;
   --secondary: #3d176b;
   --header-color: var(--text-color);
   --text-color: #363b5d;
   --bg-color: #f7f7f7;
-  --border-color: rgba(#979797, 0.3);
+  --border-color: #979797;
   --input-border-color: #d4d9dd;
   --button-color: var(--primary);
+  --button-disabled: #979797;
   --menu-color: var(--secondary);
   --menu-bg-color: var(--light);
   --link-color: var(--primary);
-  --link-hover-color: hsl(from var(--link-color) h s calc(l - 20%));
+  --link-hover-color: var(--primary-darken);
   --placeholder-color: #cdcdcd;
   --icon-color: #939393;
   --icon-bg-color: #303030;
@@ -469,6 +470,7 @@ a:hover {
 img {
   display: block;
   max-width: 100%;
+  object-fit: cover;
 }
 
 table {
@@ -580,7 +582,10 @@ body {
 
 /* Button */
 /* Regular button */  
-.btn, .button {
+.btn, .button, a.btn {
+  --color: var(--light);
+  --background: var(--button-color);
+  --border: var(--button-color);
   display: inline-block;
   min-width: 165px;
   padding: 0.5em 1em;
@@ -591,16 +596,21 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   vertical-align: middle;
-  color: var(--light);
-  background-color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--color);
+  background-color: var(--background);
+  border: 2px solid var(--border);
   user-select: none;
   cursor: pointer;
   transition: all var(--time) var(--func);
 }
-.btn:hover, .btn:active, .button:hover, .button:active {
-  color: var(--primary);
-  background-color: var(--light);
+.btn:hover, .btn:active, .button:hover, .button:active, a.btn:hover, a.btn:active {
+  --color: var(--button-color);
+  --background: var(--light);
+}
+.btn:disabled, .button:disabled, a.btn:disabled {
+  --color: var(--light);
+  --background: var(--button-disabled);
+  --border: var(--button-disabled);
 }
 
 /* Small button */
@@ -615,31 +625,18 @@ body {
 }
 
 /* Inverse button */  
-.btn--inverse {
-  display: inline-block;
-  min-width: 165px;
-  padding: 0.5em 1em;
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 20px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  vertical-align: middle;
-  color: var(--primary);
-  background-color: var(--light);
-  border: 2px solid var(--primary);
-  user-select: none;
-  cursor: pointer;
-  transition: all var(--time) var(--func);
+.btn--inverse,
+a.btn--inverse {
+  --color: var(--button-color);
+  --background: var(--light);
+  --border: var(--button-color);
 }
-.btn--inverse:hover, .btn--inverse:active {
-  color: var(--primary);
-  background-color: var(--primary);
-}
-.btn--inverse:hover, .btn--inverse:active {
-  color: var(--light);
-  border-color: var(--primary);
+.btn--inverse:hover, .btn--inverse:active,
+a.btn--inverse:hover,
+a.btn--inverse:active {
+  --color: var(--light);
+  --background: var(--button-color);
+  --border: var(--button-color);
 }
 
 /* Input */

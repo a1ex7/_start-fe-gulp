@@ -3,7 +3,7 @@
 //- Symbol mode sprite
 mixin svg(title, width, height)
   svg(class=`symbol-${title}`, width=width, height=height)&attributes(attributes)
-    use(xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=`#${title}`)
+    use(xlink:href=`#${title}`)
 
 //- View mode sprite
 mixin icon(title)

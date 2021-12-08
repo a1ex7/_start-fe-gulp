@@ -23,21 +23,22 @@
   --dark: #000
 
   --primary: #387bab
-  --primary-darken: hsl(from var(--primary) h s calc(l - 20%))
+  --primary-darken: #{darken(#387bab, 20%)}
   --secondary: #3d176b
 
   --header-color: var(--text-color)
   --text-color: #363b5d
   --bg-color: #f7f7f7
-  --border-color: rgba(#979797, 0.3)
-  --input-border-color: #d4d9dd
+  --border-color: #979797
+  --input-border-color: #d4d9dd     
   --button-color: var(--primary)
+  --button-disabled: #979797
 
   --menu-color: var(--secondary)
   --menu-bg-color: var(--light)
 
   --link-color: var(--primary)
-  --link-hover-color: hsl(from var(--link-color) h s calc(l - 20%))
+  --link-hover-color: var(--primary-darken)
 
   --placeholder-color: #cdcdcd
 
@@ -106,6 +107,7 @@ $bg-color: var(--bg-color)
 $border-color: var(--border-color)
 $input-border-color: var(--input-border-color)
 $button-color: var(--button-color)
+$button-disabled: var(--button-disabled)
 
 $menu-color: var(--menu-color)
 $menu-bg-color: var(--menu-bg-color)

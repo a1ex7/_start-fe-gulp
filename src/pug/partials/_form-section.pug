@@ -55,13 +55,17 @@ section ...::: FORMS :::...
       .btn-example
         button.btn(type="submit")
           span Submit
-        button.btn.btn--inverse(type="submit")
+        button.btn.btn--inverse(type="button")
           span Inverse
-        button.btn.btn--small(type="submit")
+        button.btn(type="button", disabled)
+          span Disabled
+        button.btn.btn--small(type="button")
           span Small
-        a.btn.btn--inverse(href="#") 
-          span Link 
-        button.btn.btn--block(type="submit")
+        a.btn(href="#some") 
+          span Link
+        a.btn.btn--inverse(href="#some") 
+          span Link Inverse
+        button.btn.btn--block(type="button")
           span Button Block   
         
 
