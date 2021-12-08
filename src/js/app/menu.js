@@ -1,31 +1,31 @@
 /* Menu open */
-const menuBtn = document.querySelector('.js-menu-toggle');
-const menuMobile = document.querySelector('.menu--mobile');
-const menuIcon = document.querySelector('.menu-icon');
+const menuBtn = document.querySelector(".js-menu-toggle");
+const menuMobile = document.querySelector(".menu--mobile");
+const menuIcon = document.querySelector(".menu-icon");
 
-menuBtn.addEventListener('click', () => {
-  menuMobile.classList.toggle('open');
-  menuIcon.classList.toggle('open');
+menuBtn.addEventListener("click", () => {
+  menuMobile.classList.toggle("open");
+  menuIcon.classList.toggle("open");
 });
 
 /* Smooth scroll */
-const $menuLinks = document.querySelectorAll('.menu__link');
+const menuLinks = document.querySelectorAll(".menu__link");
 
-for (const $menuLink of $menuLinks) {
-  $menuLink.addEventListener('click', (e) => {
+menuLinks.forEach((el) => {
+  el.addEventListener("click", (e) => {
     e.preventDefault();
-    menuMobile.classList.remove('open');
-    menuIcon.classList.remove('open');
-    const targetId = e.target.getAttribute('href');
+    menuMobile.classList.remove("open");
+    menuIcon.classList.remove("open");
+    const targetId = e.target.getAttribute("href");
     const $targetSection = document.querySelector(targetId);
     scrollTo($targetSection);
   });
-}
+});
 
 const scrollTo = (element) => {
   if (element) {
     window.scroll({
-      behavior: 'smooth',
+      behavior: "smooth",
       left: 0,
       top: element.offsetTop,
     });
@@ -33,13 +33,21 @@ const scrollTo = (element) => {
 };
 
 /* Dropdown */
-const menuItemDropdown = document.querySelectorAll(
-  '.menu__item--with-dropdown'
-);
-
-menuItemDropdown.forEach((item) => {
-  item.addEventListener('click', (e) => {
+document.querySelectorAll(".dropdown").forEach((el) => {
+  el.addEventListener("click", (e) => {
     e.preventDefault();
-    e.currentTarget.querySelector('.dropdown__menu').classList.toggle('show');
+    e.currentTarget.parentNode
+      .querySelector(".dropdown__menu")
+      .classList.toggle("show");
   });
+});
+
+document.querySelectorAll(".dropdown__item").forEach((el) => {
+  el.addEventListener(
+    "click",
+    (e) => {
+      e.currentTarget.parentNode.classList.remove("show");
+    },
+    false
+  );
 });
