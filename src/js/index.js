@@ -9,6 +9,6 @@ import './app/slider-glide';
 
 /* Custom scripts */
 
-import './app/menu';
+// import './app/menu';
 // import './app/theme';
 // import './app/video';

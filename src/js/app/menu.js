@@ -1,6 +1,6 @@
 /* Menu open */
 const menuBtn = document.querySelector(".js-menu-toggle");
-const menuMobile = document.querySelector(".menu--mobile");
+const menuMobile = document.querySelector(".menu");
 const menuIcon = document.querySelector(".menu-icon");
 
 menuBtn.addEventListener("click", () => {

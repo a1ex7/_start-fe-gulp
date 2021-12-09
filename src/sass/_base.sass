@@ -159,25 +159,22 @@ a.btn--inverse
     --border: #{$button-color}
 
 /* Input */
-$input-line-height: 20px // only in px
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-textarea,
-select
-  font-size: 15px
+$input-line-height: 20px // px
+$input-py: 8px // padding top,bottom px
+:is(input):is([type="text"], [type="email"], [type="password"], input[type="tel"]),
+:is(textarea, select)
+  font-size: 16px
   font-family: $font-family-base
   line-height: $input-line-height
-  padding: 0.5em 1em
+  padding: $input-py 1em
   border: 2px solid $input-border-color
   background-color: $light
   &:focus
     outline-color: $primary
 
 textarea
-  min-height: (3 * $input-line-height + 32px)
-  max-height: (10 * $input-line-height + 32px)
+  min-height: (3 * $input-line-height + $input-py * 2 + 4px)
+  max-height: (10 * $input-line-height + $input-py * 2 + 4px)
 
 /* Section base styles */
 .section__title
@@ -212,3 +209,12 @@ textarea
     &:hover
       color: $light
       background-color: $primary
+      
+/** Icons **/
+.icon
+  display: inline-block
+  width: 1em
+  height: 1em
+  stroke-width: 0
+  stroke: currentColor
+  fill: currentColor      

@@ -1,8 +1,7 @@
 // Common styles for Menu
 .menu
-  &__list
-    display: flex
-    flex-wrap: wrap
+  display: flex
+  flex-wrap: wrap
   &__item
     position: relative
   &__link
@@ -27,35 +26,33 @@
       opacity: 1
       transform: scale(1)
       +md
-        transform: scaleX(0.3)
-    &:focus
-      outline: 2px solid $primary-darken    
-
-+md      
-  .menu--mobile
-    .menu__list
-      flex-direction: column
-      text-align: center
-      position: absolute
-      z-index: $z-index-modal
-      top: 0
-      left: 0
-      right: 0
-      background-color: $light
-      box-shadow: 0 2px 4px 0 rgba(#554d56, 0.2)
-      visibility: hidden
-      opacity: 0
-      transform: translateY(-150%)
-      +transition
-    .menu__item::after
+        transform: scaleX(1)
+  
+  +md      
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    z-index: $z-index-dropdown
+    flex-direction: column
+    align-items: center
+    padding: 20px
+    text-align: center
+    background-color: $light
+    box-shadow: 0 2px 4px 0 rgba(#554d56, 0.2)
+    visibility: hidden
+    opacity: 0
+    transform: translateX(-150%)
+    +transition
+    &__item::after
       content: normal
-    .menu__link
+    &__link
       font-size: 18px
       font-weight: bold
       font-family: $font-family-heading
-+md
-  #menu-toggle:checked ~ .menu--mobile .menu__list,
-  .menu--mobile.open .menu__list
-    visibility: visible
-    opacity: 1
-    transform: translateY(0)
+      
+    &__toggle:checked ~ &,
+    &.open
+      visibility: visible
+      opacity: 1
+      transform: translateY(0)

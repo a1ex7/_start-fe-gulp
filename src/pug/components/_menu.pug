@@ -1,5 +1,19 @@
 //- Common templates for Menu Horizontal
-ul.menu__list
+
+//- CSS Menu Open
+input.menu__toggle(id="menu-toggle", type="checkbox")
+label.menu__icon(for="menu-toggle", aria-label="Toggle navigation")
+  span.line-1
+  span.line-2
+  span.line-3
+
+//- JS Menu Open
+//button(type="button").menu__icon.js-menu-toggle Menu
+//  span.line-1
+//  span.line-2
+//  span.line-3  
+  
+ul.menu
   li.menu__item.menu__item--active
     a.menu__link(href="#home") Home
   li.menu__item
@@ -30,8 +44,3 @@ ul.menu__list
       a(href="#").dropdown__item This action
       a(href="#").dropdown__item Run by css
       a(href="#").dropdown__item Something else
-
-button(type="button").menu__btn.js-menu-toggle.menu-icon Menu
-  span.line-1
-  span.line-2
-  span.line-3

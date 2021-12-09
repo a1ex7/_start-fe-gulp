@@ -12,13 +12,13 @@ $cubic-bezier-out: cubic-bezier(1, 0.7, 1, 0.3)
 $width: 30px
 $padding: 0
 
-.menu-icon
+.menu__icon
   position: relative
   width: $width + 2 * $padding
   height: $menu-icon-height + 2 * $padding
   padding: $padding
   cursor: pointer
-  z-index: $z-index-modal
+  z-index: $z-index-fixed
 
   :is(.line-1, .line-2, .line-3)
     display: block
@@ -45,16 +45,16 @@ $padding: 0
 #menu-toggle
   display: none
 
-.menu-icon
+.menu__icon
   display: none
-  +reset-btn
   order: 3
   font-size: 0
+  +reset-btn
   +md
     display: block
 
-#menu-toggle:checked + .menu-icon,
-.menu-icon.open
+.menu__toggle:checked ~ .menu__icon,
+.menu__icon.open
   .line-1,
   .line-2,
   .line-3
