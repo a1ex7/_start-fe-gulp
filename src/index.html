@@ -15,10 +15,13 @@
     <!-- Bundle styles-->
     <link rel="stylesheet" href="css/main.min.css">
     <!-- Preload-->
-    <link rel="preload" href="/fonts/roboto-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/roboto-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/roboto-slab-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/roboto-slab-v12-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/dosis-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/dosis-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/open-sans-v27-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/open-sans-v27-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/roboto-v29-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/roboto-v29-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/roboto-v29-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <!-- =========== Inline <symbol> SVG sprite generated ===========-->
@@ -28,10 +31,10 @@
     <header class="header">
       <div class="wrapper">
         <div class="header__top">
-          <div class="header__logo logo"><a class="logo__link" href="/">
+          <h1 class="header__logo logo"><a class="logo__link" href="/">
               <svg class="symbol-logo" width="75" height="50" aria-label="Company logo">
                 <use xlink:href="#logo"></use>
-              </svg></a></div>
+              </svg></a></h1>
           <nav class="header__menu">
             <input class="menu__toggle" id="menu-toggle" type="checkbox">
             <label class="menu__icon" for="menu-toggle" aria-label="Toggle navigation"><span class="line-1"></span><span class="line-2"></span><span class="line-3"></span></label>
@@ -65,13 +68,14 @@
       <!--include /partials/__section_name-->
       <!--include /partials/__section_name-->
       <!-- Samples-->
-      <hr>=== MAIN CONTENT ===
+      <hr>
+      <h2 class="section__title">=== MAIN CONTENT ===</h2>
       <hr>
       <!-- Begin 'form'-->
-      <section>...::: FORMS :::...
-        <hr>
+      <section>
+        <h2 class="section__title">==== FORMS ====</h2>
         <div class="wrapper">
-          <form class="sample-form form" action="">
+          <form class="sample-form form" action="/">
             <fieldset class="form__fields">
               <div class="form__inline">
                 <div class="form__group form__group--50">
@@ -128,8 +132,8 @@
       <!-- End 'form'-->
       <hr>
       <!-- Begin 'slider'-->
-      <section class="slider" id="slider">==== SLIDER GLIDE-JS ====
-        <hr>
+      <section class="slider" id="slider">
+        <h2 class="section__title">==== SLIDER GLIDE-JS ====</h2>
         <div class="wrapper">
           <div class="glide">
             <div class="glide__track" data-glide-el="track">
@@ -151,8 +155,7 @@
               <button class="glide__arrow glide__arrow--left js-prev" data-glide-dir="&lt;">
                 <svg class="symbol-arrow-left" width="35" height="26">
                   <use xlink:href="#arrow-left"></use>
-                </svg>
-                <spa class="visually-hidden">Prev</spa>
+                </svg><span class="visually-hidden">Prev</span>
               </button>
               <button class="glide__arrow glide__arrow--right js-next" data-glide-dir="&gt;">
                 <svg class="symbol-arrow-right" width="35" height="26">
@@ -166,11 +169,11 @@
               </button>
             </div>
             <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button class="glide__bullet" data-glide-dir="=0"></button>
-              <button class="glide__bullet" data-glide-dir="=1"></button>
-              <button class="glide__bullet" data-glide-dir="=2"></button>
-              <button class="glide__bullet" data-glide-dir="=3"></button>
-              <button class="glide__bullet" data-glide-dir="=4"></button>
+              <button class="glide__bullet" data-glide-dir="=0"><span class="visually-hidden">1</span></button>
+              <button class="glide__bullet" data-glide-dir="=1"><span class="visually-hidden">2</span></button>
+              <button class="glide__bullet" data-glide-dir="=2"><span class="visually-hidden">3</span></button>
+              <button class="glide__bullet" data-glide-dir="=3"><span class="visually-hidden">4 </span></button>
+              <button class="glide__bullet" data-glide-dir="=4"><span class="visually-hidden">5</span></button>
             </div>
           </div>
         </div>
@@ -178,8 +181,8 @@
       <!-- End 'slider'-->
       <hr>
       <!-- Begin 'sectionName'-->
-      <section class="accordion-section" id="accordion-section">==== ACCORDION ====
-        <hr>
+      <section class="accordion-section" id="accordion-section">
+        <h2 class="section__title">==== ACCORDION ====</h2>
         <div class="wrapper">
           <div class="accordion">
             <details class="accordion__item" open>
@@ -206,8 +209,8 @@
       <!-- End 'accordion-section'-->
       <hr>
       <!-- Begin 'cards'-->
-      <section class="cards" id="cards">==== CARDS ====
-        <hr>
+      <section class="cards" id="cards">
+        <h2 class="section__title">==== CARDS ====</h2>
         <div class="wrapper">
           <div class="cards-list">
             <div class="card">
@@ -374,12 +377,61 @@
         </div>
       </section>
       <!-- End 'cards'-->
-      <!--hr-->
-      <!--include /partials/_masonry-grid-section-->
-      <!--hr-->
+      <hr>
+      <!-- Begin 'masonry'-->
+      <section class="masonry" id="masonry">
+        <h2 class="section__title">==== MASONRY GRID ====</h2>
+        <div class="wrapper">
+          <ul class="grid">
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Canon Microless Pack</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">North Oxford Logo Design</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Applications</span><span class="grid__creator">North Oxford Gymnastic</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Web Design</span><span class="grid__creator">Cesis Fashion</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">Kinfolk Brochure</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Creative Design</span></div>
+            </li>
+            <li class="grid__item">
+              <picture>
+                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
+              </picture>
+              <div class="grid__info"><span class="grid__branch">Interaction</span><span class="grid__creator">Cesis Fashion </span></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <hr>
       <!-- Begin 'Testimonials'-->
-      <section class="tesimonials" id="tesimonials">==== Testimonials x 5 (flexbox) ====
-        <hr>
+      <section class="tesimonials" id="tesimonials">
+        <h2 class="section__title">==== TESTIMONIALS ====</h2>
         <div class="wrapper">
           <div class="testimonials__list">
             <!-- Testimonials-->
@@ -390,23 +442,23 @@
                               <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
                             </picture>
                           </div>
-                          <h4 class="testimonial__name">Brad Pit</h4>
+                          <h3 class="testimonial__name">Brad Pit</h3>
                           <div class="testimonial__job">SEO</div>
                           <div class="testimonial__raiting">
-                            <div class="raiting">
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                            <div class="rating">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star-half symbol-star" width="18" height="18">
+                              <svg class="symbol-star-half rating__star" width="18" height="18">
                                 <use xlink:href="#star-half"></use>
                               </svg>
-                              <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                              <svg class="symbol-star-empty rating__star" width="18" height="18">
                                 <use xlink:href="#star-empty"></use>
                               </svg>
                             </div>
@@ -423,23 +475,23 @@
                               <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
                             </picture>
                           </div>
-                          <h4 class="testimonial__name">Default Name</h4>
+                          <h3 class="testimonial__name">Default Name</h3>
                           <div class="testimonial__job">Default Job</div>
                           <div class="testimonial__raiting">
-                            <div class="raiting">
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                            <div class="rating">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star-half symbol-star" width="18" height="18">
+                              <svg class="symbol-star-half rating__star" width="18" height="18">
                                 <use xlink:href="#star-half"></use>
                               </svg>
-                              <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                              <svg class="symbol-star-empty rating__star" width="18" height="18">
                                 <use xlink:href="#star-empty"></use>
                               </svg>
                             </div>
@@ -456,23 +508,23 @@
                               <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
                             </picture>
                           </div>
-                          <h4 class="testimonial__name">Elon Musk</h4>
+                          <h3 class="testimonial__name">Elon Musk</h3>
                           <div class="testimonial__job">Iron man</div>
                           <div class="testimonial__raiting">
-                            <div class="raiting">
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                            <div class="rating">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star-half symbol-star" width="18" height="18">
+                              <svg class="symbol-star-half rating__star" width="18" height="18">
                                 <use xlink:href="#star-half"></use>
                               </svg>
-                              <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                              <svg class="symbol-star-empty rating__star" width="18" height="18">
                                 <use xlink:href="#star-empty"></use>
                               </svg>
                             </div>
@@ -489,23 +541,23 @@
                               <source srcset="img/girl.webp" type="image/webp"/><img src="img/girl.jpg" alt="Girl Picture" loading="lazy"/>
                             </picture>
                           </div>
-                          <h4 class="testimonial__name">Default Name</h4>
+                          <h3 class="testimonial__name">Default Name</h3>
                           <div class="testimonial__job">Default Job</div>
                           <div class="testimonial__raiting">
-                            <div class="raiting">
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                            <div class="rating">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star symbol-star" width="18" height="18">
+                              <svg class="symbol-star rating__star" width="18" height="18">
                                 <use xlink:href="#star"></use>
                               </svg>
-                              <svg class="symbol-star-half symbol-star" width="18" height="18">
+                              <svg class="symbol-star-half rating__star" width="18" height="18">
                                 <use xlink:href="#star-half"></use>
                               </svg>
-                              <svg class="symbol-star-empty symbol-star" width="18" height="18">
+                              <svg class="symbol-star-empty rating__star" width="18" height="18">
                                 <use xlink:href="#star-empty"></use>
                               </svg>
                             </div>
@@ -524,8 +576,8 @@
     </main>
     <!-- End MAIN-->
     <!-- FOOTER-->
-    <footer class="main-footer">===FOOTER===
-      <hr>
+    <footer class="main-footer">
+      <h2 class="section__title">===FOOTER===</h2>
       <div class="wrapper">
         <ul class="social">
           <li class="social__item"><a class="social__link" target="_blank" href="#facebook" aria-label="Facebook"> 

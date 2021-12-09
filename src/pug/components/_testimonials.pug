@@ -3,15 +3,15 @@ mixin testimonial(name, job, description)
   article.testimonial
     .testimonial__img
       +picture("girl", alt="Girl Picture")
-    h4.testimonial__name= name || 'Default Name'
+    h3.testimonial__name= name || 'Default Name'
     .testimonial__job= job || 'Default Job'
     .testimonial__raiting
-      .raiting
-        +svg('star', 18, 18).symbol-star
-        +svg('star', 18, 18).symbol-star
-        +svg('star', 18, 18).symbol-star
-        +svg('star-half', 18, 18).symbol-star
-        +svg('star-empty', 18, 18).symbol-star
+      .rating
+        +svg('star', 18, 18).rating__star
+        +svg('star', 18, 18).rating__star
+        +svg('star', 18, 18).rating__star
+        +svg('star-half', 18, 18).rating__star
+        +svg('star-empty', 18, 18).rating__star
     .testimonial__descr
       p= description || 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque sunt error adipisci rem tempora suscipit repellat deleniti fugit.'
   // End Testimonial item
