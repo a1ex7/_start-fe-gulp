@@ -4,7 +4,7 @@
   "description": "Gulp Starter (sass, pub, webpack)",
   "private": true,
   "scripts": {
-    "start": "gulp serveDist",
+    "start": "npx browser-sync dist",
     "dev": "NODE_ENV='development' gulp",
     "build": "NODE_ENV='production' gulp build",
     "zip": "gulp zipProject"
