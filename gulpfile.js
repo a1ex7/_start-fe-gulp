@@ -11,13 +11,15 @@ const webp = require('imagemin-webp');
 const zip = require('gulp-zip');
 
 const notify = require('gulp-notify');
-const pug = require('gulp-pug');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const svgSprite = require('gulp-svg-sprite');
 
 const webpack = require('webpack-stream');
+
+const posthtml = require('gulp-posthtml');
+const include = require('posthtml-include')
 
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -34,11 +36,9 @@ const app = {
 
   src: {
     root: SRC_PATH,
-    html: SRC_PATH,
-    pug: `${SRC_PATH}/pug`,
+    html: `${SRC_PATH}/html`,
     sass: `${SRC_PATH}/sass`,
     css: `${SRC_PATH}/css`,
-    // path for sass files that will be generated automatically
     sassGen: `${SRC_PATH}/sass/generated`,
     js: `${SRC_PATH}/js`,
     img: `${SRC_PATH}/img`,
@@ -61,14 +61,15 @@ const app = {
 /* Pug Views to Html Compile*/
 
 const html = () => {
+
+  const plugins = [
+    include({encoding: 'utf8', root: `${app.src.html}`}),
+  ];
+  const options = {};
+
   return gulp
-    .src([`${app.src.pug}/pages/**/*.pug`, `!${app.src.pug}/**/_*.pug`])
-    .pipe(
-      pug({
-        basedir: app.src.pug,
-        pretty: true,
-      })
-    )
+    .src([`${app.src.html}/pages/**/*.html`])
+    .pipe(posthtml(plugins, options))
     .on('error', notify.onError())
     .pipe(gulp.dest(app.src.root))
     .pipe(browserSync.stream());
@@ -117,7 +118,7 @@ exports.js = js;
 /* Magic with sass files */
 
 const styles = () => {
-  const plugins = [mqpacker, autoprefixer, csso({ restructure: false })];
+  const plugins = [mqpacker, autoprefixer, csso({restructure: false})];
   return gulp
     .src(`${app.src.sass}/**/*.{sass,scss}`)
     .pipe(sourcemaps.init())
@@ -176,7 +177,7 @@ exports.serveDist = serveDist;
 const watch = () => {
   gulp.watch(`${app.src.svg}/**/*.svg`, gulp.series(sprites, html));
   gulp.watch(`${app.src.img}/**/*.{png,jpg}`, createWebp);
-  gulp.watch(`${app.src.pug}/**/*.pug`, html);
+  gulp.watch(`${app.src.html}/**/*.html`, html);
   gulp.watch(`${app.src.sass}/**/*.{sass,scss}`, styles);
   gulp.watch([`${app.src.js}/**/*.js`, `!${app.src.js}/app.min.js`], js);
   gulp.watch(`${app.src.root}/*.html`).on('change', browserSync.reload);

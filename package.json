@@ -1,7 +1,7 @@
 {
   "name": "start-fe-gulp",
   "version": "2.2.1",
-  "description": "Gulp Starter (sass, pub, webpack)",
+  "description": "Gulp Starter (sass, html, webpack)",
   "private": true,
   "scripts": {
     "start": "npx browser-sync dist",
@@ -11,7 +11,6 @@
   },
   "browserslist": [
     "last 2 versions",
-    "not dead",
     "not ie <= 11",
     "iOS >= 12"
   ],
@@ -24,10 +23,11 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-google-webfonts": "4.1.0",
+    "gulp-htmlnano": "^0.1.0",
     "gulp-imagemin": "7.1.0",
     "gulp-notify": "^4.0.0",
     "gulp-postcss": "^9.0.1",
-    "gulp-pug": "^5.0.0",
+    "gulp-posthtml": "^3.0.5",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -37,6 +37,10 @@
     "postcss": "^8.4.4",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-csso": "^5.0.1",
+    "posthtml": "^0.16.5",
+    "posthtml-include": "^1.7.2",
+    "posthtml-minifier": "^0.1.0",
+    "posthtml-spaceless": "^0.0.3",
     "reset-css": "^5.0.1",
     "sass": "^1.44.0",
     "webpack-stream": "^7.0.0"
