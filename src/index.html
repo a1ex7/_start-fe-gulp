@@ -67,6 +67,66 @@
       <!-- Samples-->
       <hr>=== MAIN CONTENT ===
       <hr>
+      <!-- Begin 'form'-->
+      <section>...::: FORMS :::...
+        <hr>
+        <div class="wrapper">
+          <form class="sample-form form" action="">
+            <fieldset class="form__fields">
+              <div class="form__inline">
+                <div class="form__group form__group--50">
+                  <label class="form__label" for="first_name">First name</label>
+                  <input class="form__text-input" id="first_name" type="text" name="account[first_name]">
+                </div>
+                <div class="form__group form__group--50">
+                  <label class="form__label" for="last_name">Last name</label>
+                  <input class="form__text-input" id="last_name" type="text" name="account[last_name]">
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label form__label--required" for="email">Email address</label>
+                <input class="form__text-input" id="email" type="email" name="account[email]">
+              </div>
+              <div class="form__group">
+                <label class="form__label form__label--required" for="phone">Phone</label>
+                <input class="form__text-input" id="phone" type="text" name="account[phone]">
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="message">Your message</label>
+                <textarea class="form__text-input" id="message" name="account[message]"></textarea>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="options">Your options</label>
+                <select class="form__select" id="options" name="account[options]">
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Some</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <input name="account[email_consent]" type="hidden" value="0">
+                <input class="form__checkbox" id="email_consent" type="checkbox" value="1" name="account[email_consent]">
+                <label class="form__label" for="email_consent">I want to hear from Treehouse about products and services.</label>
+              </div>
+              <div class="form__group">
+                <input class="form__radio" id="gender__male" type="radio" value="male" name="account[gender]">
+                <label class="form__label" for="gender__male">Male</label>
+                <input class="form__radio" id="gender__female" type="radio" value="female" name="account[gender]">
+                <label class="form__label" for="gender__female">Female</label>
+              </div>
+            </fieldset>
+            <div class="btn-example">
+              <button class="btn" type="submit"><span>Submit</span></button>
+              <button class="btn btn--inverse" type="button"><span>Inverse</span></button>
+              <button class="btn" type="button" disabled><span>Disabled</span></button>
+              <button class="btn btn--small" type="button"><span>Small</span></button><a class="btn" href="#some"> <span>Link</span></a><a class="btn btn--inverse" href="#some"> <span>Link Inverse</span></a>
+              <button class="btn btn--block" type="button"><span>Button Block   </span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- End 'form'-->
+      <hr>
       <!-- Begin 'slider'-->
       <section class="slider" id="slider">==== SLIDER GLIDE-JS ====
         <hr>
@@ -314,118 +374,9 @@
         </div>
       </section>
       <!-- End 'cards'-->
-      <hr>
-      <!-- Begin 'masonry'-->
-      <section class="masonry" id="masonry">==== MASONRY GRID ====
-        <hr>
-        <div class="wrapper">
-          <ul class="grid">
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Canon Microless Pack</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">North Oxford Logo Design</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Applications</span><span class="grid__creator">North Oxford Gymnastic</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Web Design</span><span class="grid__creator">Cesis Fashion</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Branding</span><span class="grid__creator">Kinfolk Brochure</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Photography</span><span class="grid__creator">Creative Design</span></div>
-            </li>
-            <li class="grid__item">
-              <picture>
-                <source srcset="img/girl.webp" type="image/webp"/><img class="grid__image" src="img/girl.jpg" alt="Girl" loading="lazy"/>
-              </picture>
-              <div class="grid__info"><span class="grid__branch">Interaction</span><span class="grid__creator">Cesis Fashion </span></div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <hr>
-      <!-- Begin 'form'-->
-      <section>...::: FORMS :::...
-        <hr>
-        <div class="wrapper">
-          <form class="sample-form form" action="">
-            <fieldset class="form__fields">
-              <div class="form__inline">
-                <div class="form__group form__group--50">
-                  <label class="form__label" for="first_name">First name</label>
-                  <input class="form__text-input" id="first_name" type="text" name="account[first_name]">
-                </div>
-                <div class="form__group form__group--50">
-                  <label class="form__label" for="last_name">Last name</label>
-                  <input class="form__text-input" id="last_name" type="text" name="account[last_name]">
-                </div>
-              </div>
-              <div class="form__group">
-                <label class="form__label form__label--required" for="email">Email address</label>
-                <input class="form__text-input" id="email" type="email" name="account[email]">
-              </div>
-              <div class="form__group">
-                <label class="form__label form__label--required" for="phone">Phone</label>
-                <input class="form__text-input" id="phone" type="text" name="account[phone]">
-              </div>
-              <div class="form__group">
-                <label class="form__label" for="message">Your message</label>
-                <textarea class="form__text-input" id="message" name="account[message]"></textarea>
-              </div>
-              <div class="form__group">
-                <label class="form__label" for="options">Your options</label>
-                <select class="form__select" id="options" name="account[options]">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Some</option>
-                </select>
-              </div>
-              <div class="form__group">
-                <input name="account[email_consent]" type="hidden" value="0">
-                <input class="form__checkbox" id="email_consent" type="checkbox" value="1" name="account[email_consent]">
-                <label class="form__label" for="email_consent">I want to hear from Treehouse about products and services.</label>
-              </div>
-              <div class="form__group">
-                <input class="form__radio" id="gender__male" type="radio" value="male" name="account[gender]">
-                <label class="form__label" for="gender__male">Male</label>
-                <input class="form__radio" id="gender__female" type="radio" value="female" name="account[gender]">
-                <label class="form__label" for="gender__female">Female</label>
-              </div>
-            </fieldset>
-            <div class="btn-example">
-              <button class="btn" type="submit"><span>Submit</span></button>
-              <button class="btn btn--inverse" type="button"><span>Inverse</span></button>
-              <button class="btn" type="button" disabled><span>Disabled</span></button>
-              <button class="btn btn--small" type="button"><span>Small</span></button><a class="btn" href="#some"> <span>Link</span></a><a class="btn btn--inverse" href="#some"> <span>Link Inverse</span></a>
-              <button class="btn btn--block" type="button"><span>Button Block   </span></button>
-            </div>
-          </form>
-        </div>
-      </section>
-      <!-- End 'form'-->
-      <hr>
+      <!--hr-->
+      <!--include /partials/_masonry-grid-section-->
+      <!--hr-->
       <!-- Begin 'Testimonials'-->
       <section class="tesimonials" id="tesimonials">==== Testimonials x 5 (flexbox) ====
         <hr>
