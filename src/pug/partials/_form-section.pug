@@ -10,30 +10,31 @@ section
         .form__inline
           .form__group.form__group--50
             label.form__label(for='first_name') First name
-            input#first_name.form__text-input(type='text', name='account[first_name]')
+            input#first_name.form__text-input(type='text', name='account[first_name]', placeholder="First name")
           .form__group.form__group--50
             label.form__label(for='last_name') Last name
-            input#last_name.form__text-input(type='text', name='account[last_name]')
+            input#last_name.form__text-input(type='text', name='account[last_name]', placeholder="Last name")
         
         //- Email
         .form__group
           label.form__label.form__label--required(for='email') Email address
-          input#email.form__text-input(type='email', name='account[email]')
+          input#email.form__text-input(type='email', name='account[email]', placeholder="Email")
         
         //- Text
         .form__group
           label.form__label.form__label--required(for='phone') Phone
-          input#phone.form__text-input(type='text', name='account[phone]')    
+          input#phone.form__text-input(type='text', name='account[phone]', placeholder="Phone")    
         
         //- Textarea
         .form__group
           label.form__label(for='message') Your message
-          textarea#message.form__text-input(name='account[message]')
+          textarea#message.form__text-input(name='account[message]', placeholder="Comments")
         
         //- Select
         .form__group
           label.form__label(for='options') Your options
           select#options.form__select(name='account[options]')
+            option(value='', disabled selected) Select...
             option(value='1') One
             option(value='2') Two
             option(value='3') Some

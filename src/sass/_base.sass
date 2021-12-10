@@ -170,8 +170,8 @@ $input-py: 8px // padding top,bottom px
   padding: $input-py 1em
   border: 2px solid $input-border-color
   background-color: $light
-  &:focus
-    outline-color: $primary
+  &:invalid
+    color: red  
 
 textarea
   min-height: (3 * $input-line-height + $input-py * 2 + 4px)

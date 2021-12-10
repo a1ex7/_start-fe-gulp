@@ -7,14 +7,16 @@ $social-icon-size: 34px
 .social__link
   +hide-text
   +flex-center
-  fill: $icon-color
+  color: $icon-color
   +size($social-icon-size)
   +transition(background-color transform, 0.2s)
+  svg
+    fill: $icon-color
   &:hover
     background-color: $primary
-    fill: $light
+    color: $light
     transform: scale(1.1)
+    svg
+      fill: $light
   &:active
     background-color: $primary-darken
-  &:focus
-    outline: 2px solid $primary-darken

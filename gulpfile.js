@@ -200,7 +200,7 @@ const imageopt = () => {
           plugins: [
             {removeViewBox: true},
             {cleanupIDs: false},
-            {removeUselessStrokeAndFill: true},
+            {removeUselessStrokeAndFill: false},
           ],
         }),
       ])

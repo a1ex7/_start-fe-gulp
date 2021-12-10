@@ -32,7 +32,7 @@
   --link-color: var(--primary);
   --link-hover-color: var(--primary-darken);
   --placeholder-color: #cdcdcd;
-  --icon-color: #939393;
+  --icon-color: var(--primary);
   --icon-bg-color: #303030;
   /* Animation */
   --time: 0.3s;
@@ -671,9 +671,9 @@ a.btn--inverse:active {
   border: 2px solid var(--input-border-color);
   background-color: var(--light);
 }
-:is(input):is([type=text], [type=email], [type=password], input[type=tel]):focus,
-:is(textarea, select):focus {
-  outline-color: var(--primary);
+:is(input):is([type=text], [type=email], [type=password], input[type=tel]):invalid,
+:is(textarea, select):invalid {
+  color: red;
 }
 
 textarea {
@@ -888,7 +888,7 @@ details[open] > summary:before {
   display: block;
   height: 4px;
   width: 100%;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   border-radius: 3px;
   transition: background-color 0.2s ease-in-out;
 }
@@ -903,7 +903,7 @@ details[open] > summary:before {
   animation: animate-line-3-rev 0.7s ease-in-out;
 }
 .menu__icon:hover :is(.line-1, .line-2, .line-3) {
-  background-color: var(--primary);
+  background-color: var(--primary-darken);
 }
 
 #menu-toggle {
@@ -931,7 +931,7 @@ details[open] > summary:before {
 .menu__icon.open .line-2,
 .menu__icon.open .line-3 {
   width: 100%;
-  background-color: var(--primary);
+  background-color: var(--primary-darken);
 }
 .menu__toggle:checked ~ .menu__icon .line-1,
 .menu__icon.open .line-1 {
@@ -1030,21 +1030,24 @@ details[open] > summary:before {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  fill: var(--icon-color);
+  color: var(--icon-color);
   width: 34px;
   height: 34px;
   transition: background-color transform 0.2s var(--func);
 }
+.social__link svg {
+  fill: var(--icon-color);
+}
 .social__link:hover {
   background-color: var(--primary);
-  fill: var(--light);
+  color: var(--light);
   transform: scale(1.1);
+}
+.social__link:hover svg {
+  fill: var(--light);
 }
 .social__link:active {
   background-color: var(--primary-darken);
-}
-.social__link:focus {
-  outline: 2px solid var(--primary-darken);
 }
 
 .form__inline {
@@ -1286,7 +1289,10 @@ details[open] > summary:before {
 }
 .rating__star:hover {
   transform: scale(1.5);
-  fill: #fff;
+  color: var(--icon-color);
+}
+.rating__star:hover svg {
+  fill: var(--icon-color);
 }
 
 /* Main styles */
